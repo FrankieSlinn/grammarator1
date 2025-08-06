@@ -21,7 +21,8 @@ export function WordButtons({
   showPointsMessage, 
   setShowPointsMessage,
   gameScore, 
-  setGameScore
+  setGameScore, 
+  correctSentenceDisplay, setCorrectSentenceDisplay, showCorrectSentenceDisplay, setShowCorrectSentenceDisplay
 }) {
   const [rowNumber, setRowNumber] = useState();
   const [grammarToCheck, setGrammarToCheck] = useState("");
@@ -120,6 +121,10 @@ export function WordButtons({
               setShowPointsMessage={setShowPointsMessage}
               gameScore={gameScore}
               setGameScore={setGameScore}
+              correctSentenceDssplay={correctSentenceDisplay}
+              setCorrectSentenceDisplay={setCorrectSentenceDisplay}
+              showCorrectSentenceDisplay={showCorrectSentenceDisplay}
+              setShowCorrectSentenceDisplay={setShowCorrectSentenceDisplay}
 
             />:null}
           </View>

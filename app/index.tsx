@@ -4,6 +4,7 @@ import { s } from "../App.style";
 import { CashButtonFeedback } from "../components/CashButtonFeedback";
 import { ChangeWordsButtons } from "../components/ChangeWordsButtons";
 import { Dashboard } from "../components/Dashboard";
+import { DisplaySentence } from "../components/DisplaySentence";
 import { Logo } from "../components/Logo";
 import { PointsMessage } from "../components/PointsMessage";
 import { WordButtons } from "../components/WordButtons";
@@ -20,6 +21,8 @@ export default function Index() {
   const [gameScore, setGameScore] = useState(0); 
   const [roundsLeft, setRoundsLeft] = useState(10); 
   const [nudgesSpinsLeft, setNudgesSpinsLeft] = useState(2)
+  const[correctSentenceDisplay, setCorrectSentenceDisplay] = useState("");
+  const[showCorrectSentenceDisplay, setShowCorrectSentenceDisplay]=useState(false)
  
   
   console.log("fullWordArray in index", fullWordArray);
@@ -48,6 +51,12 @@ export default function Index() {
           cashButtonPressed={cashButtonPressed}
           grammarCorrect={grammarCorrect}
         />
+        {showCorrectSentenceDisplay===true?
+        <DisplaySentence
+        correctSentenceDisplay={correctSentenceDisplay}
+        
+        />
+        :null}
         <ChangeWordsButtons
           rowLength={rowLength}
           numberOfRows={numberOfRows}
@@ -74,6 +83,10 @@ export default function Index() {
           setShowPointsMessage={setShowPointsMessage}
           gameScore={gameScore}
           setGameScore={setGameScore}
+          correctSentenceDssplay={correctSentenceDisplay}
+          setCorrectSentenceDisplay={setCorrectSentenceDisplay}
+          showCorrectSentenceDisplay={showCorrectSentenceDisplay}
+          setShowCorrectSentenceDisplay={setShowCorrectSentenceDisplay}
         />
        { showPointsMessage?
         <PointsMessage

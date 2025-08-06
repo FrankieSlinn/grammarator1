@@ -6,6 +6,7 @@ import { checkGrammar } from "../utils/grammarAPI";
 
 export function CashButton({ grammarCorrect, setGrammarCorrect , cashButtonPressed, setCashButtonPressed, fullWordArray, setFullWordArray, rowNumber, setRowNumber,
   grammarToCheck, setGrammarToCheck, rowLength, showPointsMessage, setShowPointsMessage, gameScore, setGameScore,
+  correctSentenceDisplay, setCorrectSentenceDisplay, showCorrectSentenceDisplay, setShowCorrectSentenceDisplay
   
 }) {
 
@@ -29,6 +30,8 @@ export function CashButton({ grammarCorrect, setGrammarCorrect , cashButtonPress
 
     // ✅ Use the actual result from the API instead of grammarCorrect state
     if (result === true) {
+      setShowCorrectSentenceDisplay(true)
+      setCorrectSentenceDisplay(fullWordArray[3]+" "+fullWordArray[4]+" "+fullWordArray[5])
       setShowPointsMessage(true);
       console.log("✅ Grammar correct in cash button:", result);
       let newGameScore = gameScore + 1;

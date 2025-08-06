@@ -2,12 +2,14 @@
 import { Text, View } from "react-native";
 import { s } from "../App.style";
 
-export function DisplaySentence({fullWordArray}){
+export function DisplaySentence({correctSentenceDisplay
+
+}){
 
 
 return <>
 <View style={s.displaySentenceContainer}>
-<Text style={s.standardText}>S{fullWordArray[3]+" "+fullWordArray[4]+fullWordArray[5]}</Text>
+<Text style={s.standardText}>{correctSentenceDisplay}</Text>
 
 </View>
 

@@ -113,9 +113,9 @@ export const s = StyleSheet.create({
 
     borderRadius: 10,
   },
-  lockedWordButton:{
-    backgroundColor: "lightblue", 
-  },
+  // lockedWordButton:{
+  //   backgroundColor: "lightblue", 
+  // },
   unlockedWordButton:{
     backgroundColor: "aquamarine",
 
@@ -147,6 +147,14 @@ export const s = StyleSheet.create({
     alignItems: "center",
     // backgroundColor: "lightyellow"
   },
+  displaySentenceContainer:{
+
+    backgroundColor: "lightblue",
+    marginTop: 110,
+    marginBottom: -125,
+    alignItems: "center",
+    padding: 10,
+  },
 
  standardText: {
     fontWeight: "bold",
@@ -165,7 +173,7 @@ export const s = StyleSheet.create({
     flex: 0.5,
 marginTop: -300,
 // marginBottom: 200,
-backgroundColor: "lightgreen", 
+// backgroundColor: "lightgreen", 
 alignItems: "center"
 
   }
