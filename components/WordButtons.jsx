@@ -1,0 +1,143 @@
+import { useEffect, useState } from "react";
+import { Text, TouchableOpacity, View } from "react-native";
+import { s } from "../App.style";
+import { makeWordArrays } from "../utils/makeWordArrays";
+import { CashButton } from "./CashButton";
+import { NewRoundButton } from "./NewRoundButton";
+
+export function WordButtons({
+  setFullWordArray,
+  fullWordArray,
+  cashButtonPressed,
+  setCashButtonPressed,
+  grammarCorrect,
+  setGrammarCorrect,
+  newRound,
+  setNewRound,
+  rowLength,
+  setRowLength,
+  numberOfRows,
+  setNumberOfRows,
+  showPointsMessage, 
+  setShowPointsMessage,
+  gameScore, 
+  setGameScore
+}) {
+  const [rowNumber, setRowNumber] = useState();
+  const [grammarToCheck, setGrammarToCheck] = useState("");
+  const [wordArrayPopulated, setWordArrayPopulated] = useState(false);
+  const [pressedRowIndex, setPressedRowIndex] = useState(null);
+
+  // ✅ Track lock state of each button individually
+  const [individualButtonLocked, setIndividualButtonLocked] = useState({});
+
+
+
+  useEffect(() => {
+    console.log("RENDER TRIGGERED: fullWordArray updated", fullWordArray);
+  }, [fullWordArray]);
+
+  useEffect(() => {
+    if (fullWordArray.length === 0) {
+      console.log("Calling makeWordArrays...");
+      makeWordArrays(
+        rowLength,
+        numberOfRows,
+        wordArrayPopulated,
+        setWordArrayPopulated,
+        fullWordArray,
+        setFullWordArray
+      );
+    }
+  }, []);
+
+  // ✅ Toggle lock state of one button
+  function lockButtons(rowIndex, wordIndex) {
+    if(rowIndex===1){
+
+    const key = `${rowIndex}-${wordIndex}`;
+    setIndividualButtonLocked(prev => ({
+      ...prev,
+      [key]: !prev[key]
+    }));
+  }
+  }
+
+  // ✅ Create rows dynamically
+  const rows = [];
+  for (let i = 0; i < fullWordArray.length; i += rowLength) {
+    rows.push(fullWordArray.slice(i, i + rowLength));
+  }
+
+  if (fullWordArray.length === 0) {
+    return (
+      <View>
+        <Text>Loading...</Text>
+      </View>
+    );
+  }
+
+  return (
+    <>
+      <View style={s.wordsContainer}>
+        {rows.map((row, index) => (
+          <View key={index} style={s.wordRow}>
+            {row.map((word, wordIndex) => {
+              const key = `${index}-${wordIndex}`;
+              const isLocked = individualButtonLocked[key];
+ 
+
+              return (
+                <View key={key} style={s. wordButtonContainer}>
+                  <TouchableOpacity
+                    onPress={() => lockButtons(index, wordIndex)}
+                    style={[
+                      s.wordButton, s.unlockedWordButton
+                    ]}
+                  >
+                    <Text style={s.word}>{word}</Text>
+                  </TouchableOpacity>
+                </View>
+              );
+            })}
+       
+            { index===1?
+            <CashButton
+              grammarCorrect={grammarCorrect}
+              setGrammarCorrect={setGrammarCorrect}
+              cashButtonPressed={cashButtonPressed}
+              setCashButtonPressed={setCashButtonPressed}
+              fullWordArray={fullWordArray}
+              setFullWordArray={setFullWordArray}
+              rowNumber={index}
+              setRowNumber={setRowNumber}
+              grammarToCheck={grammarToCheck}
+              setGrammarToCheck={setGrammarToCheck}
+              rowLength={rowLength}
+              pressedRowIndex={pressedRowIndex}
+              setPressedRowIndex={setPressedRowIndex}
+              showPointsMessage={showPointsMessage}
+              setShowPointsMessage={setShowPointsMessage}
+              gameScore={gameScore}
+              setGameScore={setGameScore}
+
+            />:null}
+          </View>
+        ))}
+      </View>
+
+      <NewRoundButton
+        newRound={newRound}
+        setNewRound={setNewRound}
+        cashButtonPressed={cashButtonPressed}
+        setCashButtonPressed={setCashButtonPressed}
+        rowLength={rowLength}
+        numberOfRows={numberOfRows}
+        fullWordArray={fullWordArray}
+        setFullWordArray={setFullWordArray}
+        individualButtonLocked={individualButtonLocked}
+        setIndividualButtonLocked={setIndividualButtonLocked}
+      />
+    </>
+  );
+}
