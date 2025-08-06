@@ -30,7 +30,7 @@ export function WordButtons({
   const [pressedRowIndex, setPressedRowIndex] = useState(null);
 
   // ✅ Track lock state of each button individually
-  const [individualButtonLocked, setIndividualButtonLocked] = useState({});
+
 
 
 
@@ -53,16 +53,16 @@ export function WordButtons({
   }, []);
 
   // ✅ Toggle lock state of one button
-  function lockButtons(rowIndex, wordIndex) {
-    if(rowIndex===1){
+  // function lockButtons(rowIndex, wordIndex) {
+  //   if(rowIndex===1){
 
-    const key = `${rowIndex}-${wordIndex}`;
-    setIndividualButtonLocked(prev => ({
-      ...prev,
-      [key]: !prev[key]
-    }));
-  }
-  }
+  //   const key = `${rowIndex}-${wordIndex}`;
+  //   setIndividualButtonLocked(prev => ({
+  //     ...prev,
+  //     [key]: !prev[key]
+  //   }));
+  // }
+  // }
 
   // ✅ Create rows dynamically
   const rows = [];
@@ -85,15 +85,15 @@ export function WordButtons({
           <View key={index} style={s.wordRow}>
             {row.map((word, wordIndex) => {
               const key = `${index}-${wordIndex}`;
-              const isLocked = individualButtonLocked[key];
+              // const isLocked = individualButtonLocked[key];
  
 
               return (
                 <View key={key} style={s. wordButtonContainer}>
                   <TouchableOpacity
-                    onPress={() => lockButtons(index, wordIndex)}
+          
                     style={[
-                      s.wordButton, s.unlockedWordButton
+                      s.wordButton, s.wordButton
                     ]}
                   >
                     <Text style={s.word}>{word}</Text>
@@ -140,8 +140,7 @@ export function WordButtons({
         numberOfRows={numberOfRows}
         fullWordArray={fullWordArray}
         setFullWordArray={setFullWordArray}
-        individualButtonLocked={individualButtonLocked}
-        setIndividualButtonLocked={setIndividualButtonLocked}
+
       />
     </>
   );

@@ -3,8 +3,7 @@ import { Text, TouchableOpacity, View } from "react-native";
 import { s } from "../App.style";
 import { spinColumn } from "../utils/wordColumnMovements";
 
-export function NewRoundButton({cashButtonPressed, setCashButtonPressed, numberOfRows, fullWordArray, setFullWordArray, rowLength, individualButtonLocked, 
-    setIndividualButtonLocked
+export function NewRoundButton({cashButtonPressed, setCashButtonPressed, numberOfRows, fullWordArray, setFullWordArray, rowLength, 
 }){
 
 //Removes feedback message as to whether grammar was correct
@@ -14,11 +13,7 @@ export function NewRoundButton({cashButtonPressed, setCashButtonPressed, numberO
         console.log("cashButtonPressed in NewRoundButton", cashButtonPressed)
     }
 
-    // function resetButtonLocked(){
-    //     console.log("resetting wor buttons to unlocked")
-    //     setIndividualButtonLocked(false)
-    //     // console.log("cashButtonPressed in NewRoundButton", cashButtonPressed)
-    // }
+
 
 
 

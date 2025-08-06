@@ -112,10 +112,9 @@ export const s = StyleSheet.create({
     margin: 2,
 
     borderRadius: 10,
+    backgroundColor: "aquamarine",
   },
-  // lockedWordButton:{
-  //   backgroundColor: "lightblue", 
-  // },
+
   unlockedWordButton:{
     backgroundColor: "aquamarine",
 

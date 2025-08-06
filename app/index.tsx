@@ -16,7 +16,7 @@ export default function Index() {
   const [newRound, setNewRound] = useState(false);
   const [rowLength, setRowLength] = useState(3);
   const [numberOfRows, setNumberOfRows] = useState(3);
-  const [buttonLocked, setButtonLocked] = useState(false);
+  // const [buttonLocked, setButtonLocked] = useState(false);
   const [showPointsMessage, setShowPointsMessage]=useState(false);
   const [gameScore, setGameScore] = useState(0); 
   const [roundsLeft, setRoundsLeft] = useState(10); 
@@ -77,8 +77,7 @@ export default function Index() {
           setRowLength={setRowLength}
           numberOfRows={numberOfRows}
           setNumberOfRows={setNumberOfRows}
-          buttonLocked={buttonLocked}
-          setButtonLocked={setButtonLocked}
+      
           showPointsMessage={showPointsMessage}
           setShowPointsMessage={setShowPointsMessage}
           gameScore={gameScore}
