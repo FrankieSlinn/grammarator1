@@ -3,7 +3,7 @@ import { Text, TouchableOpacity, View } from "react-native";
 import { s } from "../App.style";
 import { resetRound } from "../utils/resetRound";
 
-export function NewRoundButton({cashButtonPressed, setCashButtonPressed, numberOfRows, fullWordArray, setFullWordArray, rowLength, 
+export function NewGameButton({cashButtonPressed, setCashButtonPressed, numberOfRows, fullWordArray, setFullWordArray, rowLength, 
 }){
 
 //Removes feedback message as to whether grammar was correct

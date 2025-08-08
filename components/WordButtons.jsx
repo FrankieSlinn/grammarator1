@@ -3,7 +3,7 @@ import { Text, TouchableOpacity, View } from "react-native";
 import { s } from "../App.style";
 import { makeWordArrays } from "../utils/makeWordArrays";
 import { CashButton } from "./CashButton";
-import { NewRoundButton } from "./NewRoundButton";
+import { NewGameButton } from "./NewGameButton";
 
 export function WordButtons({
   setFullWordArray,
@@ -22,7 +22,8 @@ export function WordButtons({
   setShowPointsMessage,
   gameScore, 
   setGameScore, 
-  correctSentenceDisplay, setCorrectSentenceDisplay, showCorrectSentenceDisplay, setShowCorrectSentenceDisplay
+  correctSentenceDisplay, setCorrectSentenceDisplay, showCorrectSentenceDisplay, setShowCorrectSentenceDisplay,
+  roundsLeft, setRoundsLeft
 }) {
   const [rowNumber, setRowNumber] = useState();
   const [grammarToCheck, setGrammarToCheck] = useState("");
@@ -52,19 +53,6 @@ export function WordButtons({
     }
   }, []);
 
-  // ✅ Toggle lock state of one button
-  // function lockButtons(rowIndex, wordIndex) {
-  //   if(rowIndex===1){
-
-  //   const key = `${rowIndex}-${wordIndex}`;
-  //   setIndividualButtonLocked(prev => ({
-  //     ...prev,
-  //     [key]: !prev[key]
-  //   }));
-  // }
-  // }
-
-  // ✅ Create rows dynamically
   const rows = [];
   for (let i = 0; i < fullWordArray.length; i += rowLength) {
     rows.push(fullWordArray.slice(i, i + rowLength));
@@ -126,13 +114,15 @@ export function WordButtons({
               setCorrectSentenceDisplay={setCorrectSentenceDisplay}
               showCorrectSentenceDisplay={showCorrectSentenceDisplay}
               setShowCorrectSentenceDisplay={setShowCorrectSentenceDisplay}
+              roundsLeft={roundsLeft}
+              setRoundsLeft={setRoundsLeft}
 
             />:null}
           </View>
         ))}
       </View>
 
-      <NewRoundButton
+      <NewGameButton
         newRound={newRound}
         setNewRound={setNewRound}
         cashButtonPressed={cashButtonPressed}

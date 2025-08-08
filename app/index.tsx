@@ -16,7 +16,6 @@ export default function Index() {
   const [newRound, setNewRound] = useState(false);
   const [rowLength, setRowLength] = useState(3);
   const [numberOfRows, setNumberOfRows] = useState(3);
-  // const [buttonLocked, setButtonLocked] = useState(false);
   const [showPointsMessage, setShowPointsMessage]=useState(false);
   const [gameScore, setGameScore] = useState(0); 
   const [roundsLeft, setRoundsLeft] = useState(10); 
@@ -86,6 +85,8 @@ export default function Index() {
           setCorrectSentenceDisplay={setCorrectSentenceDisplay}
           showCorrectSentenceDisplay={showCorrectSentenceDisplay}
           setShowCorrectSentenceDisplay={setShowCorrectSentenceDisplay}
+          roundsLeft={roundsLeft}
+          setRoundsLeft={setRoundsLeft}
         />
        { showPointsMessage?
         <PointsMessage

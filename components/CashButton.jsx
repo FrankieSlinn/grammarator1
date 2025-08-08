@@ -7,7 +7,7 @@ import { resetRound } from "../utils/resetRound";
 export function CashButton({ grammarCorrect, setGrammarCorrect , cashButtonPressed, setCashButtonPressed, fullWordArray, setFullWordArray, rowNumber, setRowNumber, 
   numberOfRows,
   grammarToCheck, setGrammarToCheck, rowLength, showPointsMessage, setShowPointsMessage, gameScore, setGameScore,
-  correctSentenceDisplay, setCorrectSentenceDisplay, showCorrectSentenceDisplay, setShowCorrectSentenceDisplay
+  correctSentenceDisplay, setCorrectSentenceDisplay, showCorrectSentenceDisplay, setShowCorrectSentenceDisplay, roundsLeft, setRoundsLeft
   
 }) {
 
@@ -45,10 +45,14 @@ export function CashButton({ grammarCorrect, setGrammarCorrect , cashButtonPress
       //   const updatedArray = changeWordsToWin(fullWordArray, setFullWordArray);
 // console.log("Updated array immediately after changeWordsToWin:", updatedArray);
 // console.log("fullWordArray in CashButton after changeWordsToWin", fullWordArray)
-resetRound(fullWordArray, setFullWordArray, rowLength, numberOfRows, cashButtonPressed, setCashButtonPressed, setShowCorrectSentenceDisplay, setShowPointsMessage)
+
     } else {
       console.log("❌ Grammar incorrect in cash button:", result);
     }
+    resetRound(fullWordArray, setFullWordArray, rowLength, numberOfRows, cashButtonPressed, setCashButtonPressed, setShowCorrectSentenceDisplay, setShowPointsMessage,
+      roundsLeft, setRoundsLeft
+
+    )
   }
  
 
