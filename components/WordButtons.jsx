@@ -112,6 +112,7 @@ export function WordButtons({
               setFullWordArray={setFullWordArray}
               rowNumber={index}
               setRowNumber={setRowNumber}
+              numberOfRows={numberOfRows}
               grammarToCheck={grammarToCheck}
               setGrammarToCheck={setGrammarToCheck}
               rowLength={rowLength}

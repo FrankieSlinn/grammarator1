@@ -1,7 +1,7 @@
 
 import { Text, TouchableOpacity, View } from "react-native";
 import { s } from "../App.style";
-import { spinColumn } from "../utils/wordColumnMovements";
+import { resetRound } from "../utils/resetRound";
 
 export function NewRoundButton({cashButtonPressed, setCashButtonPressed, numberOfRows, fullWordArray, setFullWordArray, rowLength, 
 }){
@@ -19,11 +19,8 @@ export function NewRoundButton({cashButtonPressed, setCashButtonPressed, numberO
 
 return <>
 <View style={s.newRoundContainer}>
-<TouchableOpacity style={s.newRoundButton} onPress={()=>[resetCashButton(), spinColumn(numberOfRows,
-  fullWordArray,
-  setFullWordArray,
-  rowLength,
- 5)]}><Text style={s.word}>NEW ROUND</Text></TouchableOpacity>
+<TouchableOpacity style={s.newRoundButton} onPress={()=>resetRound(fullWordArray, setFullWordArray, rowLength, cashButtonPressed, setCashButtonPressed)}>
+    <Text style={s.word}>NEW ROUND</Text></TouchableOpacity>
 </View>
 
 </>
