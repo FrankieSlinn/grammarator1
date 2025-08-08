@@ -61,6 +61,8 @@ export default function Index() {
           numberOfRows={numberOfRows}
           fullWordArray={fullWordArray}
           setFullWordArray={setFullWordArray}
+          nudgesSpinsLeft={nudgesSpinsLeft}
+          setNudgesSpinsLeft={setNudgesSpinsLeft}
         />
 
         <WordButtons
@@ -87,6 +89,8 @@ export default function Index() {
           setShowCorrectSentenceDisplay={setShowCorrectSentenceDisplay}
           roundsLeft={roundsLeft}
           setRoundsLeft={setRoundsLeft}
+          nudgesSpinsLeft={nudgesSpinsLeft}
+          setNudgesSpinsLeft={setNudgesSpinsLeft}
         />
        { showPointsMessage?
         <PointsMessage

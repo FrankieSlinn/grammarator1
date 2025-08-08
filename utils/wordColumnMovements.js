@@ -10,7 +10,9 @@ function spinColumn(
   fullWordArray,
   setFullWordArray,
   rowLength,
-  index
+  index,
+  nudgesSpinsLeft,
+  setNudgesSpinsLeft
 ) {
   console.log("spinColumn running");
   console.log("spin column index", index);
@@ -28,6 +30,7 @@ function spinColumn(
 
 
   }
+  setNudgesSpinsLeft(prev=>prev-1)
 }
 
 // function spinAllColumns(  numberOfRows,
@@ -60,9 +63,12 @@ function prepareToShiftColumns({
   setRemovedWordsArrayBelow,
   columnOffset,
   direction,
+  nudgesSpinsLeft,
+  setNudgesSpinsLeft
 }) {
   console.log("Shifting column at index:", index);
   let newFullWordArray = [...fullWordArray];
+  setNudgesSpinsLeft(prev=>prev-1)
 
   // Build the vertical array
   for (let i = 0; i < numberOfRows; i++) {

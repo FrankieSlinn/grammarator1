@@ -17,6 +17,8 @@ export function ChangeWordsButtons({
   numberOfRows,
   fullWordArray,
   setFullWordArray,
+  nudgesSpinsLeft,
+  setNudgesSpinsLeft
 }) {
   const [actorWordsRemovedAbove, setActorWordsRemovedAbove] = useState([]);
   const [verbWordsRemovedAbove, setVerbWordsRemovedAbove] = useState([]);
@@ -40,7 +42,9 @@ export function ChangeWordsButtons({
                       fullWordArray,
                       setFullWordArray,
                       rowLength,
-                      index
+                      index, 
+                      nudgesSpinsLeft,
+                      setNudgesSpinsLeft
                     );
                   }}
                   style={[s.changeWordsButton, s.spinButton]}
@@ -74,7 +78,8 @@ export function ChangeWordsButtons({
                           setRemovedWordsArrayBelow:
                           index === 0 ? setActorWordsRemovedBelow : index===1?setVerbWordsRemovedBelow: setWordMixRemovedBelow,
                         columnOffset: index,
-                        direction: "up"
+                        direction: "up",
+                        nudgesSpinsLeft, setNudgesSpinsLeft
                       });
                     }}
                     style={[s.nudgeButton, s.changeWordsButton]}
@@ -105,7 +110,8 @@ export function ChangeWordsButtons({
                     setRemovedWordsArrayBelow:
                     index === 0 ? setActorWordsRemovedBelow : index===1?setVerbWordsRemovedBelow: setWordMixRemovedBelow,
                     columnOffset: index,
-                    direction: "down"
+                    direction: "down",
+                    nudgesSpinsLeft, setNudgesSpinsLeft
                   });
                 }}
                 
