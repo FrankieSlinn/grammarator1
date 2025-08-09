@@ -4,6 +4,7 @@ import { Text, TouchableOpacity, View } from "react-native";
 import { s } from "../App.style";
 import { prepareToShiftColumns, spinColumn } from "../utils/wordColumnMovements";
 import { actorList, verbList, wordMix } from "../utils/wordList";
+
 let verticalArrayActors = [];
 let verticalArrayVerbs = [];
 let verticalArrayWordMix = [];
@@ -18,7 +19,9 @@ export function ChangeWordsButtons({
   fullWordArray,
   setFullWordArray,
   nudgesSpinsLeft,
-  setNudgesSpinsLeft
+  setNudgesSpinsLeft, 
+  showOutOfSpinsMessage, 
+  setShowOutOfSpinsMessage
 }) {
   const [actorWordsRemovedAbove, setActorWordsRemovedAbove] = useState([]);
   const [verbWordsRemovedAbove, setVerbWordsRemovedAbove] = useState([]);
@@ -37,16 +40,18 @@ export function ChangeWordsButtons({
               <View style={s.spinButtonContainer}>
                 <TouchableOpacity
                   onPress={() => {
+                    nudgesSpinsLeft>0?
                     spinColumn(
                       numberOfRows,
                       fullWordArray,
                       setFullWordArray,
                       rowLength,
-                      index, 
+                      index,
                       nudgesSpinsLeft,
-                      setNudgesSpinsLeft
-                    );
-                  }}
+                      setNudgesSpinsLeft,
+                      setShowOutOfSpinsMessage
+                    )
+                  :null}}
                   style={[s.changeWordsButton, s.spinButton]}
                 >
                   <Text style={s.changeWordButtonText}>SPIN</Text>
@@ -58,6 +63,7 @@ export function ChangeWordsButtons({
                 <View style={s.nudgeButtonDown}>
                   <TouchableOpacity
                     onPress={() => {
+                      nudgesSpinsLeft>0?
                       prepareToShiftColumns({
                         numberOfRows,
                         rowLength,
@@ -80,7 +86,7 @@ export function ChangeWordsButtons({
                         columnOffset: index,
                         direction: "up",
                         nudgesSpinsLeft, setNudgesSpinsLeft
-                      });
+                      }):null
                     }}
                     style={[s.nudgeButton, s.changeWordsButton]}
                   >
@@ -90,6 +96,7 @@ export function ChangeWordsButtons({
                 </View>
                 <TouchableOpacity 
                  onPress={() => {
+                  nudgesSpinsLeft>0?
                   prepareToShiftColumns({
                     numberOfRows,
                     rowLength,
@@ -112,7 +119,7 @@ export function ChangeWordsButtons({
                     columnOffset: index,
                     direction: "down",
                     nudgesSpinsLeft, setNudgesSpinsLeft
-                  });
+                  }):null
                 }}
                 
                 style={[s.nudgeButton, s.changeWordsButton]}>

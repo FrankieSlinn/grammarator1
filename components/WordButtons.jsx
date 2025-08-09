@@ -3,7 +3,6 @@ import { Text, TouchableOpacity, View } from "react-native";
 import { s } from "../App.style";
 import { makeWordArrays } from "../utils/makeWordArrays";
 import { CashButton } from "./CashButton";
-import { NewGameButton } from "./NewGameButton";
 
 export function WordButtons({
   setFullWordArray,
@@ -23,7 +22,7 @@ export function WordButtons({
   gameScore, 
   setGameScore, 
   correctSentenceDisplay, setCorrectSentenceDisplay, showCorrectSentenceDisplay, setShowCorrectSentenceDisplay,
-  roundsLeft, setRoundsLeft
+  roundsLeft, setRoundsLeft, nudgesSpinsLeft, setNudgesSpinsLeft, setShowOutOfSpinsMessage
 }) {
   const [rowNumber, setRowNumber] = useState();
   const [grammarToCheck, setGrammarToCheck] = useState("");
@@ -116,12 +115,15 @@ export function WordButtons({
               setShowCorrectSentenceDisplay={setShowCorrectSentenceDisplay}
               roundsLeft={roundsLeft}
               setRoundsLeft={setRoundsLeft}
+              nudgesSpinsLeft={nudgesSpinsLeft}
+              setNudgesSpinsLeft={setNudgesSpinsLeft}
+              setShowOutOfSpinsMessage={setShowOutOfSpinsMessage}
 
             />:null}
           </View>
         ))}
       </View>
-
+{/* 
       <NewGameButton
         newRound={newRound}
         setNewRound={setNewRound}
@@ -132,7 +134,7 @@ export function WordButtons({
         fullWordArray={fullWordArray}
         setFullWordArray={setFullWordArray}
 
-      />
+      /> */}
     </>
   );
 }

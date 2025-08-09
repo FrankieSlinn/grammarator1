@@ -12,7 +12,8 @@ function spinColumn(
   rowLength,
   index,
   nudgesSpinsLeft,
-  setNudgesSpinsLeft
+  setNudgesSpinsLeft,
+  setShowOutOfSpinsMessage
 ) {
   console.log("spinColumn running");
   console.log("spin column index", index);
@@ -29,25 +30,11 @@ function spinColumn(
     insertFinalWord(numberOfRows, rowLength, fullWordArray, setFullWordArray);
 
 
+  }if(index!=5){
+  resetNudgesSpins(nudgesSpinsLeft, setNudgesSpinsLeft)
   }
-  setNudgesSpinsLeft(prev=>prev-1)
 }
 
-// function spinAllColumns(  numberOfRows,
-//   fullWordArray,
-//   setFullWordArray,
-//   rowLength,
-//   index){
-//     for(let i=0; i<numberOfRows;i++){
-//       insertActors(numberOfRows, rowLength, fullWordArray, setFullWordArray)
-//       insertVerbs(numberOfRows, rowLength, fullWordArray, setFullWordArray);
-//       insertFinalWord(numberOfRows, rowLength, fullWordArray, setFullWordArray);
-
-
-//     }
-
-
-// }
 
 function prepareToShiftColumns({
   numberOfRows,
@@ -68,7 +55,7 @@ function prepareToShiftColumns({
 }) {
   console.log("Shifting column at index:", index);
   let newFullWordArray = [...fullWordArray];
-  setNudgesSpinsLeft(prev=>prev-1)
+  resetNudgesSpins(nudgesSpinsLeft, setNudgesSpinsLeft)
 
   // Build the vertical array
   for (let i = 0; i < numberOfRows; i++) {
@@ -186,6 +173,13 @@ function repopulateFullWordArrayWithShiftedColumns({
 
   setFullWordArray([...newFullWordArray]);
   console.log("Updated Full Word Array:", newFullWordArray);
+}
+
+function resetNudgesSpins(nudgesSpinsLeft, setNudgesSpinsLeft){
+  if(nudgesSpinsLeft>0){
+    setNudgesSpinsLeft(prev=>prev-1)
+    }
+
 }
 
 export { prepareToShiftColumns, spinColumn };

@@ -29,7 +29,7 @@ async function checkGrammar(
     rowLength
   );
   console.log("sentence to check before validate", textToBeChecked);
-  const prompt = `Is the sentence grammatically correct in standard English? Ignore punctuation and capitalisation. Return only true or false.: "${textToBeChecked}"`;
+  const prompt = `Is the sentence grammatically correct in standard English? Would people use this in normal conversation? Ignore punctuation and capitalisation. Return only true or false.: "${textToBeChecked}"`;
 
   try {
     const response = await openai.chat.completions.create({

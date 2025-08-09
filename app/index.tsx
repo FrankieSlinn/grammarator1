@@ -6,6 +6,7 @@ import { ChangeWordsButtons } from "../components/ChangeWordsButtons";
 import { Dashboard } from "../components/Dashboard";
 import { DisplaySentence } from "../components/DisplaySentence";
 import { Logo } from "../components/Logo";
+import { OutOfSpinsMessage } from "../components/OutOfSpinsMessage";
 import { PointsMessage } from "../components/PointsMessage";
 import { WordButtons } from "../components/WordButtons";
 
@@ -22,6 +23,7 @@ export default function Index() {
   const [nudgesSpinsLeft, setNudgesSpinsLeft] = useState(2)
   const[correctSentenceDisplay, setCorrectSentenceDisplay] = useState("");
   const[showCorrectSentenceDisplay, setShowCorrectSentenceDisplay]=useState(false)
+  const[showOutOfSpinsMessage, setShowOutOfSpinsMessage] = useState(false)
  
   
   console.log("fullWordArray in index", fullWordArray);
@@ -63,6 +65,8 @@ export default function Index() {
           setFullWordArray={setFullWordArray}
           nudgesSpinsLeft={nudgesSpinsLeft}
           setNudgesSpinsLeft={setNudgesSpinsLeft}
+          showOutOfSpinsMessage={showOutOfSpinsMessage}
+          setShowOutOfSpinsMessage={setShowOutOfSpinsMessage}
         />
 
         <WordButtons
@@ -91,6 +95,7 @@ export default function Index() {
           setRoundsLeft={setRoundsLeft}
           nudgesSpinsLeft={nudgesSpinsLeft}
           setNudgesSpinsLeft={setNudgesSpinsLeft}
+          setShowOutOfSpinsMessage={setShowOutOfSpinsMessage}
         />
        { showPointsMessage?
         <PointsMessage
@@ -98,6 +103,8 @@ export default function Index() {
         setGameScore={setGameScore}
         />
         :null}
+        {showOutOfSpinsMessage?
+        <OutOfSpinsMessage/>:null}
       </View>
     </>
   );
