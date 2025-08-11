@@ -2,7 +2,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { s } from "../App.style";
-import { prepareToShiftColumns, spinColumn } from "../utils/wordColumnMovements";
+import { prepareToShiftColumns } from "../utils/wordColumnMovements";
 import { actorList, verbList, wordMix } from "../utils/wordList";
 
 let verticalArrayActors = [];
@@ -13,7 +13,7 @@ let verbWordsRemoved = [];
 let wordMixRemoved = [];
 
 
-export function ChangeWordsButtons({
+export function NudgeButtons({
   rowLength,
   numberOfRows,
   fullWordArray,
@@ -31,36 +31,20 @@ export function ChangeWordsButtons({
   const [wordMixRemovedBelow, setWordMixRemovedBelow] = useState([])
   return (
     <>
-      <View style={s.changeWordsButtonsContainerOuter}>
+      <View 
+      style={s.changeWordsButtonsContainerOuter}
+      >
         {Array(rowLength)
           .fill()
           .map((_, index) => (
-            <View key={index} style={s.changeWordsButtonsContainer}>
-              {/* Spin Button */}
-              <View style={s.spinButtonContainer}>
-                <TouchableOpacity
-                  onPress={() => {
-                    nudgesSpinsLeft>0?
-                    spinColumn(
-                      numberOfRows,
-                      fullWordArray,
-                      setFullWordArray,
-                      rowLength,
-                      index,
-                      nudgesSpinsLeft,
-                      setNudgesSpinsLeft,
-                      setShowOutOfSpinsMessage
-                    )
-                  :null}}
-                  style={[s.changeWordsButton, s.spinButton]}
-                >
-                  <Text style={s.changeWordButtonText}>SPIN</Text>
-                </TouchableOpacity>
-              </View>
-
-              {/* Nudge Buttons */}
+            <View key={index} 
+            // style={[
+            //   s.changeWordsButtonsContainer
+            //   ]}
+              >
+         
               <View style={s.nudgeButtonContainer}>
-                <View style={s.nudgeButtonDown}>
+          
                   <TouchableOpacity
                     onPress={() => {
                       nudgesSpinsLeft>0?
@@ -93,7 +77,7 @@ export function ChangeWordsButtons({
                     <Text style={s.changeWordButtonText}>1 </Text>
                     <Ionicons name="arrow-up-outline" style={s.arrowIcon} />
                   </TouchableOpacity>
-                </View>
+            
                 <TouchableOpacity 
                  onPress={() => {
                   nudgesSpinsLeft>0?

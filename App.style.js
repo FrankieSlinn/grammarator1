@@ -3,7 +3,6 @@ import { StyleSheet } from "react-native";
 export const s = StyleSheet.create({
   appBodyView: {
     flex: 1,
-    marginLeft: 3,
   },
   logoContainer: {
     // height: "10%",
@@ -16,62 +15,41 @@ export const s = StyleSheet.create({
     shadowColor: "#000",
     textAlign: "center",
   },
-  dashboardContainer:{
-  marginTop: 20,
-    flexDirection: "row", 
+  dashboardContainer: {
+    marginTop: 20,
+    flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-evenly"
-
-
+    justifyContent: "space-evenly",
+  },
+  slotMachineLayout: {
+    flex: 1,
+    justifyContent: "space-evenly",
   },
   changeWordsButtonsContainerOuter: {
     flexDirection: "row",
-    width: "90%",
+    // width: "90%",
     justifyContent: "space-evenly",
-    marginLeft: -17,
   },
   changeWordsButtonsContainer: {
-    flexDirection: "column",
-    marginTop: 140,
-    marginBottom: -115,
-    marginLeft: -7,
-    marginRight: -5,
+    // flexDirection: "column",
 
+    marginTop: 100,
+    marginBottom: -130,
     // backgroundColor:"lightyellow",
     alignItems: "center",
     justifyContent: "center",
     textAlign: "center",
   },
   spinButtonContainer: {
-    width: "97%",
+    // width: "97%",
     marginLeft: 5,
     marginBottom: 2,
     // alignItems: "center"
   },
   spinButton: {
     alignItems: "center",
-    marginRight: 0,
   },
-  nudgeButtonContainer: {
-    flexDirection: "row",
-    marginTop: 5,
-    marginRight: 0,
-    width: "88%",
-  },
-  nudgeButton: {
-    flexDirection: "row",
-    marginRight: 5,
 
-    padding: 12,
-    width: 45,
-    color: "green",
-  },
-  nudgeButtonDown: {},
-  arrowIcon: {
-    fontWeight: "bold",
-    fontSize: 20,
-    height: 17,
-  },
   changeWordsButton: {
     backgroundColor: "lightyellow",
 
@@ -85,22 +63,22 @@ export const s = StyleSheet.create({
   },
   wordsContainer: {
     flex: 1,
-    marginTop: 120,
-    marginBottom: -200,
+    marginTop: 110,
+    alignItems: "center",
+    // marginBottom: ,
 
-    width: "95%",
     // backgroundColor: "pink",
   },
 
   wordRow: {
     // flex: 1,
     flexDirection: "row",
-    marginHOrizontal: 5,
+    marginHOrizontal: 10,
 
     backgroundColor: "lightYellow",
     alignItems: "center",
-    justifyContent: "space-between",
-    width: "84%",
+    justifyContent: "space-around",
+    width: "95%",
 
     height: "10%",
   },
@@ -115,30 +93,58 @@ export const s = StyleSheet.create({
     backgroundColor: "aquamarine",
   },
 
-  unlockedWordButton:{
-    backgroundColor: "aquamarine",
-
-  },
+  // unlockedWordButton: {
+  //   backgroundColor: "aquamarine",
+  // },
   word: {
     fontWeight: "bold",
     fontSize: 15,
     textAlign: "center",
   },
+  nudgeButtonContainer: {
+    // flex: 0.05,
+    backgroundColor: "pink",
+    flexDirection: "row",
+    marginTop: -550,
+    marginRight: 0,
+    // width: "88%",
+    height: 79,
+  },
+  nudgeButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginRight: 5,
+    height: 35,
+
+    padding: 12,
+    width: 45,
+  },
+
+  arrowIcon: {
+    fontWeight: "bold",
+    fontSize: 20,
+    height: 17,
+  },
   cashButtonContainer: {
-    marginLeft: 12,
-    marginRight: -7,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: -200,
+    backgroundColor: "lightblue",
+    // height: 200,
   },
   cashButton: {
-    // marginRight: -2,
-    backgroundColor: "lightpink",
+    marginTop: -550,
     borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 5,
+    backgroundColor: "lightpink",
+    padding: 10,
   },
   cashButtonText: {
-    color: "darkblue",
+    color: "black",
     fontWeight: "bold",
   },
+
   cashButtonFeedbackContainer: {
     marginTop: 20,
     marginBottom: -100,
@@ -146,8 +152,7 @@ export const s = StyleSheet.create({
     alignItems: "center",
     // backgroundColor: "lightyellow"
   },
-  displaySentenceContainer:{
-
+  displaySentenceContainer: {
     backgroundColor: "lightblue",
     marginTop: 110,
     marginBottom: -125,
@@ -155,7 +160,7 @@ export const s = StyleSheet.create({
     padding: 10,
   },
 
- standardText: {
+  standardText: {
     fontWeight: "bold",
     fontSize: 17,
   },
@@ -168,13 +173,12 @@ export const s = StyleSheet.create({
     backgroundColor: "aquamarine",
     borderRadius: 15,
   },
-  pointsMessageContainer:{
+  pointsMessageContainer: {
     flex: 0.5,
-marginTop: -300,
-// marginBottom: 200,
-// backgroundColor: "lightgreen", 
-alignItems: "center"
-
-  }
-
+    marginTop: -220,
+    marginHorizontal: 20,
+    // marginBottom: 200,
+    // backgroundColor: "lightgreen",
+    alignItems: "center",
+  },
 });

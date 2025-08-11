@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { s } from "../App.style";
 import { makeWordArrays } from "../utils/makeWordArrays";
-import { CashButton } from "./CashButton";
 
 export function WordButtons({
   setFullWordArray,
@@ -25,9 +24,9 @@ export function WordButtons({
   roundsLeft, setRoundsLeft, nudgesSpinsLeft, setNudgesSpinsLeft, setShowOutOfSpinsMessage
 }) {
   const [rowNumber, setRowNumber] = useState();
-  const [grammarToCheck, setGrammarToCheck] = useState("");
+
   const [wordArrayPopulated, setWordArrayPopulated] = useState(false);
-  const [pressedRowIndex, setPressedRowIndex] = useState(null);
+
 
   // ✅ Track lock state of each button individually
 
@@ -88,53 +87,11 @@ export function WordButtons({
                 </View>
               );
             })}
-       
-            { index===1?
-            <CashButton
-              grammarCorrect={grammarCorrect}
-              setGrammarCorrect={setGrammarCorrect}
-              cashButtonPressed={cashButtonPressed}
-              setCashButtonPressed={setCashButtonPressed}
-              fullWordArray={fullWordArray}
-              setFullWordArray={setFullWordArray}
-              rowNumber={index}
-              setRowNumber={setRowNumber}
-              numberOfRows={numberOfRows}
-              grammarToCheck={grammarToCheck}
-              setGrammarToCheck={setGrammarToCheck}
-              rowLength={rowLength}
-              pressedRowIndex={pressedRowIndex}
-              setPressedRowIndex={setPressedRowIndex}
-              showPointsMessage={showPointsMessage}
-              setShowPointsMessage={setShowPointsMessage}
-              gameScore={gameScore}
-              setGameScore={setGameScore}
-              correctSentenceDssplay={correctSentenceDisplay}
-              setCorrectSentenceDisplay={setCorrectSentenceDisplay}
-              showCorrectSentenceDisplay={showCorrectSentenceDisplay}
-              setShowCorrectSentenceDisplay={setShowCorrectSentenceDisplay}
-              roundsLeft={roundsLeft}
-              setRoundsLeft={setRoundsLeft}
-              nudgesSpinsLeft={nudgesSpinsLeft}
-              setNudgesSpinsLeft={setNudgesSpinsLeft}
-              setShowOutOfSpinsMessage={setShowOutOfSpinsMessage}
 
-            />:null}
           </View>
         ))}
       </View>
-{/* 
-      <NewGameButton
-        newRound={newRound}
-        setNewRound={setNewRound}
-        cashButtonPressed={cashButtonPressed}
-        setCashButtonPressed={setCashButtonPressed}
-        rowLength={rowLength}
-        numberOfRows={numberOfRows}
-        fullWordArray={fullWordArray}
-        setFullWordArray={setFullWordArray}
 
-      /> */}
     </>
   );
 }
