@@ -155,7 +155,7 @@ export const s = StyleSheet.create({
   displaySentenceContainer: {
     backgroundColor: "lightblue",
     marginTop: 110,
-    marginBottom: -125,
+    marginBottom: -85,
     alignItems: "center",
     padding: 10,
   },
