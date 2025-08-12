@@ -16,22 +16,21 @@ export function WordButtons({
   setRowLength,
   numberOfRows,
   setNumberOfRows,
-  showPointsMessage, 
+  showPointsMessage,
   setShowPointsMessage,
-  gameScore, 
-  setGameScore, 
-  correctSentenceDisplay, setCorrectSentenceDisplay, showCorrectSentenceDisplay, setShowCorrectSentenceDisplay,
-  roundsLeft, setRoundsLeft, nudgesSpinsLeft, setNudgesSpinsLeft, setShowOutOfSpinsMessage
+  gameScore,
+  setGameScore,
+  correctSentenceDisplay,
+  setCorrectSentenceDisplay,
+  showCorrectSentenceDisplay,
+  setShowCorrectSentenceDisplay,
+  roundsLeft,
+  setRoundsLeft,
+  nudgesSpinsLeft,
+  setNudgesSpinsLeft,
+  setShowOutOfSpinsMessage,
 }) {
-  const [rowNumber, setRowNumber] = useState();
-
   const [wordArrayPopulated, setWordArrayPopulated] = useState(false);
-
-
-  // ✅ Track lock state of each button individually
-
-
-
 
   useEffect(() => {
     console.log("RENDER TRIGGERED: fullWordArray updated", fullWordArray);
@@ -71,27 +70,19 @@ export function WordButtons({
           <View key={index} style={s.wordRow}>
             {row.map((word, wordIndex) => {
               const key = `${index}-${wordIndex}`;
-              // const isLocked = individualButtonLocked[key];
- 
+
 
               return (
-                <View key={key} style={s. wordButtonContainer}>
-                  <TouchableOpacity
-          
-                    style={[
-                      s.wordButton, s.wordButton
-                    ]}
-                  >
+                <View key={key} style={s.wordButtonContainer}>
+                  <TouchableOpacity style={[s.wordButton, s.wordButton]}>
                     <Text style={s.word}>{word}</Text>
                   </TouchableOpacity>
                 </View>
               );
             })}
-
           </View>
         ))}
       </View>
-
     </>
   );
 }

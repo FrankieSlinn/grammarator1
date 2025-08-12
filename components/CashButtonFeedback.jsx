@@ -5,7 +5,7 @@ import { s } from "../App.style";
 
 export function CashButtonFeedback({cashButtonPressed, grammarCorrect}){
   console.log("grammarCorrect in CashButtonFeedback", grammarCorrect)
-    console.log("Cash Button Pressed in CashButton Feedback", cashButtonPressed)
+
     useEffect(()=>{
       console.log("grammarCorrect", grammarCorrect)
 

@@ -16,7 +16,9 @@ async function checkGrammar(
   fullWordArray,
   rowLength
 ) {
+  setTimeout(() => {
   setCashButtonPressed(true);
+}, 1000); 
   console.log("Cash button pressed");
 
   let textToBeChecked = getSentenceToValidate(
