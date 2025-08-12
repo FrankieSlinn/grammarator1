@@ -4,7 +4,8 @@ import { Text, TouchableOpacity, View } from 'react-native';
 import { checkGrammar } from "../utils/grammarAPI";
 import { resetRound } from "../utils/resetRound";
 
-export function CashButton({ grammarCorrect, setGrammarCorrect , cashButtonPressed, setCashButtonPressed, fullWordArray, setFullWordArray, rowNumber, setRowNumber, 
+export function CashButton({ grammarCorrect, setGrammarCorrect , cashButtonPressed, setCashButtonPressed, fullWordArray, setFullWordArray, 
+  // rowNumber, setRowNumber, 
   numberOfRows,
   grammarToCheck, setGrammarToCheck, rowLength, showPointsMessage, setShowPointsMessage, gameScore, setGameScore,
   correctSentenceDisplay, setCorrectSentenceDisplay, showCorrectSentenceDisplay, setShowCorrectSentenceDisplay, roundsLeft, setRoundsLeft,
@@ -24,8 +25,8 @@ export function CashButton({ grammarCorrect, setGrammarCorrect , cashButtonPress
       grammarCorrect,
       setGrammarCorrect,
       setCashButtonPressed,
-      rowNumber,
-      setRowNumber,
+      // rowNumber,
+      // setRowNumber,
       fullWordArray,
       rowLength
     );

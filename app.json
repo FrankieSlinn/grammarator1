@@ -8,9 +8,6 @@
     "scheme": "grammarator1",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
-    "extra": {
-      "openaiApiKey": "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"
-    },
     "ios": {
       "supportsTablet": true
     },

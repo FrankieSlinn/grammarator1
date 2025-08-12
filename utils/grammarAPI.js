@@ -1,10 +1,8 @@
-import Constants from "expo-constants";
 import OpenAI from "openai";
 
 const openai = new OpenAI({
-  apiKey: Constants.expoConfig.extra.openaiApiKey,
+  apiKey: process.env.EXPO_PUBLIC_API_KEY,
 });
-
 
 // const openai = process.env.EXPO_PUBLIC_KEY
 async function checkGrammar(
@@ -13,8 +11,8 @@ async function checkGrammar(
   grammarCorrect,
   setGrammarCorrect,
   setCashButtonPressed,
-  rowNumber,
-  setRowNumber,
+  // rowNumber,
+  // setRowNumber,
   fullWordArray,
   rowLength
 ) {
@@ -22,8 +20,8 @@ async function checkGrammar(
   console.log("Cash button pressed");
 
   let textToBeChecked = getSentenceToValidate(
-    rowNumber,
-    setRowNumber,
+    // rowNumber,
+    // setRowNumber,
     setGrammarToCheck,
     fullWordArray,
     rowLength
@@ -56,18 +54,18 @@ async function checkGrammar(
 }
 
 function getSentenceToValidate(
-  rowNumber,
-  setRowNumber,
+  // rowNumber,
+  // setRowNumber,
   setGrammarToCheck,
   fullWordArray,
   rowLength
 ) {
   console.log("getSentenceToCheck running");
-  setRowNumber(rowNumber);
-  console.log("row number in getsentence", rowNumber);
+  // setRowNumber(rowNumber);
+  // console.log("row number in getsentence", rowNumber);
   const fullWordArrayCopy = [...fullWordArray];
   const sentenceToCheckArray = fullWordArrayCopy.splice(
-    rowNumber * 3,
+   3,
     rowLength
   );
   const sentenceToCheck = sentenceToCheckArray.join(" ");

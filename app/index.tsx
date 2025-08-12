@@ -126,6 +126,8 @@ export default function Index() {
               grammarToCheck={grammarToCheck}
               setGrammarToCheck={setGrammarToCheck}
               rowLength={rowLength}
+              // rowNumber={rowNumber}
+              // setRowNumber={setRowNumber}
               pressedRowIndex={pressedRowIndex}
               setPressedRowIndex={setPressedRowIndex}
               showPointsMessage={showPointsMessage}
