@@ -49,7 +49,7 @@ export function SpinButtons({
                       setNudgesSpinsLeft,
                       setShowOutOfSpinsMessage
                     )
-                  :null}}
+                  :setShowOutOfSpinsMessage(true)}}
                   style={[s.changeWordsButton, s.spinButton]}
                 >
                   <Text style={s.changeWordButtonText}>SPIN</Text>

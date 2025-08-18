@@ -1,5 +1,4 @@
 import { Ionicons } from "@expo/vector-icons";
-import { useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { s } from "../App.style";
 import { prepareToShiftColumns } from "../utils/wordColumnMovements";
@@ -8,9 +7,7 @@ import { actorList, verbList, wordMix } from "../utils/wordList";
 let verticalArrayActors = [];
 let verticalArrayVerbs = [];
 let verticalArrayWordMix = [];
-let actorWordsRemoved = [];
-let verbWordsRemoved = [];
-let wordMixRemoved = [];
+
 
 
 export function NudgeButtons({
@@ -21,14 +18,39 @@ export function NudgeButtons({
   nudgesSpinsLeft,
   setNudgesSpinsLeft, 
   showOutOfSpinsMessage, 
-  setShowOutOfSpinsMessage
+  setShowOutOfSpinsMessage,
+  actorWordsRemovedAbove,
+  setActorWordsRemovedAbove,
+  verbWordsRemovedAbove,
+  setVerbWordsRemovedAbove,
+  wordMixRemovedAbove,
+  setWordMixRemovedAbove,
+  actorWordsRemovedBelow,
+  setActorWordsRemovedBelow,
+  verbWordsRemovedBelow,
+  setVerbWordsRemovedBelow,
+  wordMixRemovedBelow,
+  setWordMixRemovedBelow,
+  verticalArrayActors,
+  setVerticalArrayActors,
+  verticalArrayVerbs,
+  setVerticalArrayVerbs, 
+  verticalArrayWordMix, 
+  setVerticalArrayWordMix
+
+ 
+
 }) {
-  const [actorWordsRemovedAbove, setActorWordsRemovedAbove] = useState([]);
-  const [verbWordsRemovedAbove, setVerbWordsRemovedAbove] = useState([]);
-  const [wordMixRemovedAbove, setWordMixRemovedAbove] = useState([])
-  const [actorWordsRemovedBelow, setActorWordsRemovedBelow] = useState([]);
-  const [verbWordsRemovedBelow, setVerbWordsRemovedBelow] = useState([]);
-  const [wordMixRemovedBelow, setWordMixRemovedBelow] = useState([])
+
+  function displayOutOfSpinsMessage(setShowOutOfSpinsMessage){
+console.log("setting out of spins message to show!!!")
+setShowOutOfSpinsMessage(true)
+
+  }
+  console.log("nudgesSpinsLeft in NUDGEBUTTON!!!", nudgesSpinsLeft)
+
+
+
   return (
     <>
       <View 
@@ -37,13 +59,9 @@ export function NudgeButtons({
         {Array(rowLength)
           .fill()
           .map((_, index) => (
-            <View key={index} 
-            // style={[
-            //   s.changeWordsButtonsContainer
-            //   ]}
-              >
          
-              <View style={s.nudgeButtonContainer}>
+         
+              <View key={index} style={s.nudgeButtonContainer}>
           
                   <TouchableOpacity
                     onPress={() => {
@@ -58,6 +76,10 @@ export function NudgeButtons({
                           index === 0
                             ? verticalArrayActors
                             : index===1?verticalArrayVerbs: verticalArrayWordMix,
+                            setVerticalArray: 
+                            index===0
+                            ?setVerticalArrayActors
+                            :index===1?setVerticalArrayVerbs: setVerticalArrayWordMix,
                         wordList: index === 0 ? actorList : index===1?verbList: wordMix,
                         removedWordsArrayAbove:
                           index === 0 ? actorWordsRemovedAbove : index===1?verbWordsRemovedAbove: wordMixRemovedAbove,
@@ -69,8 +91,10 @@ export function NudgeButtons({
                           index === 0 ? setActorWordsRemovedBelow : index===1?setVerbWordsRemovedBelow: setWordMixRemovedBelow,
                         columnOffset: index,
                         direction: "up",
-                        nudgesSpinsLeft, setNudgesSpinsLeft
-                      }):null
+                        nudgesSpinsLeft, setNudgesSpinsLeft, 
+                        showOutOfSpinsMessage,
+                        setShowOutOfSpinsMessage
+                      }):setShowOutOfSpinsMessage(true)
                     }}
                     style={[s.nudgeButton, s.changeWordsButton]}
                   >
@@ -92,6 +116,10 @@ export function NudgeButtons({
                         ? verticalArrayActors
                         : index===1?verticalArrayVerbs: verticalArrayWordMix,
                     wordList: index === 0 ? actorList : index===1?verbList: wordMix,
+                    setVerticalArray: 
+                    index===0
+                    ?setVerticalArrayActors
+                    :index===1?setVerticalArrayVerbs: setVerticalArrayWordMix,
                     removedWordsArrayAbove:
                     index === 0 ? actorWordsRemovedAbove : index===1?verbWordsRemovedAbove: wordMixRemovedAbove,
                     setRemovedWordsArrayAbove:
@@ -102,8 +130,10 @@ export function NudgeButtons({
                     index === 0 ? setActorWordsRemovedBelow : index===1?setVerbWordsRemovedBelow: setWordMixRemovedBelow,
                     columnOffset: index,
                     direction: "down",
-                    nudgesSpinsLeft, setNudgesSpinsLeft
-                  }):null
+                    nudgesSpinsLeft, setNudgesSpinsLeft, 
+                    showOutOfSpinsMessage,
+                    setShowOutOfSpinsMessage
+                  }):setShowOutOfSpinsMessage(true)
                 }}
                 
                 style={[s.nudgeButton, s.changeWordsButton]}>
@@ -111,7 +141,7 @@ export function NudgeButtons({
                   <Ionicons name="arrow-down-outline" style={s.arrowIcon} />
                 </TouchableOpacity>
               </View>
-            </View>
+     
           ))}
       </View>
     </>

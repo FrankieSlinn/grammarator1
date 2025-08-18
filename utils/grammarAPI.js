@@ -29,7 +29,8 @@ async function checkGrammar(
     rowLength
   );
   console.log("sentence to check before validate", textToBeChecked);
-  const prompt = `Is the sentence grammatically correct in standard English? Would people use this in normal conversation? Ignore punctuation and capitalisation. Return only true or false.: "${textToBeChecked}"`;
+  const prompt = `If word unknown assume it is a name. Is the sentence definitely grammatically correct in standard English? Would people normally use this in normal conversation? Err on side of marking incorrect if not obvious. 
+  Ignore punctuation and capitalisation. Return only true or false.: "${textToBeChecked}"`;
 
   try {
     const response = await openai.chat.completions.create({

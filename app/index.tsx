@@ -5,7 +5,9 @@ import { CashButton } from "../components/CashButton";
 import { CashButtonFeedback } from "../components/CashButtonFeedback";
 import { Dashboard } from "../components/Dashboard";
 import { DisplaySentence } from "../components/DisplaySentence";
+import { FinishGameMessage } from "../components/FinishGameMessage";
 import { Logo } from "../components/Logo";
+import { NewGameButton } from "../components/NewGameButton";
 import { NudgeButtons } from "../components/NudgeButtons";
 import { OutOfSpinsMessage } from "../components/OutOfSpinsMessage";
 import { PointsMessage } from "../components/PointsMessage";
@@ -26,8 +28,19 @@ export default function Index() {
   const[correctSentenceDisplay, setCorrectSentenceDisplay] = useState("");
   const[showCorrectSentenceDisplay, setShowCorrectSentenceDisplay]=useState(false)
   const[showOutOfSpinsMessage, setShowOutOfSpinsMessage] = useState(false)
+  const[showFinishGameMessage, setShowFinishGameMessage] = useState(false)
+  const[showNewGameButton, setShowNewGameButton]=useState(false)
   const [grammarToCheck, setGrammarToCheck] = useState("");
   const [pressedRowIndex, setPressedRowIndex] = useState(null);
+  const [actorWordsRemovedAbove, setActorWordsRemovedAbove] = useState([]);
+  const [verbWordsRemovedAbove, setVerbWordsRemovedAbove] = useState([]);
+  const [wordMixRemovedAbove, setWordMixRemovedAbove] = useState([])
+  const [actorWordsRemovedBelow, setActorWordsRemovedBelow] = useState([]);
+  const [verbWordsRemovedBelow, setVerbWordsRemovedBelow] = useState([]);
+  const [wordMixRemovedBelow, setWordMixRemovedBelow] = useState([])
+  const [verticalArrayActors, setVerticalArrayActors]=useState([])
+  const [verticalArrayVerbs, setVerticalArrayVerbs] = useState([])
+  const [verticalArrayWordMix, setVerticalArrayWordMix] = useState([])
  
   
   console.log("fullWordArray in index", fullWordArray);
@@ -62,7 +75,7 @@ export default function Index() {
         
         />
         :null}
-        <View style={s.slotMachineLayout}>
+     
         <SpinButtons
           rowLength={rowLength}
           numberOfRows={numberOfRows}
@@ -114,6 +127,24 @@ export default function Index() {
           setNudgesSpinsLeft={setNudgesSpinsLeft}
           showOutOfSpinsMessage={showOutOfSpinsMessage}
           setShowOutOfSpinsMessage={setShowOutOfSpinsMessage}
+          actorWordsRemovedAbove={actorWordsRemovedAbove}
+          setActorWordsRemovedAbove={setActorWordsRemovedAbove}
+          verbWordsRemovedAbove={verbWordsRemovedAbove}
+          setVerbWordsRemovedAbove={setVerbWordsRemovedAbove}
+          wordMixRemovedAbove={wordMixRemovedAbove}
+          setWordMixRemovedAbove={setWordMixRemovedAbove}
+          actorWordsRemovedBelow={actorWordsRemovedBelow}
+          setActorWordsRemovedBelow={setActorWordsRemovedBelow}
+          verbWordsRemovedBelow={verbWordsRemovedBelow}
+          setVerbWordsRemovedBelow={setVerbWordsRemovedBelow}
+          wordMixRemovedBelow={wordMixRemovedBelow}
+          setWordMixRemovedBelow={setWordMixRemovedBelow}
+          verticalArrayActors= {verticalArrayActors}
+          setVerticalArrayActors={setVerticalArrayActors}
+          verticalArrayVerbs = {verticalArrayVerbs}
+          setVerticalArrayVerbs = {setVerticalArrayVerbs}
+          verticalArrayWordMix = {verticalArrayWordMix}
+          setVerticalArrayWordMix = {setVerticalArrayWordMix}
         />
          <CashButton
               grammarCorrect={grammarCorrect}
@@ -126,8 +157,6 @@ export default function Index() {
               grammarToCheck={grammarToCheck}
               setGrammarToCheck={setGrammarToCheck}
               rowLength={rowLength}
-              // rowNumber={rowNumber}
-              // setRowNumber={setRowNumber}
               pressedRowIndex={pressedRowIndex}
               setPressedRowIndex={setPressedRowIndex}
               showPointsMessage={showPointsMessage}
@@ -143,9 +172,44 @@ export default function Index() {
               nudgesSpinsLeft={nudgesSpinsLeft}
               setNudgesSpinsLeft={setNudgesSpinsLeft}
               setShowOutOfSpinsMessage={setShowOutOfSpinsMessage}
-
+              showFinishGameMessage={showFinishGameMessage}
+              setShowFinishGameMessage={setShowFinishGameMessage}
+              actorWordsRemovedAbove={actorWordsRemovedAbove}
+              setActorWordsRemovedAbove={setActorWordsRemovedAbove}
+              verbWordsRemovedAbove={verbWordsRemovedAbove}
+              setVerbWordsRemovedAbove={setVerbWordsRemovedAbove}
+              wordMixRemovedAbove={wordMixRemovedAbove}
+              setWordMixRemovedAbove={setWordMixRemovedAbove}
+              actorWordsRemovedBelow={actorWordsRemovedBelow}
+              setActorWordsRemovedBelow={setActorWordsRemovedBelow}
+              verbWordsRemovedBelow={verbWordsRemovedBelow}
+              setVerbWordsRemovedBelow={setVerbWordsRemovedBelow}
+              wordMixRemovedBelow={wordMixRemovedBelow}
+              setWordMixRemovedBelow={setWordMixRemovedBelow}
+              showOutOfSpinsMessage={showOutOfSpinsMessage}
+              setShowOutOfSpinsMessage={setShowOutOfSpinsMessage}
+              actorWordsRemovedAbove={actorWordsRemovedAbove}
+              setActorWordsRemovedAbove={setActorWordsRemovedAbove}
+              verbWordsRemovedAbove={verbWordsRemovedAbove}
+              setVerbWordsRemovedAbove={setVerbWordsRemovedAbove}
+              wordMixRemovedAbove={wordMixRemovedAbove}
+              setWordMixRemovedAbove={setWordMixRemovedAbove}
+              actorWordsRemovedBelow={actorWordsRemovedBelow}
+              setActorWordsRemovedBelow={setActorWordsRemovedBelow}
+              verbWordsRemovedBelow={verbWordsRemovedBelow}
+              setVerbWordsRemovedBelow={setVerbWordsRemovedBelow}
+              wordMixRemovedBelow={wordMixRemovedBelow}
+              setWordMixRemovedBelow={setWordMixRemovedBelow}
+              showNewGameButton={showNewGameButton}
+              setShowNewGameButton={setShowNewGameButton}
+              verticalArrayActors= {verticalArrayActors}
+              setVerticalArrayActors={setVerticalArrayActors}
+              verticalArrayVerbs = {verticalArrayVerbs}
+              setVerticalArrayVerbs = {setVerticalArrayVerbs}
+              verticalArrayWordMix = {verticalArrayWordMix}
+              setVerticalArrayWordMix = {setVerticalArrayWordMix}
             />
-            </View>
+         
        { showPointsMessage?
         <PointsMessage
         gameScore={gameScore}
@@ -155,6 +219,50 @@ export default function Index() {
         {showOutOfSpinsMessage?
         <OutOfSpinsMessage/>:null}
       </View>
+      <View>
+{showFinishGameMessage?
+        <FinishGameMessage
+        gameScore={gameScore}
+        
+        />
+        :null}
+      </View>
+{showNewGameButton?
+  <NewGameButton
+  
+  setShowOutOfSpinsMessage={setShowOutOfSpinsMessage}
+ setActorWordsRemovedAbove={setActorWordsRemovedAbove}
+ setVerbWordsRemovedAbove={setVerbWordsRemovedAbove}
+ setWordMixRemovedAbove={setWordMixRemovedAbove}
+ setActorWordsRemovedBelow={setActorWordsRemovedBelow}
+  setVerbWordsRemovedBelow={setVerbWordsRemovedBelow}
+  setWordMixRemovedBelow={setWordMixRemovedBelow}
+  roundsLeft={roundsLeft}
+  setRoundsLeft={setRoundsLeft}
+  setShowCorrectSentenceDisplay={setShowCorrectSentenceDisplay}
+  nudgesSpinsLeft={nudgesSpinsLeft}
+ setNudgesSpinsLeft={setNudgesSpinsLeft}
+  setCashButtonPressed={setCashButtonPressed}
+  numberOfRows={numberOfRows}
+  fullWordArray={fullWordArray}
+  setFullWordArray={setFullWordArray}
+  rowLength={rowLength}
+  verticalArrayActors= {verticalArrayActors}
+  setVerticalArrayActors={setVerticalArrayActors}
+  verticalArrayVerbs = {verticalArrayVerbs}
+  setVerticalArrayVerbs = {setVerticalArrayVerbs}
+  verticalArrayWordMix = {verticalArrayWordMix}
+  setVerticalArrayWordMix = {setVerticalArrayWordMix}
+  
+  
+  
+  
+  
+  
+  
+  
+  />
+  :null}
     </>
   );
 }

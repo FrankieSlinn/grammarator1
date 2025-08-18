@@ -9,7 +9,28 @@ export function CashButton({ grammarCorrect, setGrammarCorrect , cashButtonPress
   numberOfRows,
   grammarToCheck, setGrammarToCheck, rowLength, showPointsMessage, setShowPointsMessage, gameScore, setGameScore,
   correctSentenceDisplay, setCorrectSentenceDisplay, showCorrectSentenceDisplay, setShowCorrectSentenceDisplay, roundsLeft, setRoundsLeft,
-  nudgesSpinsLeft, setNudgesSpinsLeft, setShowOutOfSpinsMessage
+  nudgesSpinsLeft, setNudgesSpinsLeft, setShowOutOfSpinsMessage, showFinishGameMessage, setShowFinishGameMessage,
+
+  actorWordsRemovedAbove,
+  setActorWordsRemovedAbove,
+  verbWordsRemovedAbove,
+  setVerbWordsRemovedAbove,
+  wordMixRemovedAbove,
+  setWordMixRemovedAbove,
+  actorWordsRemovedBelow,
+  setActorWordsRemovedBelow,
+  verbWordsRemovedBelow,
+  setVerbWordsRemovedBelow,
+  wordMixRemovedBelow,
+  setWordMixRemovedBelow,
+  showNewGameButton,
+  setShowNewGameButton,
+  verticalArrayActors,
+  setVerticalArrayActors,
+  verticalArrayVerbs,
+  setVerticalArrayVerbs, 
+  verticalArrayWordMix, 
+  setVerticalArrayWordMix
   
 }) {
 
@@ -32,11 +53,14 @@ export function CashButton({ grammarCorrect, setGrammarCorrect , cashButtonPress
     );
 
     // ✅ Use the actual result from the API instead of grammarCorrect state
+    if (roundsLeft >= 0) {
+
     if (result === true) {
+      console.log("correct answer in cash button pressed")
       setShowCorrectSentenceDisplay(true)
       setCorrectSentenceDisplay(fullWordArray[3]+" "+fullWordArray[4]+" "+fullWordArray[5])
-      setShowPointsMessage(true);
-      // console.log("✅ Grammar correct in cash button:", result);
+      if (!roundsLeft === 1) {
+        setShowPointsMessage(true);}      // console.log("✅ Grammar correct in cash button:", result);
       let newGameScore = gameScore + 1;
       setGameScore(newGameScore);
       console.log("game score in cash button", newGameScore)
@@ -45,11 +69,32 @@ export function CashButton({ grammarCorrect, setGrammarCorrect , cashButtonPress
     } else {
       console.log("❌ Grammar incorrect in cash button:", result);
     }
-    resetRound(fullWordArray, setFullWordArray, rowLength, numberOfRows, cashButtonPressed, setCashButtonPressed, setShowCorrectSentenceDisplay, setShowPointsMessage,
-      roundsLeft, setRoundsLeft, nudgesSpinsLeft, setNudgesSpinsLeft, setShowOutOfSpinsMessage
-
-    )
+    console.log("about to run reset round")
+    resetRound(fullWordArray, setFullWordArray, rowLength, numberOfRows, cashButtonPressed, setCashButtonPressed, setShowCorrectSentenceDisplay,
+      setShowPointsMessage, roundsLeft, setRoundsLeft, nudgesSpinsLeft, setNudgesSpinsLeft, setShowOutOfSpinsMessage, showFinishGameMessage, setShowFinishGameMessage,
+      actorWordsRemovedAbove,
+      setActorWordsRemovedAbove,
+      verbWordsRemovedAbove,
+      setVerbWordsRemovedAbove,
+      wordMixRemovedAbove,
+      setWordMixRemovedAbove,
+      actorWordsRemovedBelow,
+      setActorWordsRemovedBelow,
+      verbWordsRemovedBelow,
+      setVerbWordsRemovedBelow,
+      wordMixRemovedBelow,
+      setWordMixRemovedBelow,
+      setShowNewGameButton,
+      verticalArrayActors,
+      setVerticalArrayActors,
+      verticalArrayVerbs,
+      setVerticalArrayVerbs, 
+      verticalArrayWordMix, 
+      setVerticalArrayWordMix
+  
+  )
   }
+}
  
 
   return (

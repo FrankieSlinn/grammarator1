@@ -20,16 +20,19 @@ export const s = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-evenly",
+    // backgroundColor: "purple"
   },
   slotMachineLayout: {
-    flex: 1,
+    flex: 0.5,
     justifyContent: "space-evenly",
+    backgroundColor: "lightblue",
   },
   changeWordsButtonsContainerOuter: {
     flexDirection: "row",
     // width: "90%",
     justifyContent: "space-evenly",
   },
+
   changeWordsButtonsContainer: {
     // flexDirection: "column",
 
@@ -43,7 +46,7 @@ export const s = StyleSheet.create({
   spinButtonContainer: {
     // width: "97%",
     marginLeft: 5,
-    marginBottom: 2,
+    marginBottom: 40,
     // alignItems: "center"
   },
   spinButton: {
@@ -62,17 +65,18 @@ export const s = StyleSheet.create({
     fontSize: 17,
   },
   wordsContainer: {
-    flex: 1,
+    // flex: 1,
     marginTop: 110,
+    // marginBottom: -300,
     alignItems: "center",
-    // marginBottom: ,
-
+    height: "20%",
     // backgroundColor: "pink",
   },
 
   wordRow: {
     // flex: 1,
     flexDirection: "row",
+    marginTop: 10,
     marginHOrizontal: 10,
 
     backgroundColor: "lightYellow",
@@ -80,7 +84,7 @@ export const s = StyleSheet.create({
     justifyContent: "space-around",
     width: "95%",
 
-    height: "10%",
+    // height: "10%",
   },
 
   wordButton: {
@@ -102,11 +106,12 @@ export const s = StyleSheet.create({
     textAlign: "center",
   },
   nudgeButtonContainer: {
-    // flex: 0.05,
-    backgroundColor: "pink",
+    flex: 0.05,
+    // backgroundColor: "gray",
     flexDirection: "row",
-    marginTop: -550,
+    marginTop: 50,
     marginRight: 0,
+    justifyContent: "center",
     // width: "88%",
     height: 79,
   },
@@ -128,7 +133,8 @@ export const s = StyleSheet.create({
   cashButtonContainer: {
     alignItems: "center",
     justifyContent: "center",
-    marginTop: -200,
+    marginTop: 270,
+    marginBottom: -200,
     backgroundColor: "lightblue",
     // height: 200,
   },
@@ -150,7 +156,7 @@ export const s = StyleSheet.create({
     marginBottom: -100,
 
     alignItems: "center",
-    // backgroundColor: "lightyellow"
+    backgroundColor: "lightyellow",
   },
   displaySentenceContainer: {
     backgroundColor: "lightblue",
@@ -164,6 +170,11 @@ export const s = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 17,
   },
+  outOfSpinsMessageContainer: {
+    // backgroundColor: "lightblue",
+    alignItems: "center",
+    // marginTop: -300,
+  },
   newRoundContainer: {
     alignItems: "center",
     marginBottom: 70,
@@ -174,11 +185,25 @@ export const s = StyleSheet.create({
     borderRadius: 15,
   },
   pointsMessageContainer: {
-    flex: 0.5,
-    marginTop: -220,
-    marginHorizontal: 20,
+    // flex: 0.5,
+    marginTop: -30,
+    marginHorizontal: 30,
+    // marginHorizontal: 20,
     // marginBottom: 200,
     // backgroundColor: "lightgreen",
     alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
   },
+  finishGameContainer:{
+    marginTop: -100,
+    marginHorizontal: 30,
+    alignItems: "center",
+
+    textAlign: "center",
+    justifyContent: "center",
+        // backgroundColor: "lightyellow",
+
+
+  }
 });

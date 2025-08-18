@@ -31,7 +31,7 @@ function spinColumn(
 
 
   }if(index!=5){
-  resetNudgesSpins(nudgesSpinsLeft, setNudgesSpinsLeft)
+  resetNudgesSpins(nudgesSpinsLeft, setNudgesSpinsLeft, setShowOutOfSpinsMessage)
   }
 }
 
@@ -43,6 +43,7 @@ function prepareToShiftColumns({
   setFullWordArray,
   index,
   verticalArray,
+  setVerticalArray,
   wordList,
   removedWordsArrayAbove,
   setRemovedWordsArrayAbove,
@@ -51,11 +52,13 @@ function prepareToShiftColumns({
   columnOffset,
   direction,
   nudgesSpinsLeft,
-  setNudgesSpinsLeft
+  setNudgesSpinsLeft,
+  showOutOfSpinsMessage,
+  setShowOutOfSpinsMessage
 }) {
   console.log("Shifting column at index:", index);
   let newFullWordArray = [...fullWordArray];
-  resetNudgesSpins(nudgesSpinsLeft, setNudgesSpinsLeft)
+  resetNudgesSpins(nudgesSpinsLeft, setNudgesSpinsLeft, setShowOutOfSpinsMessage)
 
   // Build the vertical array
   for (let i = 0; i < numberOfRows; i++) {
@@ -71,6 +74,7 @@ function prepareToShiftColumns({
     setFullWordArray,
     index,
     verticalArray,
+    setVerticalArray,
     wordList,
     removedWordsArrayAbove,
     setRemovedWordsArrayAbove,
@@ -89,6 +93,7 @@ function shiftColumn({
   setFullWordArray,
   index,
   verticalArray,
+  setVerticalArray,
   wordList,
   removedWordsArrayAbove,
   setRemovedWordsArrayAbove,
@@ -99,13 +104,16 @@ function shiftColumn({
   direction,
 }) {
   const newWord = wordList[randomNumberGenerator(wordList)];
+  console.log("newWord", newWord)
   let removedWord;
 
   if (direction === "up") {
     // Step 1: Add a word to bottom of verticalArray
     if (removedWordsArrayBelow.length > 0) {
       const wordFromBelow = removedWordsArrayBelow[removedWordsArrayBelow.length - 1];
-      verticalArray.push(wordFromBelow);
+      let newVerticalArray = [...verticalArray]
+      newVerticalArray.push(wordFromBelow);
+      setVerticalArray(newVerticalArray)
       setRemovedWordsArrayBelow(prev => prev.slice(0, -1));
     } else {
       verticalArray.push(newWord);
@@ -120,13 +128,17 @@ function shiftColumn({
     console.log("Updated removedWordsArrayAbove:", [...removedWordsArrayAbove, removedWord]);
 
   } else if (direction === "down") {
+    let newVerticalArray = [...verticalArray]
     // Step 1: Add a word to top of verticalArray
     if (removedWordsArrayAbove.length > 0) {
       const wordFromAbove = removedWordsArrayAbove[removedWordsArrayAbove.length - 1];
-      verticalArray.unshift(wordFromAbove);
+  
+      newVerticalArray.unshift(wordFromAbove);
+      setVerticalArray(newVerticalArray)
       setRemovedWordsArrayAbove(prev => prev.slice(0, -1));
     } else {
-      verticalArray.unshift(newWord);
+     verticalArray.unshift(newWord);
+ 
     }
 
     // Step 2: Remove bottom word and store it in removedWordsArrayBelow
@@ -175,9 +187,11 @@ function repopulateFullWordArrayWithShiftedColumns({
   console.log("Updated Full Word Array:", newFullWordArray);
 }
 
-function resetNudgesSpins(nudgesSpinsLeft, setNudgesSpinsLeft){
+function resetNudgesSpins(nudgesSpinsLeft, setNudgesSpinsLeft, setShowOutOfSpinsMessage){
+  console.log("RESETNUDGESPINS RUNNING")
+  console.log("NUDGESPINSLEFT", nudgesSpinsLeft)
   if(nudgesSpinsLeft>0){
-    setNudgesSpinsLeft(prev=>prev-1)
+    // setNudgesSpinsLeft(prev=>prev-1)   readd
     }
 
 }
