@@ -13,10 +13,14 @@ function spinColumn(
   index,
   nudgesSpinsLeft,
   setNudgesSpinsLeft,
-  setShowOutOfSpinsMessage
+  setShowOutOfSpinsMessage,
+  roundsLeft
 ) {
   console.log("spinColumn running");
   console.log("spin column index", index);
+  console.log("roundsLeft in SPINCOLUMN", roundsLeft )
+  if(roundsLeft>1){
+    console.log("Rounds Left Over 1!")
   if (index === 0) {
     insertActors(numberOfRows, rowLength, fullWordArray, setFullWordArray);
   } else if (index === 1) {
@@ -33,6 +37,7 @@ function spinColumn(
   }if(index!=5){
   resetNudgesSpins(nudgesSpinsLeft, setNudgesSpinsLeft, setShowOutOfSpinsMessage)
   }
+}
 }
 
 
@@ -54,9 +59,11 @@ function prepareToShiftColumns({
   nudgesSpinsLeft,
   setNudgesSpinsLeft,
   showOutOfSpinsMessage,
-  setShowOutOfSpinsMessage
+  setShowOutOfSpinsMessage,
+  roundsLeft
 }) {
   console.log("Shifting column at index:", index);
+  if(roundsLeft>1){
   let newFullWordArray = [...fullWordArray];
   resetNudgesSpins(nudgesSpinsLeft, setNudgesSpinsLeft, setShowOutOfSpinsMessage)
 
@@ -84,6 +91,7 @@ function prepareToShiftColumns({
     newFullWordArray,
     direction,
   }) 
+}
 }
 
 function shiftColumn({
@@ -191,7 +199,8 @@ function resetNudgesSpins(nudgesSpinsLeft, setNudgesSpinsLeft, setShowOutOfSpins
   console.log("RESETNUDGESPINS RUNNING")
   console.log("NUDGESPINSLEFT", nudgesSpinsLeft)
   if(nudgesSpinsLeft>0){
-    // setNudgesSpinsLeft(prev=>prev-1)   readd
+    setNudgesSpinsLeft(prev=>prev-1)  
+ 
     }
 
 }

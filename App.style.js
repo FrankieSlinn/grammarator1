@@ -156,7 +156,7 @@ export const s = StyleSheet.create({
     marginBottom: -100,
 
     alignItems: "center",
-    backgroundColor: "lightyellow",
+    // backgroundColor: "lightyellow",
   },
   displaySentenceContainer: {
     backgroundColor: "lightblue",
@@ -196,7 +196,7 @@ export const s = StyleSheet.create({
     textAlign: "center",
   },
   finishGameContainer:{
-    marginTop: -100,
+    marginTop: -150,
     marginHorizontal: 30,
     alignItems: "center",
 

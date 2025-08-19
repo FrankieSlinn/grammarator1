@@ -85,6 +85,7 @@ export default function Index() {
           setNudgesSpinsLeft={setNudgesSpinsLeft}
           showOutOfSpinsMessage={showOutOfSpinsMessage}
           setShowOutOfSpinsMessage={setShowOutOfSpinsMessage}
+          roundsLeft={roundsLeft}
         />
 
         <WordButtons
@@ -145,6 +146,7 @@ export default function Index() {
           setVerticalArrayVerbs = {setVerticalArrayVerbs}
           verticalArrayWordMix = {verticalArrayWordMix}
           setVerticalArrayWordMix = {setVerticalArrayWordMix}
+          roundsLeft={roundsLeft}
         />
          <CashButton
               grammarCorrect={grammarCorrect}
@@ -253,6 +255,16 @@ export default function Index() {
   setVerticalArrayVerbs = {setVerticalArrayVerbs}
   verticalArrayWordMix = {verticalArrayWordMix}
   setVerticalArrayWordMix = {setVerticalArrayWordMix}
+  showPointsMessage={showPointsMessage}
+  setShowPointsMessage ={setShowPointsMessage}
+  showFinishGameMessage={showFinishGameMessage}
+  setShowFinishGameMessage={setShowFinishGameMessage}
+  gameScore ={gameScore}
+  setGameScore={setGameScore}
+  roundsLeft={roundsLeft}
+  setRoundsLeft={setRoundsLeft}
+  showNewGameButton={showNewGameButton}
+  setShowNewGameButton={setShowNewGameButton}
   
   
   

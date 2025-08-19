@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { s } from "../App.style";
 import { spinColumn } from "../utils/wordColumnMovements";
@@ -19,14 +18,16 @@ export function SpinButtons({
   nudgesSpinsLeft,
   setNudgesSpinsLeft, 
   showOutOfSpinsMessage, 
-  setShowOutOfSpinsMessage
+  setShowOutOfSpinsMessage,
+  roundsLeft
 }) {
-  const [actorWordsRemovedAbove, setActorWordsRemovedAbove] = useState([]);
-  const [verbWordsRemovedAbove, setVerbWordsRemovedAbove] = useState([]);
-  const [wordMixRemovedAbove, setWordMixRemovedAbove] = useState([])
-  const [actorWordsRemovedBelow, setActorWordsRemovedBelow] = useState([]);
-  const [verbWordsRemovedBelow, setVerbWordsRemovedBelow] = useState([]);
-  const [wordMixRemovedBelow, setWordMixRemovedBelow] = useState([])
+  // const [actorWordsRemovedAbove, setActorWordsRemovedAbove] = useState([]);
+  // const [verbWordsRemovedAbove, setVerbWordsRemovedAbove] = useState([]);
+  // const [wordMixRemovedAbove, setWordMixRemovedAbove] = useState([])
+  // const [actorWordsRemovedBelow, setActorWordsRemovedBelow] = useState([]);
+  // const [verbWordsRemovedBelow, setVerbWordsRemovedBelow] = useState([]);
+  // const [wordMixRemovedBelow, setWordMixRemovedBelow] = useState([])
+  console.log("rounds left in Spin Column Component!!!!!!!!!", roundsLeft)
   return (
     <>
       <View style={s.changeWordsButtonsContainerOuter}>
@@ -47,7 +48,8 @@ export function SpinButtons({
                       index,
                       nudgesSpinsLeft,
                       setNudgesSpinsLeft,
-                      setShowOutOfSpinsMessage
+                      setShowOutOfSpinsMessage,
+                      roundsLeft
                     )
                   :setShowOutOfSpinsMessage(true)}}
                   style={[s.changeWordsButton, s.spinButton]}

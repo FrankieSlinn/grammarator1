@@ -36,7 +36,9 @@ export function NudgeButtons({
   verticalArrayVerbs,
   setVerticalArrayVerbs, 
   verticalArrayWordMix, 
-  setVerticalArrayWordMix
+  setVerticalArrayWordMix,
+  roundsLeft
+  
 
  
 
@@ -93,7 +95,8 @@ setShowOutOfSpinsMessage(true)
                         direction: "up",
                         nudgesSpinsLeft, setNudgesSpinsLeft, 
                         showOutOfSpinsMessage,
-                        setShowOutOfSpinsMessage
+                        setShowOutOfSpinsMessage,
+                        roundsLeft
                       }):setShowOutOfSpinsMessage(true)
                     }}
                     style={[s.nudgeButton, s.changeWordsButton]}
@@ -132,7 +135,8 @@ setShowOutOfSpinsMessage(true)
                     direction: "down",
                     nudgesSpinsLeft, setNudgesSpinsLeft, 
                     showOutOfSpinsMessage,
-                    setShowOutOfSpinsMessage
+                    setShowOutOfSpinsMessage,
+                    roundsLeft
                   }):setShowOutOfSpinsMessage(true)
                 }}
                 

@@ -34,16 +34,23 @@ function resetRound(
   verticalArrayVerbs,
   setVerticalArrayVerbs, 
   verticalArrayWordMix, 
-  setVerticalArrayWordMix
+  setVerticalArrayWordMix,
+
+
+
+  
   
 ) {
   console.log("resetRound running");
-  if (roundsLeft === 1) {
+  console.log("rounds left", roundsLeft)
+  if (roundsLeft <= 1) {
     console.log("roundsLeft is 0 or less!!!!!!!");
     setShowFinishGameMessage(true);
     setShowNewGameButton(true);
   } else {
     setTimeout(() => {
+      console.log("rounds Left should be over 0")
+      setRoundsLeft((prevRounds) => prevRounds - 1);
       spinAndReset(setShowOutOfSpinsMessage, setActorWordsRemovedAbove, setVerbWordsRemovedAbove, setWordMixRemovedAbove, setActorWordsRemovedBelow, 
         setVerbWordsRemovedBelow, setWordMixRemovedBelow, setShowCorrectSentenceDisplay, setShowPointsMessage, setRoundsLeft, roundsLeft, nudgesSpinsLeft, setNudgesSpinsLeft,
         setCashButtonPressed, numberOfRows,fullWordArray, setFullWordArray, rowLength,
@@ -55,7 +62,7 @@ function resetRound(
         setVerticalArrayWordMix
       )
 
-    }, 4000);
+    }, 3000);
   }
 }
 
@@ -78,7 +85,7 @@ function spinAndReset(setShowOutOfSpinsMessage, setActorWordsRemovedAbove, setVe
       setWordMixRemovedBelow([]);
       setShowCorrectSentenceDisplay(false);
       setShowPointsMessage(false);
-      setRoundsLeft((prevRounds) => prevRounds - 1);
+ 
       setVerticalArrayActors([])
       setVerticalArrayVerbs([])
       setVerticalArrayWordMix([])
@@ -95,7 +102,8 @@ function spinAndReset(setShowOutOfSpinsMessage, setActorWordsRemovedAbove, setVe
         5,
         nudgesSpinsLeft,
         setNudgesSpinsLeft,
-        setShowOutOfSpinsMessage
+        setShowOutOfSpinsMessage,
+        roundsLeft
       );
 
 
