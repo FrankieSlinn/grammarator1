@@ -16,14 +16,11 @@ export function CashButtonFeedback({cashButtonPressed, grammarCorrect}){
     return (
       <>
 
-          <View style={s.cashButtonFeedbackContainer}>
-          {cashButtonPressed ? (
-            <Text style={s.standardText}>
+          <View style={[s.cashButtonFeedbackContainer, {marginBottom: grammarCorrect ? -100:-80}]}>
+            {cashButtonPressed? <Text style={s.standardText}>
               {grammarCorrect
                 ? "This grammar is correct!"
-                : "This grammar is incorrect."}
-            </Text>):null}
-          </View>
+                : "This grammar is incorrect."}</Text> :null}</View>
       
       </>
     );

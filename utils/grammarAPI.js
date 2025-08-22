@@ -14,8 +14,11 @@ async function checkGrammar(
   // rowNumber,
   // setRowNumber,
   fullWordArray,
-  rowLength
+  rowLength,
+  showCashButton,
+  setShowCashButton
 ) {
+  setShowCashButton(false)
   setTimeout(() => {
   setCashButtonPressed(true);
 }, 1000); 

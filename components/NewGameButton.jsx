@@ -17,7 +17,9 @@ export function NewGameButton({setShowOutOfSpinsMessage, setActorWordsRemovedAbo
     gameScore, 
     setGameScore,
     showNewGameButton,
-    setShowNewGameButton
+    setShowNewGameButton,
+    showCashButton,
+    setShowCashButton
     
 
 
@@ -41,7 +43,8 @@ return <>
   setGameScore,
   showFinishGameMessage,
   setShowFinishGameMessage,
-  setShowNewGameButton
+  setShowNewGameButton,
+  showCashButton, setShowCashButton
         )}>
     <Text style={s.word}>NEW GAME</Text></TouchableOpacity>
 </View>

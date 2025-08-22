@@ -13,7 +13,7 @@ function finishGame(setShowOutOfSpinsMessage, setActorWordsRemovedAbove, setVerb
   setGameScore,
   showFinishGameMessage,
   setShowFinishGameMessage,
-setShowNewGameButton){
+setShowNewGameButton, showCashButton, setShowCashButton){
     spinAndReset(setShowOutOfSpinsMessage, setActorWordsRemovedAbove, setVerbWordsRemovedAbove, setWordMixRemovedAbove, setActorWordsRemovedBelow, 
       setVerbWordsRemovedBelow, setWordMixRemovedBelow, setShowCorrectSentenceDisplay, setShowPointsMessage, setRoundsLeft, roundsLeft, nudgesSpinsLeft, setNudgesSpinsLeft,
       setCashButtonPressed, numberOfRows,fullWordArray, setFullWordArray, rowLength,
@@ -22,7 +22,8 @@ setShowNewGameButton){
       verticalArrayVerbs,
       setVerticalArrayVerbs, 
       verticalArrayWordMix, 
-      setVerticalArrayWordMix
+      setVerticalArrayWordMix,
+      showCashButton, setShowCashButton
       )
       setShowNewGameButton(false)
       setGameScore(0)

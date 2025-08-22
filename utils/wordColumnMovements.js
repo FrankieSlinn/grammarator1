@@ -19,7 +19,7 @@ function spinColumn(
   console.log("spinColumn running");
   console.log("spin column index", index);
   console.log("roundsLeft in SPINCOLUMN", roundsLeft )
-  if(roundsLeft>1){
+  if(roundsLeft>0){
     console.log("Rounds Left Over 1!")
   if (index === 0) {
     insertActors(numberOfRows, rowLength, fullWordArray, setFullWordArray);
@@ -63,7 +63,7 @@ function prepareToShiftColumns({
   roundsLeft
 }) {
   console.log("Shifting column at index:", index);
-  if(roundsLeft>1){
+  if(roundsLeft>0){
   let newFullWordArray = [...fullWordArray];
   resetNudgesSpins(nudgesSpinsLeft, setNudgesSpinsLeft, setShowOutOfSpinsMessage)
 

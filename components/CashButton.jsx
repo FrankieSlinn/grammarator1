@@ -30,7 +30,8 @@ export function CashButton({ grammarCorrect, setGrammarCorrect , cashButtonPress
   verticalArrayVerbs,
   setVerticalArrayVerbs, 
   verticalArrayWordMix, 
-  setVerticalArrayWordMix
+  setVerticalArrayWordMix, 
+  showCashButton, setShowCashButton
   
 }) {
 
@@ -49,7 +50,9 @@ export function CashButton({ grammarCorrect, setGrammarCorrect , cashButtonPress
       // rowNumber,
       // setRowNumber,
       fullWordArray,
-      rowLength
+      rowLength,
+      showCashButton,
+      setShowCashButton
     );
 
     // ✅ Use the actual result from the API instead of grammarCorrect state
@@ -58,6 +61,7 @@ export function CashButton({ grammarCorrect, setGrammarCorrect , cashButtonPress
     if (result === true) {
       console.log("correct answer in cash button pressed")
       setShowCorrectSentenceDisplay(true)
+      setShowOutOfSpinsMessage(false)
       setCorrectSentenceDisplay(fullWordArray[3]+" "+fullWordArray[4]+" "+fullWordArray[5])
       if (!roundsLeft === 1) {
         setShowPointsMessage(true);}      // console.log("✅ Grammar correct in cash button:", result);
@@ -90,7 +94,8 @@ export function CashButton({ grammarCorrect, setGrammarCorrect , cashButtonPress
       verticalArrayVerbs,
       setVerticalArrayVerbs, 
       verticalArrayWordMix, 
-      setVerticalArrayWordMix
+      setVerticalArrayWordMix,
+      showCashButton, setShowCashButton
   
   )
   }

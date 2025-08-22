@@ -30,6 +30,7 @@ export default function Index() {
   const[showOutOfSpinsMessage, setShowOutOfSpinsMessage] = useState(false)
   const[showFinishGameMessage, setShowFinishGameMessage] = useState(false)
   const[showNewGameButton, setShowNewGameButton]=useState(false)
+  const [showCashButton, setShowCashButton] =useState(true)
   const [grammarToCheck, setGrammarToCheck] = useState("");
   const [pressedRowIndex, setPressedRowIndex] = useState(null);
   const [actorWordsRemovedAbove, setActorWordsRemovedAbove] = useState([]);
@@ -148,6 +149,7 @@ export default function Index() {
           setVerticalArrayWordMix = {setVerticalArrayWordMix}
           roundsLeft={roundsLeft}
         />
+        {showCashButton===true?
          <CashButton
               grammarCorrect={grammarCorrect}
               setGrammarCorrect={setGrammarCorrect}
@@ -210,7 +212,9 @@ export default function Index() {
               setVerticalArrayVerbs = {setVerticalArrayVerbs}
               verticalArrayWordMix = {verticalArrayWordMix}
               setVerticalArrayWordMix = {setVerticalArrayWordMix}
-            />
+              showCashButton={showCashButton}
+              setShowCashButton={setShowCashButton}
+            />: null}
          
        { showPointsMessage?
         <PointsMessage
@@ -265,14 +269,8 @@ export default function Index() {
   setRoundsLeft={setRoundsLeft}
   showNewGameButton={showNewGameButton}
   setShowNewGameButton={setShowNewGameButton}
-  
-  
-  
-  
-  
-  
-  
-  
+  showCashButton={showCashButton}
+  setShowCashButton={setShowCashButton}
   />
   :null}
     </>

@@ -35,6 +35,8 @@ function resetRound(
   setVerticalArrayVerbs, 
   verticalArrayWordMix, 
   setVerticalArrayWordMix,
+  showCashButton,
+  setShowCashButton
 
 
 
@@ -59,10 +61,12 @@ function resetRound(
         verticalArrayVerbs,
         setVerticalArrayVerbs, 
         verticalArrayWordMix, 
-        setVerticalArrayWordMix
+        setVerticalArrayWordMix,
+        showCashButton,
+        setShowCashButton
       )
 
-    }, 3000);
+    }, 2000);
   }
 }
 
@@ -74,7 +78,9 @@ function spinAndReset(setShowOutOfSpinsMessage, setActorWordsRemovedAbove, setVe
   verticalArrayVerbs,
   setVerticalArrayVerbs, 
   verticalArrayWordMix, 
-  setVerticalArrayWordMix
+  setVerticalArrayWordMix,
+  showCashButton,
+  setShowCashButton
 ){
   setShowOutOfSpinsMessage(false);
       setActorWordsRemovedAbove([]);
@@ -85,6 +91,7 @@ function spinAndReset(setShowOutOfSpinsMessage, setActorWordsRemovedAbove, setVe
       setWordMixRemovedBelow([]);
       setShowCorrectSentenceDisplay(false);
       setShowPointsMessage(false);
+      setShowCashButton(true)
  
       setVerticalArrayActors([])
       setVerticalArrayVerbs([])
