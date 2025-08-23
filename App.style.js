@@ -86,6 +86,14 @@ export const s = StyleSheet.create({
 
     // height: "10%",
   },
+  wordBorder:{
+    borderWidth: 8,
+    borderColor: "lightblue",
+    borderRadius: 15,
+    padding: 5,
+
+
+  },
 
   wordButton: {
     paddingVertical: 10,

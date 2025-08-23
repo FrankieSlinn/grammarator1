@@ -67,7 +67,7 @@ export function WordButtons({
     <>
       <View style={s.wordsContainer}>
         {rows.map((row, index) => (
-          <View key={index} style={s.wordRow}>
+          <View key={index} style={[s.wordRow,index===1?s.wordBorder:null]}>
             {row.map((word, wordIndex) => {
               const key = `${index}-${wordIndex}`;
 
