@@ -1,8 +1,11 @@
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 
 export const s = StyleSheet.create({
   appBodyView: {
     flex: 1,
+  },
+  centerText:{
+    textAlign:"center",
   },
   logoContainer: {
     // height: "10%",
@@ -117,7 +120,7 @@ export const s = StyleSheet.create({
     flex: 0.05,
     // backgroundColor: "gray",
     flexDirection: "row",
-    marginTop: 50,
+    marginTop: Platform.OS === "android" ? 85:50,
     marginRight: 0,
     justifyContent: "center",
     // width: "88%",
@@ -203,8 +206,13 @@ export const s = StyleSheet.create({
     justifyContent: "center",
     textAlign: "center",
   },
+  finishGameContainerOuter:{
+    alignItems: "center",
+
+
+  },
   finishGameContainer:{
-    marginTop: -150,
+    marginTop: Platform.OS==="android"?-100:-150,
     marginHorizontal: 30,
     alignItems: "center",
 
@@ -214,4 +222,5 @@ export const s = StyleSheet.create({
 
 
   }
+  
 });

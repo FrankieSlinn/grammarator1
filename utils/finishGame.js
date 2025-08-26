@@ -14,6 +14,7 @@ function finishGame(setShowOutOfSpinsMessage, setActorWordsRemovedAbove, setVerb
   showFinishGameMessage,
   setShowFinishGameMessage,
 setShowNewGameButton, showCashButton, setShowCashButton){
+  console.log("finish game button pressed!!!!!")
     spinAndReset(setShowOutOfSpinsMessage, setActorWordsRemovedAbove, setVerbWordsRemovedAbove, setWordMixRemovedAbove, setActorWordsRemovedBelow, 
       setVerbWordsRemovedBelow, setWordMixRemovedBelow, setShowCorrectSentenceDisplay, setShowPointsMessage, setRoundsLeft, roundsLeft, nudgesSpinsLeft, setNudgesSpinsLeft,
       setCashButtonPressed, numberOfRows,fullWordArray, setFullWordArray, rowLength,

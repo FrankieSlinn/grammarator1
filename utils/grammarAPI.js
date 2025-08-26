@@ -37,7 +37,7 @@ async function checkGrammar(
 
   try {
     const response = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: "GPT-4o",
 
       messages: [{ role: "user", content: prompt }],
     });
