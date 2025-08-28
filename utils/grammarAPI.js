@@ -32,26 +32,30 @@ async function checkGrammar(
     rowLength
   );
   console.log("sentence to check before validate", textToBeChecked);
-  const prompt = `If word unknown assume it is a name. Is the sentence definitely grammatically correct in standard English? Would people normally use this in normal conversation? Err on side of marking incorrect if not obvious. 
+  const prompt = `If word unknown assume it is a name. Is the sentence definitely grammatically correct in standard English? 
   Ignore punctuation and capitalisation. Return only true or false.: "${textToBeChecked}"`;
 
   try {
     const response = await openai.chat.completions.create({
-      model: "GPT-4o",
+      model: "gpt-4o",
 
       messages: [{ role: "user", content: prompt }],
+      response_format: { type: "text" },
     });
     console.log("response", response);
 
-    const answer = response.choices[0].message.content.trim().toLowerCase();
-    console.log("answer in API", answer);
-    setGrammarCorrect(answer === "true");
-
-    // Return boolean true or false based on answer
+    const answerRaw = response.choices[0]?.message?.content || "";
+    const answer = answerRaw.trim().toLowerCase().replace(/[^\w]/g, ""); 
+    // this strips punctuation like "." or "!"
+    setGrammarCorrect(answer==="true")
+    console.log("answer in API (normalized):", answer);
+    
     if (answer === "true") return true;
     if (answer === "false") return false;
 
-    // Fallback: if unexpected response, return null or throw error
+   
+    
+    console.warn("Unexpected answer format:", answerRaw);
     return null;
   } catch (error) {
     console.error("Error during OpenAI API call:", error);

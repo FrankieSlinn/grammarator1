@@ -54,6 +54,7 @@ export function CashButton({ grammarCorrect, setGrammarCorrect , cashButtonPress
       showCashButton,
       setShowCashButton
     );
+    console.log("result in CashButton", result)
 
     // ✅ Use the actual result from the API instead of grammarCorrect state
     if (roundsLeft >= 0) {
