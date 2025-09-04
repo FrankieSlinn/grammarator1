@@ -64,8 +64,9 @@ const wordList = ["A", "THE", "ALL", "IS", "ARE", "CAN", "CANNOT", "WILL", "WON'
   ];
 
   const actorList=["I", "I","I", "I", "I","I", "I", "YOU", "YOU","YOU", "YOU","YOU", "YOU","WE", "WE","WE", "WE","WE","WE", "WE","THEY", "THEY","THEY", "THEY", 
-    "IT", "IT", "IT", "IT", "HE", "HE", "HE", "HE", "HE", "HE","HE", "SHE", "SHE", "SHE", "SHE", "SHE", "SHE", "SHE", "SHE",  "HARRY", "HANS", "TYRONE", "INGE", "CARLOS", "ALBERTO", "ANNA", "HIROKO", "PIERRE", "SUNITA", 
-    "SANJAY", "CHILDREN", "ADULTS", "EVERYONE", "NO ONE", "ALI", "MUSTAFA", "LeEILA", "LATOYA", "JOHN", "AGATHA", "MELANIE", "GERALD", "ROSA", "MARTIN",
+    "IT", "IT", "IT", "IT", "HE", "HE", "HE", "HE", "HE", "HE","HE", "SHE", "SHE", "SHE", "SHE", "SHE", "SHE", "SHE", "SHE",  "HARRY", "HANS", "TYRONE", "INGE", 
+    "CARLOS", "ALBERTO", "ANNA", "HIROKO", "PIERRE", "SUNITA", 
+    "SANJAY", "CHILDREN", "ADULTS", "EVERYONE", "NO ONE", "ALI", "MUSTAFA", "LILA", "LATOYA", "JOHN", "AGATHA", "MELANIE", "GERALD", "ROSA", "MARTIN",
     "PEOPLE", "CATS", "ELEPHANTS", "DETECTIVES", "PATRICK", "JOSE", "LUCIANA", "MATT", "KEISHA", "SARA", 
   ]
   const verbList=["RUN", "RAN", "RUNNING", "JUMP", "JUMPED", "JUMPPS", "IS", "IS", "IS", "IS", "IS", "IS", "ARE",  "ARE", "ARE",  "ARE", "AM", "HAS", "HAS"

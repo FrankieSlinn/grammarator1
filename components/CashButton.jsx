@@ -54,9 +54,11 @@ export function CashButton({ grammarCorrect, setGrammarCorrect , cashButtonPress
       showCashButton,
       setShowCashButton
     );
+    console.log("result before check rounds", result)
 
     // ✅ Use the actual result from the API instead of grammarCorrect state
     if (roundsLeft >= 0) {
+      console.log("rounds left, continuing to validate if true")
 
     if (result === true) {
       console.log("correct answer in cash button pressed")

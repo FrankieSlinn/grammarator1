@@ -69,6 +69,17 @@ export default function Index() {
         <CashButtonFeedback
           cashButtonPressed={cashButtonPressed}
           grammarCorrect={grammarCorrect}
+          cashButtonPressed={cashButtonPressed}
+          setCashButtonPressed={setCashButtonPressed}
+          grammarCorrect={grammarCorrect}
+          setGrammarCorrect ={setGrammarCorrect}
+          grammarToCheck={grammarToCheck}
+          setGrammarToCheck={setGrammarToCheck}
+          fullWordArray={fullWordArray}
+          rowLength = {rowLength}
+          showCashButton={showCashButton}
+          setShowCashButton={setShowCashButton}
+          
         />
         {showCorrectSentenceDisplay===true?
         <DisplaySentence
