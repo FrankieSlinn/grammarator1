@@ -8,7 +8,7 @@ export function FinishGameMessage({gameScore, setGameScore}){
   
     <View style={s.finishGameContainer}>
     <Text style={[s.standardText, s.centerText]}>You have finished the game! Your score is {gameScore} point/s in total!</Text>
-    <Text style={s.standardText}>Click on the New Game Button to play again</Text>
+    <Text style={[s.standardText, s.centerText]}>{'\n'}Click on the New Game Button to play again</Text>
     </View>
 
     
