@@ -47,8 +47,6 @@ export function CashButton({ grammarCorrect, setGrammarCorrect , cashButtonPress
       grammarCorrect,
       setGrammarCorrect,
       setCashButtonPressed,
-      // rowNumber,
-      // setRowNumber,
       fullWordArray,
       rowLength,
       showCashButton,

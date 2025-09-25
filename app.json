@@ -1,3 +1,5 @@
+
+
 {
   "expo": {
     "name": "grammarator1",
@@ -8,13 +10,24 @@
     "scheme": "grammarator1",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+ "extra": {
+  "router": {},
+  "openaiApiKey": "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",
+  "eas": {
+    "projectId": "c2c87c36-baf3-4d92-a9d4-dbbe984c5a64"
+  
+  }
+},
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#ffffff",
+        "permissions": [
+          "INTERNET"
+        ]
       },
       "edgeToEdgeEnabled": true,
       "package": "com.frankieslinn.grammarator1",
@@ -39,12 +52,7 @@
     ],
     "experiments": {
       "typedRoutes": true
-    },
-    "extra": {
-      "router": {},
-      "eas": {
-        "projectId": "c2c87c36-baf3-4d92-a9d4-dbbe984c5a64"
-      }
     }
+
   }
 }

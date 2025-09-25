@@ -1,4 +1,8 @@
 
+import Constants from "expo-constants";
+
+const OPENAI_API_KEY = Constants.expoConfig.extra.openaiApiKey;
+
 async function checkGrammar(
   grammarToCheck,
   setGrammarToCheck,
@@ -15,23 +19,32 @@ async function checkGrammar(
     setCashButtonPressed(true);
   }, 1000);
   console.log("Cash button pressed");
+  //TEST
+
+  fetch("https://jsonplaceholder.typicode.com/todos/1")
+  .then(res => res.json())
+  .then(console.log)
+  .catch(console.error);
+
+  console.log("Key in build!!!!!!!!!!", Constants.expoConfig.extra.openaiApiKey);
 
   let textToBeChecked = getSentenceToValidate(
     setGrammarToCheck,
     fullWordArray,
     rowLength
   );
-  console.log("sentence to check before validate", textToBeChecked);
+  console.log("sentence to check before validate in api", textToBeChecked);
 
-  const prompt = `If word unknown assume it is a name. Is the sentence grammatically correct in standard English? Something like "people go swimming" should be correct.
+  const prompt = `You are a strict English grammar checker. If word unknown assume it is a name. Is the sentence grammatically correct in standard English? Something like "bob eat carrots" should be incorrect.
   Ignore punctuation and capitalisation. Return only true or false.: "${textToBeChecked}"`;
 
   try {
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.EXPO_PUBLIC_API_KEY}`, 
+
+          "Content-Type": "application/json",
+  "Authorization": `Bearer ${OPENAI_API_KEY}`,
       },
       body: JSON.stringify({
         model: "gpt-4o-mini",
@@ -45,11 +58,12 @@ async function checkGrammar(
 
     const data = await response.json();
     console.log("response", data);
-
+    console.log("response message in api", data.choices[0].message)
     const answer = data.choices[0].message.content.trim().toLowerCase();
-    console.log("answer in API", answer);
+    console.log("answer in API!!!!", answer);
+    //if answer ===true, should be true, else false
     setGrammarCorrect(answer === "true");
-    console.log("grammarCorrect in api function", grammarCorrect)
+    console.log("grammarCorrect in api function", answer, grammarCorrect)
 
     if (answer === "true") return true;
     if (answer === "false") return false;
