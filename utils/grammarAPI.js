@@ -1,7 +1,8 @@
 
 import Constants from "expo-constants";
 
-const OPENAI_API_KEY = Constants.expoConfig.extra.openaiApiKey;
+const OPENAI_API_KEY1 = Constants.expoConfig.extra.openaiApiKey ||
+  process.env.OPENAI_API_KEY;;
 
 async function checkGrammar(
   grammarToCheck,
@@ -44,7 +45,7 @@ async function checkGrammar(
       headers: {
 
           "Content-Type": "application/json",
-  "Authorization": `Bearer ${OPENAI_API_KEY}`,
+  "Authorization": `Bearer ${OPENAI_API_KEY1}`,
       },
       body: JSON.stringify({
         model: "gpt-4o-mini",
