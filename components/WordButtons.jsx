@@ -29,8 +29,13 @@ export function WordButtons({
   nudgesSpinsLeft,
   setNudgesSpinsLeft,
   setShowOutOfSpinsMessage,
+  lockedWords,
+  setLockedWords
+
 }) {
   const [wordArrayPopulated, setWordArrayPopulated] = useState(false);
+
+
 
   useEffect(() => {
     console.log("RENDER TRIGGERED: fullWordArray updated", fullWordArray);
@@ -62,19 +67,32 @@ export function WordButtons({
       </View>
     );
   }
+function wordButtonPressed(key) {
+  setLockedWords(prev => ({
+    ...prev,
+    [key]: !prev[key]
+    
+  }));
+  console.log("!!!!lockedWords after press:", lockedWords);
+}
 
   return (
     <>
       <View style={s.wordsContainer}>
+        {/* row = horizontal, index = vertical */}
         {rows.map((row, index) => (
           <View key={index} style={[s.wordRow,index===1?s.wordBorder:null]}>
             {row.map((word, wordIndex) => {
               const key = `${index}-${wordIndex}`;
+              //  const isLocked = row===1?lockedWords[key]:null;
 
 
               return (
                 <View key={key} style={s.wordButtonContainer}>
-                  <TouchableOpacity style={[s.wordButton, s.wordButton]}>
+                  <TouchableOpacity onPress={() => wordButtonPressed(key)}
+ style={[s.wordButton, s.wordButton, 
+                    {backgroundColor: isLocked? "gold":"aquamarine" }
+                  ]}>
                     <Text style={s.word}>{word}</Text>
                   </TouchableOpacity>
                 </View>

@@ -37,12 +37,19 @@ export function NudgeButtons({
   setVerticalArrayVerbs, 
   verticalArrayWordMix, 
   setVerticalArrayWordMix,
-  roundsLeft
+  roundsLeft,
+  lockedWords,
+  setLockedWords
   
 
  
 
 }) {
+
+  // Lockedwords {"0-0": true, "0-1": true} Number on Left = rows; Number on right = columns
+  //The word row will always be one (as center row)
+
+
 
   function displayOutOfSpinsMessage(setShowOutOfSpinsMessage){
 console.log("setting out of spins message to show!!!")
@@ -64,10 +71,11 @@ setShowOutOfSpinsMessage(true)
          
          
               <View key={index} style={s.nudgeButtonContainer}>
+                {/* Left Nudge Button */}
           
                   <TouchableOpacity
                     onPress={() => {
-                      nudgesSpinsLeft>0?
+                      nudgesSpinsLeft>0 &&!(`1-${index}` in lockedWords)?
                       prepareToShiftColumns({
                         numberOfRows,
                         rowLength,
@@ -104,10 +112,10 @@ setShowOutOfSpinsMessage(true)
                     <Text style={s.changeWordButtonText}>1 </Text>
                     <Ionicons name="arrow-up-outline" style={s.arrowIcon} />
                   </TouchableOpacity>
-            
+            {/* Right Nudge Button */}
                 <TouchableOpacity 
                  onPress={() => {
-                  nudgesSpinsLeft>0?
+                  nudgesSpinsLeft>0 && !(`1-${index}` in lockedWords)?
                   prepareToShiftColumns({
                     numberOfRows,
                     rowLength,

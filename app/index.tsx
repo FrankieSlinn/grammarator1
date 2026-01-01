@@ -42,6 +42,8 @@ export default function Index() {
   const [verticalArrayActors, setVerticalArrayActors]=useState([])
   const [verticalArrayVerbs, setVerticalArrayVerbs] = useState([])
   const [verticalArrayWordMix, setVerticalArrayWordMix] = useState([])
+  const [lockedWords, setLockedWords] = useState({});
+
  
   
   console.log("fullWordArray in index", fullWordArray);
@@ -98,6 +100,8 @@ export default function Index() {
           showOutOfSpinsMessage={showOutOfSpinsMessage}
           setShowOutOfSpinsMessage={setShowOutOfSpinsMessage}
           roundsLeft={roundsLeft}
+          lockedWords={lockedWords}
+          setLockedWords={setLockedWords}
         />
 
         <WordButtons
@@ -130,6 +134,10 @@ export default function Index() {
           setGrammarToCheck={setGrammarToCheck}
           pressedRowIndex={pressedRowIndex}
           setPressedRowIndex={setPressedRowIndex}
+          lockedWords={lockedWords}
+          setLockedWords={setLockedWords}
+
+
         />
                 <NudgeButtons
           rowLength={rowLength}
@@ -159,6 +167,8 @@ export default function Index() {
           verticalArrayWordMix = {verticalArrayWordMix}
           setVerticalArrayWordMix = {setVerticalArrayWordMix}
           roundsLeft={roundsLeft}
+          lockedWords={lockedWords}
+          setLockedWords={setLockedWords}
         />
         {showCashButton===true?
          <CashButton
