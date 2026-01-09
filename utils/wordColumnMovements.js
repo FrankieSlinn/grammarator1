@@ -54,6 +54,7 @@ function prepareToShiftColumns({
   setRemovedWordsArrayAbove,
   removedWordsArrayBelow,
   setRemovedWordsArrayBelow,
+  //columnOffeset = index
   columnOffset,
   direction,
   nudgesSpinsLeft,
@@ -65,11 +66,16 @@ function prepareToShiftColumns({
   console.log("Shifting column at index:", index);
   if(roundsLeft>0){
   let newFullWordArray = [...fullWordArray];
+  //set amount of nudge back to original amount. 
   resetNudgesSpins(nudgesSpinsLeft, setNudgesSpinsLeft, setShowOutOfSpinsMessage)
 
   // Build the vertical array
   for (let i = 0; i < numberOfRows; i++) {
+    //verticalArray is wordlist for which nudge button pressed. The below function should create a list of 3 words
+    //displayed in the column.
+    if(verticalArray.length < numberOfRows){
     verticalArray.push(fullWordArray[i * rowLength + columnOffset]);
+    }
   }
 
   console.log("Original Vertical Array:", verticalArray);
@@ -114,48 +120,89 @@ function shiftColumn({
   const newWord = wordList[randomNumberGenerator(wordList)];
   console.log("newWord", newWord)
   let removedWord;
+   let newVerticalArray = [...verticalArray];
+if (direction === "up") {
+  console.log("-------FUNCTION FOR UP NUDGE BUTTON RUNNING");
+  console.log(
+    "--------!!!removedWordsArrayBelow at start:",
+    removedWordsArrayBelow
+  );
 
-  if (direction === "up") {
-    // Step 1: Add a word to bottom of verticalArray
-    if (removedWordsArrayBelow.length > 0) {
-      const wordFromBelow = removedWordsArrayBelow[removedWordsArrayBelow.length - 1];
-      let newVerticalArray = [...verticalArray]
-      newVerticalArray.push(wordFromBelow);
-      setVerticalArray(newVerticalArray)
-      setRemovedWordsArrayBelow(prev => prev.slice(0, -1));
-    } else {
-      verticalArray.push(newWord);
-    }
+  // Always start from a fresh copy
 
-    // Step 2: Remove top word and store it in removedWordsArrayAbove
-    removedWord = verticalArray.shift(); // remove first element
-    setRemovedWordsArrayAbove(prev => [...prev, removedWord]);
 
-    console.log("Shifted UP");
-    console.log("Removed word (top):", removedWord);
-    console.log("Updated removedWordsArrayAbove:", [...removedWordsArrayAbove, removedWord]);
+  // STEP 1: Add word to bottom
+  if (removedWordsArrayBelow.length > 0) {
+    const wordFromBelow =
+      removedWordsArrayBelow[removedWordsArrayBelow.length - 1];
+
+    newVerticalArray.push(wordFromBelow);
+
+    // remove LAST element immutably
+    setRemovedWordsArrayBelow(prev => prev.slice(0, 0));
+  } else {
+    newVerticalArray.push(newWord);
+  }
+
+  console.log(
+    "---------newVerticalArray after adding bottom word:",
+    [...newVerticalArray]
+  );
+
+  // STEP 2: Capture top word WITHOUT removing it
+  const removedWord = newVerticalArray[0];
+
+  setRemovedWordsArrayAbove(prev => [...prev, removedWord]);
+
+  // STEP 3: Remove top word for the shifted column
+  newVerticalArray = newVerticalArray.slice(1);
+
+  setVerticalArray(newVerticalArray);
+     verticalArray = newVerticalArray;
+
+  console.log("Shifted UP");
+  console.log("Removed word (top):", removedWord);
+  console.log("Final vertical array:", [...newVerticalArray]);
+
 
   } else if (direction === "down") {
-    let newVerticalArray = [...verticalArray]
-    // Step 1: Add a word to top of verticalArray
-    if (removedWordsArrayAbove.length > 0) {
-      const wordFromAbove = removedWordsArrayAbove[removedWordsArrayAbove.length - 1];
-  
+  console.log("--------FUNCTION FOR DOWN NUDGE BUTTON RUNNING");
+
+  if (removedWordsArrayAbove.length > 0) {
+    // word to restore from above
+    const wordFromAbove =
+      removedWordsArrayAbove[removedWordsArrayAbove.length - 1];
+      console.log("wordFromAbove to be restored:", wordFromAbove);
+   
       newVerticalArray.unshift(wordFromAbove);
-      setVerticalArray(newVerticalArray)
-      setRemovedWordsArrayAbove(prev => prev.slice(0, -1));
-    } else {
-     verticalArray.unshift(newWord);
+      console.log("---------newVerticalArray after word from above added", newVerticalArray);
+    //Add word to array of words removed on bottom
+      setRemovedWordsArrayBelow(prev=>[...prev, wordFromAbove])
+      console.log("removedWordsArrayBelow :", removedWordsArrayAbove);
+   
+
+
+
+
+  } else {
+     newVerticalArray.unshift(newWord);
+       console.log("------verticalArray no words removed, new word added to bottom:", newVerticalArray); 
  
     }
+    console.log("newVerticalArray[newVerticalArray.length  -1]", newVerticalArray[newVerticalArray.length  -1])
+    const wordToAddToremovedWordsArrayBelow = newVerticalArray[newVerticalArray.length  -1];
+    setRemovedWordsArrayBelow(prev=>[...prev, wordToAddToremovedWordsArrayBelow])
+   
+    newVerticalArray.pop(); 
+         setVerticalArray(newVerticalArray);
+       
+                   console.log("-----verticalArray after popped last element----", newVerticalArray)
+           verticalArray = newVerticalArray;
+     console.log('vertical array after resset before rebuild fullWordArray', verticalArray)
 
-    // Step 2: Remove bottom word and store it in removedWordsArrayBelow
-    removedWord = verticalArray.pop(); // remove last element
-    setRemovedWordsArrayBelow(prev => [...prev, removedWord]);
 
-    console.log("Shifted DOWN");
-    console.log("Removed word (bottom):", removedWord);
-    console.log("Updated removedWordsArrayBelow:", [...removedWordsArrayBelow, removedWord]);
+    console.log("-----New vertical array after down", verticalArray)
+     console.log("------removedWordsArrayBelow :", removedWordsArrayBelow);
   }
 
   // Final step: Apply changes to full word array
@@ -186,6 +233,7 @@ function repopulateFullWordArrayWithShiftedColumns({
   newFullWordArray,
 }) {
   // Rebuild the full word array (all fields)
+  console.log("!!!----FUNCTION FOR Rebulding full word array running")
   for (let i = 0; i < numberOfRows; i++) {
     newFullWordArray[i * rowLength + columnOffset] = verticalArray[i];
   }

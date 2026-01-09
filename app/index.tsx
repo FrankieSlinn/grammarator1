@@ -42,9 +42,9 @@ export default function Index() {
   const [verticalArrayActors, setVerticalArrayActors]=useState([])
   const [verticalArrayVerbs, setVerticalArrayVerbs] = useState([])
   const [verticalArrayWordMix, setVerticalArrayWordMix] = useState([])
-  const [lockedWords, setLockedWords] = useState({});
+  const [lockedWords, setLockedWords] = useState([]);
 
- 
+ //Lock words press up, unlock word press up then down. Nudge button doesn't do anything. 
   
   console.log("fullWordArray in index", fullWordArray);
 
@@ -235,6 +235,8 @@ export default function Index() {
               setVerticalArrayWordMix = {setVerticalArrayWordMix}
               showCashButton={showCashButton}
               setShowCashButton={setShowCashButton}
+              lockedWords={lockedWords}
+              setLockedWords={setLockedWords}
             />: null}
          
        { showPointsMessage?

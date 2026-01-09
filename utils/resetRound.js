@@ -36,7 +36,9 @@ function resetRound(
   verticalArrayWordMix, 
   setVerticalArrayWordMix,
   showCashButton,
-  setShowCashButton
+  setShowCashButton, 
+  lockedWords,
+  setLockedWords
 
 
 
@@ -63,7 +65,8 @@ function resetRound(
         verticalArrayWordMix, 
         setVerticalArrayWordMix,
         showCashButton,
-        setShowCashButton
+        setShowCashButton,
+        lockedWords, setLockedWords
       )
 
     }, 2000);
@@ -80,7 +83,10 @@ function spinAndReset(setShowOutOfSpinsMessage, setActorWordsRemovedAbove, setVe
   verticalArrayWordMix, 
   setVerticalArrayWordMix,
   showCashButton,
-  setShowCashButton
+  setShowCashButton, 
+  lockedWords, 
+  setLockedWords
+
 ){
   setShowOutOfSpinsMessage(false);
       setActorWordsRemovedAbove([]);
@@ -96,6 +102,7 @@ function spinAndReset(setShowOutOfSpinsMessage, setActorWordsRemovedAbove, setVe
       setVerticalArrayActors([])
       setVerticalArrayVerbs([])
       setVerticalArrayWordMix([])
+      setLockedWords([{}])
 
       setNudgesSpinsLeft(2);
 

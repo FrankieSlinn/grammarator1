@@ -71,11 +71,11 @@ setShowOutOfSpinsMessage(true)
          
          
               <View key={index} style={s.nudgeButtonContainer}>
-                {/* Left Nudge Button */}
+                {/* Left Nudge Button - UP */}
           
                   <TouchableOpacity
                     onPress={() => {
-                      nudgesSpinsLeft>0 &&!(`1-${index}` in lockedWords)?
+                      nudgesSpinsLeft>0 && (!lockedWords.includes(`1-${index}`))?
                       prepareToShiftColumns({
                         numberOfRows,
                         rowLength,
@@ -105,7 +105,8 @@ setShowOutOfSpinsMessage(true)
                         showOutOfSpinsMessage,
                         setShowOutOfSpinsMessage,
                         roundsLeft
-                      }):setShowOutOfSpinsMessage(true)
+                      }):
+                       nudgesSpinsLeft ===0?setShowOutOfSpinsMessage(true):null
                     }}
                     style={[s.nudgeButton, s.changeWordsButton]}
                   >
@@ -115,8 +116,9 @@ setShowOutOfSpinsMessage(true)
             {/* Right Nudge Button */}
                 <TouchableOpacity 
                  onPress={() => {
-                  nudgesSpinsLeft>0 && !(`1-${index}` in lockedWords)?
+                  nudgesSpinsLeft>0 && (!lockedWords.includes(`1-${index}`))?
                   prepareToShiftColumns({
+                    //parameters in function (depends on index)
                     numberOfRows,
                     rowLength,
                     fullWordArray,
@@ -145,7 +147,8 @@ setShowOutOfSpinsMessage(true)
                     showOutOfSpinsMessage,
                     setShowOutOfSpinsMessage,
                     roundsLeft
-                  }):setShowOutOfSpinsMessage(true)
+                  }):
+                   nudgesSpinsLeft ===0?setShowOutOfSpinsMessage(true):null
                 }}
                 
                 style={[s.nudgeButton, s.changeWordsButton]}>

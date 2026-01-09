@@ -24,7 +24,8 @@ setShowNewGameButton, showCashButton, setShowCashButton){
       setVerticalArrayVerbs, 
       verticalArrayWordMix, 
       setVerticalArrayWordMix,
-      showCashButton, setShowCashButton
+      showCashButton, setShowCashButton,
+      lockedWords, setLockedWords
       )
       setShowNewGameButton(false)
       setGameScore(0)

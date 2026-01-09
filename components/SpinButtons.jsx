@@ -19,15 +19,13 @@ export function SpinButtons({
   setNudgesSpinsLeft, 
   showOutOfSpinsMessage, 
   setShowOutOfSpinsMessage,
-  roundsLeft
+  roundsLeft,
+  lockedWords, 
+  setLockedW
 }) {
-  // const [actorWordsRemovedAbove, setActorWordsRemovedAbove] = useState([]);
-  // const [verbWordsRemovedAbove, setVerbWordsRemovedAbove] = useState([]);
-  // const [wordMixRemovedAbove, setWordMixRemovedAbove] = useState([])
-  // const [actorWordsRemovedBelow, setActorWordsRemovedBelow] = useState([]);
-  // const [verbWordsRemovedBelow, setVerbWordsRemovedBelow] = useState([]);
-  // const [wordMixRemovedBelow, setWordMixRemovedBelow] = useState([])
+
   console.log("rounds left in Spin Column Component!!!!!!!!!", roundsLeft)
+  console.log("nudgesSpinsLeft in SPIN BUTTON!!!!!!", nudgesSpinsLeft)
   return (
     <>
       <View style={s.changeWordsButtonsContainerOuter}>
@@ -39,7 +37,7 @@ export function SpinButtons({
               <View style={s.spinButtonContainer}>
                 <TouchableOpacity
                   onPress={() => {
-                    nudgesSpinsLeft>0?
+                    nudgesSpinsLeft>0 && (!lockedWords.includes(`1-${index}`))?
                     spinColumn(
                       numberOfRows,
                       fullWordArray,
@@ -51,7 +49,8 @@ export function SpinButtons({
                       setShowOutOfSpinsMessage,
                       roundsLeft
                     )
-                  :setShowOutOfSpinsMessage(true)}}
+                  :nudgesSpinsLeft ===0?setShowOutOfSpinsMessage(true):null
+                }}
                   style={[s.changeWordsButton, s.spinButton]}
                 >
                   <Text style={s.changeWordButtonText}>SPIN</Text>

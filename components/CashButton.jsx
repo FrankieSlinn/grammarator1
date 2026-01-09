@@ -31,7 +31,9 @@ export function CashButton({ grammarCorrect, setGrammarCorrect , cashButtonPress
   setVerticalArrayVerbs, 
   verticalArrayWordMix, 
   setVerticalArrayWordMix, 
-  showCashButton, setShowCashButton
+  showCashButton, setShowCashButton,
+  lockedWords,
+  setLockedWords
   
 }) {
 
@@ -50,7 +52,9 @@ export function CashButton({ grammarCorrect, setGrammarCorrect , cashButtonPress
       fullWordArray,
       rowLength,
       showCashButton,
-      setShowCashButton
+      setShowCashButton,
+      lockedWords,
+      setLockedWords
     );
     console.log("result before check rounds", result)
 
@@ -95,7 +99,9 @@ export function CashButton({ grammarCorrect, setGrammarCorrect , cashButtonPress
       setVerticalArrayVerbs, 
       verticalArrayWordMix, 
       setVerticalArrayWordMix,
-      showCashButton, setShowCashButton
+      showCashButton, setShowCashButton,
+      lockedWords, 
+      setLockedWords
   
   )
   }

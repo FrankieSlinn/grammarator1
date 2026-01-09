@@ -67,15 +67,19 @@ export function WordButtons({
       </View>
     );
   }
-function wordButtonPressed(key) {
-  setLockedWords(prev => ({
-    ...prev,
-    [key]: !prev[key]
-    
-  }));
-  console.log("!!!!lockedWords after press:", lockedWords);
+
+  function wordButtonPressed(key) {
+  setLockedWords(prev => {
+    if (prev.includes(key)) {
+      // remove key
+      return prev.filter(k => k !== key);
+    }
+    // add key
+    return [...prev, key];
+  });
 }
 
+console.log("-----Locked Words:", lockedWords);
   return (
     <>
       <View style={s.wordsContainer}>
@@ -84,7 +88,8 @@ function wordButtonPressed(key) {
           <View key={index} style={[s.wordRow,index===1?s.wordBorder:null]}>
             {row.map((word, wordIndex) => {
               const key = `${index}-${wordIndex}`;
-              //  const isLocked = row===1?lockedWords[key]:null;
+              //Defines which words are locked
+              const isLocked = index === 1 && lockedWords.includes(key);
 
 
               return (
