@@ -134,7 +134,7 @@ function shiftColumn({
     );
 
     // Always start from a fresh copy
-    restoreWordPrevRemovedFromBottom(removedWordsArrayBelow, setRemovedWordsArrayBelow, newVerticalArray, newWord)
+   addNewWordUpnButton(removedWordsArrayBelow, setRemovedWordsArrayBelow, newVerticalArray, newWord)
 
     console.log("---------newVerticalArray after adding bottom word:", [
       ...newVerticalArray,
@@ -162,29 +162,8 @@ function shiftColumn({
 
   } else if (direction === "down") {
     console.log("--------FUNCTION FOR DOWN NUDGE BUTTON RUNNING");
+addNewWordDownButton(removedWordsArrayAbove, newVerticalArray, setRemovedWordsArrayBelow, newWord)
 
-    //If no words were previously removed from array
-    if (removedWordsArrayAbove.length > 0) {
-      // word to restore from above
-      const wordFromAbove =
-        removedWordsArrayAbove[removedWordsArrayAbove.length - 1];
-      console.log("wordFromAbove to be restored:", wordFromAbove);
-
-      newVerticalArray.unshift(wordFromAbove);
-      console.log(
-        "---------newVerticalArray after word from above added",
-        newVerticalArray,
-      );
-      //Add word to array of words removed on bottom
-      setRemovedWordsArrayBelow((prev) => [...prev, wordFromAbove]);
-      console.log("removedWordsArrayBelow :", removedWordsArrayAbove);
-    } else {
-      newVerticalArray.unshift(newWord);
-      console.log(
-        "------verticalArray no words removed, new word added to bottom:",
-        newVerticalArray,
-      );
-    }
     console.log(
       "newVerticalArray[newVerticalArray.length  -1]",
       newVerticalArray[newVerticalArray.length - 1],
@@ -250,7 +229,7 @@ function repopulateFullWordArrayWithShiftedColumns({
   console.log("Updated Full Word Array:", newFullWordArray);
 }
 
-function restoreWordPrevRemovedFromBottom(removedWordsArrayBelow, setRemovedWordsArrayBelow,newVerticalArray, newWord) {
+function addNewWordUpnButton(removedWordsArrayBelow, setRemovedWordsArrayBelow,newVerticalArray, newWord) {
       // STEP 1: If word previously removed from bottom, restore it
     if (removedWordsArrayBelow.length > 0) {
       //capture word to be removed from array of removed if user clicked down first
@@ -265,9 +244,29 @@ function restoreWordPrevRemovedFromBottom(removedWordsArrayBelow, setRemovedWord
       newVerticalArray.push(newWord);
     }
 }
+function addNewWordDownButton(removedWordsArrayAbove, newVerticalArray, setRemovedWordsArrayBelow, newWord) {
+      if (removedWordsArrayAbove.length > 0) {
+      // word to restore from above
+      const wordFromAbove =
+        removedWordsArrayAbove[removedWordsArrayAbove.length - 1];
+      console.log("wordFromAbove to be restored:", wordFromAbove);
 
-
-
+      newVerticalArray.unshift(wordFromAbove);
+      console.log(
+        "---------newVerticalArray after word from above added",
+        newVerticalArray,
+      );
+      //Add word to array of words removed on bottom
+      setRemovedWordsArrayBelow((prev) => [...prev, wordFromAbove]);
+      console.log("removedWordsArrayBelow :", removedWordsArrayAbove);
+    } else {
+      newVerticalArray.unshift(newWord);
+      console.log(
+        "------verticalArray no words removed, new word added to bottom:",
+        newVerticalArray,
+      );
+    }
+}
 
 
 
