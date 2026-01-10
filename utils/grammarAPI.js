@@ -1,8 +1,7 @@
-
 import Constants from "expo-constants";
 
-const OPENAI_API_KEY1 = Constants.expoConfig.extra.openaiApiKey ||
-  process.env.OPENAI_API_KEY;;
+const OPENAI_API_KEY1 =
+  Constants.expoConfig.extra.openaiApiKey || process.env.OPENAI_API_KEY;
 
 async function checkGrammar(
   grammarToCheck,
@@ -13,7 +12,7 @@ async function checkGrammar(
   fullWordArray,
   rowLength,
   showCashButton,
-  setShowCashButton
+  setShowCashButton,
 ) {
   setShowCashButton(false);
   setTimeout(() => {
@@ -23,16 +22,19 @@ async function checkGrammar(
   //TEST
 
   fetch("https://jsonplaceholder.typicode.com/todos/1")
-  .then(res => res.json())
-  .then(console.log)
-  .catch(console.error);
+    .then((res) => res.json())
+    .then(console.log)
+    .catch(console.error);
 
-  console.log("Key in build!!!!!!!!!!", Constants.expoConfig.extra.openaiApiKey);
+  console.log(
+    "Key in build!!!!!!!!!!",
+    Constants.expoConfig.extra.openaiApiKey,
+  );
 
   let textToBeChecked = getSentenceToValidate(
     setGrammarToCheck,
     fullWordArray,
-    rowLength
+    rowLength,
   );
   console.log("sentence to check before validate in api", textToBeChecked);
 
@@ -43,9 +45,8 @@ async function checkGrammar(
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
-
-          "Content-Type": "application/json",
-  "Authorization": `Bearer ${OPENAI_API_KEY1}`,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${OPENAI_API_KEY1}`,
       },
       body: JSON.stringify({
         model: "gpt-4o-mini",
@@ -59,12 +60,12 @@ async function checkGrammar(
 
     const data = await response.json();
     console.log("response", data);
-    console.log("response message in api", data.choices[0].message)
+    console.log("response message in api", data.choices[0].message);
     const answer = data.choices[0].message.content.trim().toLowerCase();
     console.log("answer in API!!!!", answer);
     //if answer ===true, should be true, else false
     setGrammarCorrect(answer === "true");
-    console.log("grammarCorrect in api function", answer, grammarCorrect)
+    console.log("grammarCorrect in api function", answer, grammarCorrect);
 
     if (answer === "true") return true;
     if (answer === "false") return false;
@@ -75,22 +76,18 @@ async function checkGrammar(
   }
 }
 
-
 function getSentenceToValidate(
   // rowNumber,
   // setRowNumber,
   setGrammarToCheck,
   fullWordArray,
-  rowLength
+  rowLength,
 ) {
   console.log("getSentenceToCheck running");
   // setRowNumber(rowNumber);
   // console.log("row number in getsentence", rowNumber);
   const fullWordArrayCopy = [...fullWordArray];
-  const sentenceToCheckArray = fullWordArrayCopy.splice(
-   3,
-    rowLength
-  );
+  const sentenceToCheckArray = fullWordArrayCopy.splice(3, rowLength);
   const sentenceToCheck = sentenceToCheckArray.join(" ");
   console.log("sentence To Check", sentenceToCheck);
   setGrammarToCheck(sentenceToCheck);

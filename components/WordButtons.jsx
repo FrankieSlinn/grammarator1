@@ -30,12 +30,9 @@ export function WordButtons({
   setNudgesSpinsLeft,
   setShowOutOfSpinsMessage,
   lockedWords,
-  setLockedWords
-
+  setLockedWords,
 }) {
   const [wordArrayPopulated, setWordArrayPopulated] = useState(false);
-
-
 
   useEffect(() => {
     console.log("RENDER TRIGGERED: fullWordArray updated", fullWordArray);
@@ -50,7 +47,7 @@ export function WordButtons({
         wordArrayPopulated,
         setWordArrayPopulated,
         fullWordArray,
-        setFullWordArray
+        setFullWordArray,
       );
     }
   }, []);
@@ -69,35 +66,41 @@ export function WordButtons({
   }
 
   function wordButtonPressed(key) {
-  setLockedWords(prev => {
-    if (prev.includes(key)) {
-      // remove key
-      return prev.filter(k => k !== key);
-    }
-    // add key
-    return [...prev, key];
-  });
-}
+    setLockedWords((prev) => {
+      if (prev.includes(key)) {
+        // remove key
+        return prev.filter((k) => k !== key);
+      }
+      // add key
+      return [...prev, key];
+    });
+  }
 
-console.log("-----Locked Words:", lockedWords);
+  console.log("-----Locked Words:", lockedWords);
   return (
     <>
       <View style={s.wordsContainer}>
         {/* row = horizontal, index = vertical */}
         {rows.map((row, index) => (
-          <View key={index} style={[s.wordRow,index===1?s.wordBorder:null]}>
+          <View
+            key={index}
+            style={[s.wordRow, index === 1 ? s.wordBorder : null]}
+          >
             {row.map((word, wordIndex) => {
               const key = `${index}-${wordIndex}`;
               //Defines which words are locked
               const isLocked = index === 1 && lockedWords.includes(key);
 
-
               return (
                 <View key={key} style={s.wordButtonContainer}>
-                  <TouchableOpacity onPress={() => wordButtonPressed(key)}
- style={[s.wordButton, s.wordButton, 
-                    {backgroundColor: isLocked? "gold":"aquamarine" }
-                  ]}>
+                  <TouchableOpacity
+                    onPress={() => wordButtonPressed(key)}
+                    style={[
+                      s.wordButton,
+                      s.wordButton,
+                      { backgroundColor: isLocked ? "gold" : "aquamarine" },
+                    ]}
+                  >
                     <Text style={s.word}>{word}</Text>
                   </TouchableOpacity>
                 </View>

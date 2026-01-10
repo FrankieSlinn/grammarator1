@@ -1,44 +1,44 @@
-import {
-  actorList,
-  shortVerbList,
-  wordMix
-} from "./wordList";
+import { actorList, shortVerbList, wordMix } from "./wordList";
 
 function randomNumberGenerator(dataType) {
   return Math.floor(Math.random() * dataType.length);
 }
 
-
 function allocateWords(
-
   rowLength,
   numberOfRows,
   wordArrayPopulated,
   setWordArrayPopulated,
-  fullWordArray, 
-  setFullWordArray
+  fullWordArray,
+  setFullWordArray,
 ) {
-  console.log("rowLength", rowLength, "numberOfRows", numberOfRows)
-  const arrayLength = rowLength * numberOfRows
-  console.log("arrayLength", arrayLength)
+  console.log("rowLength", rowLength, "numberOfRows", numberOfRows);
+  const arrayLength = rowLength * numberOfRows;
+  console.log("arrayLength", arrayLength);
   const newWords = new Array(arrayLength).fill("X");
-  console.log("new words", newWords)
+  console.log("new words", newWords);
 
-//   const newWords = [];
+  //   const newWords = [];
 
-//   console.log("rowLength * numberOfRows", rowLength * numberOfRows);
-// //populate initial word list
-//   if (wordArrayPopulated === false) {
-//     while (newWords.length < rowLength * numberOfRows) {
-//       console.log("while loop for words running");
-//       const randomWord = wordList[randomNumberGenerator(wordList)];
-//       console.log("randomWord", randomWord);
-//       newWords.push(randomWord);
-      console.log("newWords bing build", newWords);
-//     }
-    setWordArrayPopulated(true);
-//   }
-  insertHelpfulWords(numberOfRows, newWords, rowLength, fullWordArray, setFullWordArray);
+  //   console.log("rowLength * numberOfRows", rowLength * numberOfRows);
+  // //populate initial word list
+  //   if (wordArrayPopulated === false) {
+  //     while (newWords.length < rowLength * numberOfRows) {
+  //       console.log("while loop for words running");
+  //       const randomWord = wordList[randomNumberGenerator(wordList)];
+  //       console.log("randomWord", randomWord);
+  //       newWords.push(randomWord);
+  console.log("newWords bing build", newWords);
+  //     }
+  setWordArrayPopulated(true);
+  //   }
+  insertHelpfulWords(
+    numberOfRows,
+    newWords,
+    rowLength,
+    fullWordArray,
+    setFullWordArray,
+  );
 }
 
 //To make it easier to compile a sentence that is grammatically correct
@@ -46,16 +46,15 @@ function insertHelpfulWords(
   numberOfRows,
   newWords,
   rowLength,
-  fullWordArray, 
-  setFullWordArray
+  fullWordArray,
+  setFullWordArray,
 ) {
   // Insert actor word at the beginning of a random row
 
   console.log("new words in insertHelpfulwrods", newWords);
-  insertActors(numberOfRows, rowLength, newWords,  setFullWordArray);
+  insertActors(numberOfRows, rowLength, newWords, setFullWordArray);
   insertVerbs(numberOfRows, rowLength, newWords, setFullWordArray);
-  insertFinalWord(numberOfRows, rowLength, newWords, setFullWordArray)
-  
+  insertFinalWord(numberOfRows, rowLength, newWords, setFullWordArray);
 
   //Insert one adverb 2nd field of random row
   // const randomRowIndexAdverb1 = randomNumberGenerator(new Array(numberOfRows));
@@ -73,54 +72,47 @@ function insertHelpfulWords(
 
   console.log("Final word array:", newWords);
   setFullWordArray(newWords);
-    return newWords;}
+  return newWords;
+}
 
-  function insertActors(numberOfRows, rowLength, newWords, setFullWordArray){
-    console.log("insert actors running")
-    // const actorWord1 = actorList[randomNumberGenerator(actorList)];
-    //   const actorWord2 = actorList[randomNumberGenerator(actorList)];
-    //   const actorWord3 = actorList[randomNumberGenerator(actorList)];
-    if(rowLength===3){
-      console.log("rowlength ===3")
-      for(let i = 0; i < numberOfRows; i++){
-        let newActor = actorList[randomNumberGenerator(actorList)];
-        console.log("new actor", newActor)
-newWords[i*rowLength]=newActor;
-console.log("newWords after actor inserted", newWords)
-setFullWordArray([...newWords]);
-
-
+function insertActors(numberOfRows, rowLength, newWords, setFullWordArray) {
+  console.log("insert actors running");
+  // const actorWord1 = actorList[randomNumberGenerator(actorList)];
+  //   const actorWord2 = actorList[randomNumberGenerator(actorList)];
+  //   const actorWord3 = actorList[randomNumberGenerator(actorList)];
+  if (rowLength === 3) {
+    console.log("rowlength ===3");
+    for (let i = 0; i < numberOfRows; i++) {
+      let newActor = actorList[randomNumberGenerator(actorList)];
+      console.log("new actor", newActor);
+      newWords[i * rowLength] = newActor;
+      console.log("newWords after actor inserted", newWords);
+      setFullWordArray([...newWords]);
+    }
   }
 }
-  }
 
 function insertVerbs(numberOfRows, rowLength, newWords, setFullWordArray) {
-  console.log("insert verbs running")
-  for(let i = 0; i < numberOfRows; i++){
+  console.log("insert verbs running");
+  for (let i = 0; i < numberOfRows; i++) {
     let newVerb = shortVerbList[randomNumberGenerator(shortVerbList)];
-  
-    newWords[i*rowLength+1]=newVerb;
-    
+
+    newWords[i * rowLength + 1] = newVerb;
+
     setFullWordArray([...newWords]);
-
-
-}
+  }
 }
 
-function insertFinalWord(numberOfRows, rowLength, newWords, setFullWordArray){
-  console.log("insert final word running")
-  for(let i = 0; i < numberOfRows; i++){
+function insertFinalWord(numberOfRows, rowLength, newWords, setFullWordArray) {
+  console.log("insert final word running");
+  for (let i = 0; i < numberOfRows; i++) {
     // let newVerb = shortVerbList[randomNumberGenerator(shortVerbList)];
-    let newMixWord = wordMix[randomNumberGenerator(wordMix)]
+    let newMixWord = wordMix[randomNumberGenerator(wordMix)];
     // newWords[i*rowLength+1]=newVerb;
-    newWords[i*rowLength+2]=newMixWord;
+    newWords[i * rowLength + 2] = newMixWord;
     setFullWordArray([...newWords]);
-
-
+  }
 }
-}
-
-
 
 // function insertActors(numberOfRows, rowLength, newWords) {
 //   //select a random row to insert word into
@@ -184,20 +176,23 @@ function makeWordArrays(
   numberOfRows,
   wordArrayPopulated,
   setWordArrayPopulated,
-  fullWordArray, 
-  setFullWordArray
+  fullWordArray,
+  setFullWordArray,
 ) {
   const newWordArray = allocateWords(
-
     rowLength,
     numberOfRows,
     wordArrayPopulated,
     setWordArrayPopulated,
-    fullWordArray, 
-    setFullWordArray
-  
+    fullWordArray,
+    setFullWordArray,
   );
 }
 
-export { insertActors, insertFinalWord, insertVerbs, makeWordArrays, randomNumberGenerator };
-
+export {
+  insertActors,
+  insertFinalWord,
+  insertVerbs,
+  makeWordArrays,
+  randomNumberGenerator,
+};

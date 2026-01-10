@@ -21,38 +21,37 @@ export default function Index() {
   const [newRound, setNewRound] = useState(false);
   const [rowLength, setRowLength] = useState(3);
   const [numberOfRows, setNumberOfRows] = useState(3);
-  const [showPointsMessage, setShowPointsMessage]=useState(false);
-  const [gameScore, setGameScore] = useState(0); 
-  const [roundsLeft, setRoundsLeft] = useState(10); 
-  const [nudgesSpinsLeft, setNudgesSpinsLeft] = useState(2)
-  const[correctSentenceDisplay, setCorrectSentenceDisplay] = useState("");
-  const[showCorrectSentenceDisplay, setShowCorrectSentenceDisplay]=useState(false)
-  const[showOutOfSpinsMessage, setShowOutOfSpinsMessage] = useState(false)
-  const[showFinishGameMessage, setShowFinishGameMessage] = useState(false)
-  const[showNewGameButton, setShowNewGameButton]=useState(false)
-  const [showCashButton, setShowCashButton] =useState(true)
+  const [showPointsMessage, setShowPointsMessage] = useState(false);
+  const [gameScore, setGameScore] = useState(0);
+  const [roundsLeft, setRoundsLeft] = useState(10);
+  const [nudgesSpinsLeft, setNudgesSpinsLeft] = useState(2);
+  const [correctSentenceDisplay, setCorrectSentenceDisplay] = useState("");
+  const [showCorrectSentenceDisplay, setShowCorrectSentenceDisplay] =
+    useState(false);
+  const [showOutOfSpinsMessage, setShowOutOfSpinsMessage] = useState(false);
+  const [showFinishGameMessage, setShowFinishGameMessage] = useState(false);
+  const [showNewGameButton, setShowNewGameButton] = useState(false);
+  const [showCashButton, setShowCashButton] = useState(true);
   const [grammarToCheck, setGrammarToCheck] = useState("");
   const [pressedRowIndex, setPressedRowIndex] = useState(null);
   const [actorWordsRemovedAbove, setActorWordsRemovedAbove] = useState([]);
   const [verbWordsRemovedAbove, setVerbWordsRemovedAbove] = useState([]);
-  const [wordMixRemovedAbove, setWordMixRemovedAbove] = useState([])
+  const [wordMixRemovedAbove, setWordMixRemovedAbove] = useState([]);
   const [actorWordsRemovedBelow, setActorWordsRemovedBelow] = useState([]);
   const [verbWordsRemovedBelow, setVerbWordsRemovedBelow] = useState([]);
-  const [wordMixRemovedBelow, setWordMixRemovedBelow] = useState([])
-  const [verticalArrayActors, setVerticalArrayActors]=useState([])
-  const [verticalArrayVerbs, setVerticalArrayVerbs] = useState([])
-  const [verticalArrayWordMix, setVerticalArrayWordMix] = useState([])
+  const [wordMixRemovedBelow, setWordMixRemovedBelow] = useState([]);
+  const [verticalArrayActors, setVerticalArrayActors] = useState([]);
+  const [verticalArrayVerbs, setVerticalArrayVerbs] = useState([]);
+  const [verticalArrayWordMix, setVerticalArrayWordMix] = useState([]);
   const [lockedWords, setLockedWords] = useState([]);
 
- //Lock words press up, unlock word press up then down. Nudge button doesn't do anything. 
-  
+  //Lock words press up, unlock word press up then down. Nudge button doesn't do anything.
+
   console.log("fullWordArray in index", fullWordArray);
 
-  useEffect(()=>{
-    console.log("showPointsMessage", showPointsMessage)
-
-
-  }, [grammarCorrect])
+  useEffect(() => {
+    console.log("showPointsMessage", showPointsMessage);
+  }, [grammarCorrect]);
 
   return (
     <>
@@ -61,12 +60,9 @@ export default function Index() {
       </View>
       <View style={s.appBodyView}>
         <Dashboard
-        gameScore={gameScore}
-        roundsLeft={roundsLeft}
-        nudgesSpinsLeft={nudgesSpinsLeft}
-
-        
-        
+          gameScore={gameScore}
+          roundsLeft={roundsLeft}
+          nudgesSpinsLeft={nudgesSpinsLeft}
         />
         <CashButtonFeedback
           cashButtonPressed={cashButtonPressed}
@@ -74,22 +70,18 @@ export default function Index() {
           cashButtonPressed={cashButtonPressed}
           setCashButtonPressed={setCashButtonPressed}
           grammarCorrect={grammarCorrect}
-          setGrammarCorrect ={setGrammarCorrect}
+          setGrammarCorrect={setGrammarCorrect}
           grammarToCheck={grammarToCheck}
           setGrammarToCheck={setGrammarToCheck}
           fullWordArray={fullWordArray}
-          rowLength = {rowLength}
+          rowLength={rowLength}
           showCashButton={showCashButton}
           setShowCashButton={setShowCashButton}
-          
         />
-        {showCorrectSentenceDisplay===true?
-        <DisplaySentence
-        correctSentenceDisplay={correctSentenceDisplay}
-        
-        />
-        :null}
-     
+        {showCorrectSentenceDisplay === true ? (
+          <DisplaySentence correctSentenceDisplay={correctSentenceDisplay} />
+        ) : null}
+
         <SpinButtons
           rowLength={rowLength}
           numberOfRows={numberOfRows}
@@ -136,10 +128,8 @@ export default function Index() {
           setPressedRowIndex={setPressedRowIndex}
           lockedWords={lockedWords}
           setLockedWords={setLockedWords}
-
-
         />
-                <NudgeButtons
+        <NudgeButtons
           rowLength={rowLength}
           numberOfRows={numberOfRows}
           fullWordArray={fullWordArray}
@@ -160,143 +150,135 @@ export default function Index() {
           setVerbWordsRemovedBelow={setVerbWordsRemovedBelow}
           wordMixRemovedBelow={wordMixRemovedBelow}
           setWordMixRemovedBelow={setWordMixRemovedBelow}
-          verticalArrayActors= {verticalArrayActors}
+          verticalArrayActors={verticalArrayActors}
           setVerticalArrayActors={setVerticalArrayActors}
-          verticalArrayVerbs = {verticalArrayVerbs}
-          setVerticalArrayVerbs = {setVerticalArrayVerbs}
-          verticalArrayWordMix = {verticalArrayWordMix}
-          setVerticalArrayWordMix = {setVerticalArrayWordMix}
+          verticalArrayVerbs={verticalArrayVerbs}
+          setVerticalArrayVerbs={setVerticalArrayVerbs}
+          verticalArrayWordMix={verticalArrayWordMix}
+          setVerticalArrayWordMix={setVerticalArrayWordMix}
           roundsLeft={roundsLeft}
           lockedWords={lockedWords}
           setLockedWords={setLockedWords}
         />
-        {showCashButton===true?
-         <CashButton
-              grammarCorrect={grammarCorrect}
-              setGrammarCorrect={setGrammarCorrect}
-              cashButtonPressed={cashButtonPressed}
-              setCashButtonPressed={setCashButtonPressed}
-              fullWordArray={fullWordArray}
-              setFullWordArray={setFullWordArray}
-              numberOfRows={numberOfRows}
-              grammarToCheck={grammarToCheck}
-              setGrammarToCheck={setGrammarToCheck}
-              rowLength={rowLength}
-              pressedRowIndex={pressedRowIndex}
-              setPressedRowIndex={setPressedRowIndex}
-              showPointsMessage={showPointsMessage}
-              setShowPointsMessage={setShowPointsMessage}
-              gameScore={gameScore}
-              setGameScore={setGameScore}
-              correctSentenceDssplay={correctSentenceDisplay}
-              setCorrectSentenceDisplay={setCorrectSentenceDisplay}
-              showCorrectSentenceDisplay={showCorrectSentenceDisplay}
-              setShowCorrectSentenceDisplay={setShowCorrectSentenceDisplay}
-              roundsLeft={roundsLeft}
-              setRoundsLeft={setRoundsLeft}
-              nudgesSpinsLeft={nudgesSpinsLeft}
-              setNudgesSpinsLeft={setNudgesSpinsLeft}
-              setShowOutOfSpinsMessage={setShowOutOfSpinsMessage}
-              showFinishGameMessage={showFinishGameMessage}
-              setShowFinishGameMessage={setShowFinishGameMessage}
-              actorWordsRemovedAbove={actorWordsRemovedAbove}
-              setActorWordsRemovedAbove={setActorWordsRemovedAbove}
-              verbWordsRemovedAbove={verbWordsRemovedAbove}
-              setVerbWordsRemovedAbove={setVerbWordsRemovedAbove}
-              wordMixRemovedAbove={wordMixRemovedAbove}
-              setWordMixRemovedAbove={setWordMixRemovedAbove}
-              actorWordsRemovedBelow={actorWordsRemovedBelow}
-              setActorWordsRemovedBelow={setActorWordsRemovedBelow}
-              verbWordsRemovedBelow={verbWordsRemovedBelow}
-              setVerbWordsRemovedBelow={setVerbWordsRemovedBelow}
-              wordMixRemovedBelow={wordMixRemovedBelow}
-              setWordMixRemovedBelow={setWordMixRemovedBelow}
-              showOutOfSpinsMessage={showOutOfSpinsMessage}
-              setShowOutOfSpinsMessage={setShowOutOfSpinsMessage}
-              actorWordsRemovedAbove={actorWordsRemovedAbove}
-              setActorWordsRemovedAbove={setActorWordsRemovedAbove}
-              verbWordsRemovedAbove={verbWordsRemovedAbove}
-              setVerbWordsRemovedAbove={setVerbWordsRemovedAbove}
-              wordMixRemovedAbove={wordMixRemovedAbove}
-              setWordMixRemovedAbove={setWordMixRemovedAbove}
-              actorWordsRemovedBelow={actorWordsRemovedBelow}
-              setActorWordsRemovedBelow={setActorWordsRemovedBelow}
-              verbWordsRemovedBelow={verbWordsRemovedBelow}
-              setVerbWordsRemovedBelow={setVerbWordsRemovedBelow}
-              wordMixRemovedBelow={wordMixRemovedBelow}
-              setWordMixRemovedBelow={setWordMixRemovedBelow}
-              showNewGameButton={showNewGameButton}
-              setShowNewGameButton={setShowNewGameButton}
-              verticalArrayActors= {verticalArrayActors}
-              setVerticalArrayActors={setVerticalArrayActors}
-              verticalArrayVerbs = {verticalArrayVerbs}
-              setVerticalArrayVerbs = {setVerticalArrayVerbs}
-              verticalArrayWordMix = {verticalArrayWordMix}
-              setVerticalArrayWordMix = {setVerticalArrayWordMix}
-              showCashButton={showCashButton}
-              setShowCashButton={setShowCashButton}
-              lockedWords={lockedWords}
-              setLockedWords={setLockedWords}
-            />: null}
-         
-       { showPointsMessage?
-        <PointsMessage
-        gameScore={gameScore}
-        setGameScore={setGameScore}
-        />
-        :null}
-        {showOutOfSpinsMessage?
-        <OutOfSpinsMessage/>:null}
+        {showCashButton === true ? (
+          <CashButton
+            grammarCorrect={grammarCorrect}
+            setGrammarCorrect={setGrammarCorrect}
+            cashButtonPressed={cashButtonPressed}
+            setCashButtonPressed={setCashButtonPressed}
+            fullWordArray={fullWordArray}
+            setFullWordArray={setFullWordArray}
+            numberOfRows={numberOfRows}
+            grammarToCheck={grammarToCheck}
+            setGrammarToCheck={setGrammarToCheck}
+            rowLength={rowLength}
+            pressedRowIndex={pressedRowIndex}
+            setPressedRowIndex={setPressedRowIndex}
+            showPointsMessage={showPointsMessage}
+            setShowPointsMessage={setShowPointsMessage}
+            gameScore={gameScore}
+            setGameScore={setGameScore}
+            correctSentenceDssplay={correctSentenceDisplay}
+            setCorrectSentenceDisplay={setCorrectSentenceDisplay}
+            showCorrectSentenceDisplay={showCorrectSentenceDisplay}
+            setShowCorrectSentenceDisplay={setShowCorrectSentenceDisplay}
+            roundsLeft={roundsLeft}
+            setRoundsLeft={setRoundsLeft}
+            nudgesSpinsLeft={nudgesSpinsLeft}
+            setNudgesSpinsLeft={setNudgesSpinsLeft}
+            setShowOutOfSpinsMessage={setShowOutOfSpinsMessage}
+            showFinishGameMessage={showFinishGameMessage}
+            setShowFinishGameMessage={setShowFinishGameMessage}
+            actorWordsRemovedAbove={actorWordsRemovedAbove}
+            setActorWordsRemovedAbove={setActorWordsRemovedAbove}
+            verbWordsRemovedAbove={verbWordsRemovedAbove}
+            setVerbWordsRemovedAbove={setVerbWordsRemovedAbove}
+            wordMixRemovedAbove={wordMixRemovedAbove}
+            setWordMixRemovedAbove={setWordMixRemovedAbove}
+            actorWordsRemovedBelow={actorWordsRemovedBelow}
+            setActorWordsRemovedBelow={setActorWordsRemovedBelow}
+            verbWordsRemovedBelow={verbWordsRemovedBelow}
+            setVerbWordsRemovedBelow={setVerbWordsRemovedBelow}
+            wordMixRemovedBelow={wordMixRemovedBelow}
+            setWordMixRemovedBelow={setWordMixRemovedBelow}
+            showOutOfSpinsMessage={showOutOfSpinsMessage}
+            setShowOutOfSpinsMessage={setShowOutOfSpinsMessage}
+            actorWordsRemovedAbove={actorWordsRemovedAbove}
+            setActorWordsRemovedAbove={setActorWordsRemovedAbove}
+            verbWordsRemovedAbove={verbWordsRemovedAbove}
+            setVerbWordsRemovedAbove={setVerbWordsRemovedAbove}
+            wordMixRemovedAbove={wordMixRemovedAbove}
+            setWordMixRemovedAbove={setWordMixRemovedAbove}
+            actorWordsRemovedBelow={actorWordsRemovedBelow}
+            setActorWordsRemovedBelow={setActorWordsRemovedBelow}
+            verbWordsRemovedBelow={verbWordsRemovedBelow}
+            setVerbWordsRemovedBelow={setVerbWordsRemovedBelow}
+            wordMixRemovedBelow={wordMixRemovedBelow}
+            setWordMixRemovedBelow={setWordMixRemovedBelow}
+            showNewGameButton={showNewGameButton}
+            setShowNewGameButton={setShowNewGameButton}
+            verticalArrayActors={verticalArrayActors}
+            setVerticalArrayActors={setVerticalArrayActors}
+            verticalArrayVerbs={verticalArrayVerbs}
+            setVerticalArrayVerbs={setVerticalArrayVerbs}
+            verticalArrayWordMix={verticalArrayWordMix}
+            setVerticalArrayWordMix={setVerticalArrayWordMix}
+            showCashButton={showCashButton}
+            setShowCashButton={setShowCashButton}
+            lockedWords={lockedWords}
+            setLockedWords={setLockedWords}
+          />
+        ) : null}
+
+        {showPointsMessage ? (
+          <PointsMessage gameScore={gameScore} setGameScore={setGameScore} />
+        ) : null}
+        {showOutOfSpinsMessage ? <OutOfSpinsMessage /> : null}
       </View>
       <View>
-{showFinishGameMessage?
-        <FinishGameMessage
-        gameScore={gameScore}
-        
-        />
-        :null}
+        {showFinishGameMessage ? (
+          <FinishGameMessage gameScore={gameScore} />
+        ) : null}
       </View>
-{showNewGameButton?
-  <NewGameButton
-  
-  setShowOutOfSpinsMessage={setShowOutOfSpinsMessage}
- setActorWordsRemovedAbove={setActorWordsRemovedAbove}
- setVerbWordsRemovedAbove={setVerbWordsRemovedAbove}
- setWordMixRemovedAbove={setWordMixRemovedAbove}
- setActorWordsRemovedBelow={setActorWordsRemovedBelow}
-  setVerbWordsRemovedBelow={setVerbWordsRemovedBelow}
-  setWordMixRemovedBelow={setWordMixRemovedBelow}
-  roundsLeft={roundsLeft}
-  setRoundsLeft={setRoundsLeft}
-  setShowCorrectSentenceDisplay={setShowCorrectSentenceDisplay}
-  nudgesSpinsLeft={nudgesSpinsLeft}
- setNudgesSpinsLeft={setNudgesSpinsLeft}
-  setCashButtonPressed={setCashButtonPressed}
-  numberOfRows={numberOfRows}
-  fullWordArray={fullWordArray}
-  setFullWordArray={setFullWordArray}
-  rowLength={rowLength}
-  verticalArrayActors= {verticalArrayActors}
-  setVerticalArrayActors={setVerticalArrayActors}
-  verticalArrayVerbs = {verticalArrayVerbs}
-  setVerticalArrayVerbs = {setVerticalArrayVerbs}
-  verticalArrayWordMix = {verticalArrayWordMix}
-  setVerticalArrayWordMix = {setVerticalArrayWordMix}
-  showPointsMessage={showPointsMessage}
-  setShowPointsMessage ={setShowPointsMessage}
-  showFinishGameMessage={showFinishGameMessage}
-  setShowFinishGameMessage={setShowFinishGameMessage}
-  gameScore ={gameScore}
-  setGameScore={setGameScore}
-  roundsLeft={roundsLeft}
-  setRoundsLeft={setRoundsLeft}
-  showNewGameButton={showNewGameButton}
-  setShowNewGameButton={setShowNewGameButton}
-  showCashButton={showCashButton}
-  setShowCashButton={setShowCashButton}
-  />
-  :null}
+      {showNewGameButton ? (
+        <NewGameButton
+          setShowOutOfSpinsMessage={setShowOutOfSpinsMessage}
+          setActorWordsRemovedAbove={setActorWordsRemovedAbove}
+          setVerbWordsRemovedAbove={setVerbWordsRemovedAbove}
+          setWordMixRemovedAbove={setWordMixRemovedAbove}
+          setActorWordsRemovedBelow={setActorWordsRemovedBelow}
+          setVerbWordsRemovedBelow={setVerbWordsRemovedBelow}
+          setWordMixRemovedBelow={setWordMixRemovedBelow}
+          roundsLeft={roundsLeft}
+          setRoundsLeft={setRoundsLeft}
+          setShowCorrectSentenceDisplay={setShowCorrectSentenceDisplay}
+          nudgesSpinsLeft={nudgesSpinsLeft}
+          setNudgesSpinsLeft={setNudgesSpinsLeft}
+          setCashButtonPressed={setCashButtonPressed}
+          numberOfRows={numberOfRows}
+          fullWordArray={fullWordArray}
+          setFullWordArray={setFullWordArray}
+          rowLength={rowLength}
+          verticalArrayActors={verticalArrayActors}
+          setVerticalArrayActors={setVerticalArrayActors}
+          verticalArrayVerbs={verticalArrayVerbs}
+          setVerticalArrayVerbs={setVerticalArrayVerbs}
+          verticalArrayWordMix={verticalArrayWordMix}
+          setVerticalArrayWordMix={setVerticalArrayWordMix}
+          showPointsMessage={showPointsMessage}
+          setShowPointsMessage={setShowPointsMessage}
+          showFinishGameMessage={showFinishGameMessage}
+          setShowFinishGameMessage={setShowFinishGameMessage}
+          gameScore={gameScore}
+          setGameScore={setGameScore}
+          roundsLeft={roundsLeft}
+          setRoundsLeft={setRoundsLeft}
+          showNewGameButton={showNewGameButton}
+          setShowNewGameButton={setShowNewGameButton}
+          showCashButton={showCashButton}
+          setShowCashButton={setShowCashButton}
+        />
+      ) : null}
     </>
   );
 }
-

@@ -4,8 +4,8 @@ export const s = StyleSheet.create({
   appBodyView: {
     flex: 1,
   },
-  centerText:{
-    textAlign:"center",
+  centerText: {
+    textAlign: "center",
   },
   logoContainer: {
     // height: "10%",
@@ -89,13 +89,11 @@ export const s = StyleSheet.create({
 
     // height: "10%",
   },
-  wordBorder:{
+  wordBorder: {
     borderWidth: 8,
     borderColor: "lightblue",
     borderRadius: 15,
     padding: 5,
-
-
   },
 
   wordButton: {
@@ -120,7 +118,7 @@ export const s = StyleSheet.create({
     flex: 0.05,
     // backgroundColor: "gray",
     flexDirection: "row",
-    marginTop: Platform.OS === "android" ? 85:50,
+    marginTop: Platform.OS === "android" ? 85 : 50,
     marginRight: 0,
     justifyContent: "center",
     // width: "88%",
@@ -206,21 +204,16 @@ export const s = StyleSheet.create({
     justifyContent: "center",
     textAlign: "center",
   },
-  finishGameContainerOuter:{
+  finishGameContainerOuter: {
     alignItems: "center",
-
-
   },
-  finishGameContainer:{
-    marginTop: Platform.OS==="android"?-100:-150,
+  finishGameContainer: {
+    marginTop: Platform.OS === "android" ? -100 : -150,
     marginHorizontal: 30,
     alignItems: "center",
 
     textAlign: "center",
     justifyContent: "center",
-        // backgroundColor: "lightyellow",
-
-
-  }
-  
+    // backgroundColor: "lightyellow",
+  },
 });
