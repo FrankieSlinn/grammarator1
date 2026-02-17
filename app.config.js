@@ -1,3 +1,12 @@
+import dotenv from "dotenv";
+import path from "path";
+
+dotenv.config({ path: path.resolve(process.cwd(), ".env") });
+console.log(
+  "!!!!!!!!!!!!&&&&&&&&ENV TEST In app.config:",
+  process.env.OPENAI_API_KEY1,
+);
+
 export default {
   expo: {
     name: "grammarator1",
@@ -10,7 +19,8 @@ export default {
     newArchEnabled: true,
     runtimeVersion: "fingerprint",
     extra: {
-      openaiApiKey: process.env.OPENAI_API_KEY,
+      openaiApiKey: process.env.OPENAI_API_KEY1,
+
       eas: {
         projectId: "c2c87c36-baf3-4d92-a9d4-dbbe984c5a64",
       },

@@ -1,7 +1,10 @@
 import Constants from "expo-constants";
 
+// const OPENAI_API_KEY1 =
+//   Constants.expoConfig.extra.openaiApiKey || process.env.OPENAI_API_KEY;
 const OPENAI_API_KEY1 =
-  Constants.expoConfig.extra.openaiApiKey || process.env.OPENAI_API_KEY;
+  Constants.expoConfig?.extra?.openaiApiKey ??
+  Constants.manifest?.extra?.openaiApiKey;
 
 async function checkGrammar(
   grammarToCheck,
@@ -19,17 +22,14 @@ async function checkGrammar(
     setCashButtonPressed(true);
   }, 1000);
   console.log("Cash button pressed");
-  //TEST
-
-  fetch("https://jsonplaceholder.typicode.com/todos/1")
-    .then((res) => res.json())
-    .then(console.log)
-    .catch(console.error);
 
   console.log(
     "Key in build!!!!!!!!!!",
     Constants.expoConfig.extra.openaiApiKey,
   );
+  console.log("EXPO CONFIG:", Constants.expoConfig);
+  console.log("MANIFEST:", Constants.manifest);
+  console.log("EXTRA:", Constants.expoConfig?.extra);
 
   let textToBeChecked = getSentenceToValidate(
     setGrammarToCheck,
@@ -76,13 +76,7 @@ async function checkGrammar(
   }
 }
 
-function getSentenceToValidate(
-  // rowNumber,
-  // setRowNumber,
-  setGrammarToCheck,
-  fullWordArray,
-  rowLength,
-) {
+function getSentenceToValidate(setGrammarToCheck, fullWordArray, rowLength) {
   console.log("getSentenceToCheck running");
   // setRowNumber(rowNumber);
   // console.log("row number in getsentence", rowNumber);
@@ -94,4 +88,4 @@ function getSentenceToValidate(
   return sentenceToCheck;
 }
 
-export { checkGrammar };
+export { checkGrammar, getSentenceToValidate };

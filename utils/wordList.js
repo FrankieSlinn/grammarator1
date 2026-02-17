@@ -1500,5 +1500,5 @@ export {
   shortVerbList,
   verbList,
   wordList,
-  wordMix,
+  wordMix
 };

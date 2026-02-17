@@ -1,9 +1,11 @@
+import { getCorrectWord } from "./getCorrectWordAPI";
 import {
   insertActors,
   insertFinalWord,
   insertVerbs,
   randomNumberGenerator,
 } from "./makeWordArrays";
+import { actorList, verbList, wordMix } from "./wordList";
 
 function spinColumn(
   numberOfRows,
@@ -16,9 +18,11 @@ function spinColumn(
   setShowOutOfSpinsMessage,
   roundsLeft,
 ) {
+  console.log("actor list", actorList);
   console.log("spinColumn running");
   console.log("spin column index", index);
   console.log("roundsLeft in SPINCOLUMN", roundsLeft);
+  getCorrectWord(rowLength, index, actorList, verbList, wordMix);
   if (roundsLeft > 0) {
     console.log("Rounds Left Over 1!");
     if (index === 0) {
@@ -134,7 +138,12 @@ function shiftColumn({
     );
 
     // Always start from a fresh copy
-   addNewWordUpnButton(removedWordsArrayBelow, setRemovedWordsArrayBelow, newVerticalArray, newWord)
+    addNewWordUpnButton(
+      removedWordsArrayBelow,
+      setRemovedWordsArrayBelow,
+      newVerticalArray,
+      newWord,
+    );
 
     console.log("---------newVerticalArray after adding bottom word:", [
       ...newVerticalArray,
@@ -150,24 +159,20 @@ function shiftColumn({
     newVerticalArray = newVerticalArray.slice(1);
 
     setVerticalArray(newVerticalArray);
-        console.log("Removed word (top):", removedWord);
-        //Do this to ensure the full array can be rebuilt without react timing issues
+    console.log("Removed word (top):", removedWord);
+    //Do this to ensure the full array can be rebuilt without react timing issues
     verticalArray = newVerticalArray;
 
-
-    console.log("Shifted UP");
-
     console.log("Final vertical array:", [...newVerticalArray]);
-
-
   } else if (direction === "down") {
     console.log("--------FUNCTION FOR DOWN NUDGE BUTTON RUNNING");
-addNewWordDownButton(removedWordsArrayAbove, newVerticalArray, setRemovedWordsArrayBelow, newWord)
-
-    console.log(
-      "newVerticalArray[newVerticalArray.length  -1]",
-      newVerticalArray[newVerticalArray.length - 1],
+    addNewWordDownButton(
+      removedWordsArrayAbove,
+      newVerticalArray,
+      setRemovedWordsArrayBelow,
+      newWord,
     );
+
     const wordToAddToremovedWordsArrayBelow =
       newVerticalArray[newVerticalArray.length - 1];
     setRemovedWordsArrayBelow((prev) => [
@@ -178,16 +183,7 @@ addNewWordDownButton(removedWordsArrayAbove, newVerticalArray, setRemovedWordsAr
     newVerticalArray.pop();
     setVerticalArray(newVerticalArray);
 
-    console.log(
-      "-----verticalArray after popped last element----",
-      newVerticalArray,
-    );
     verticalArray = newVerticalArray;
-    console.log(
-      "vertical array after resset before rebuild fullWordArray",
-      verticalArray,
-    );
-
     console.log("-----New vertical array after down", verticalArray);
     console.log("------removedWordsArrayBelow :", removedWordsArrayBelow);
   }
@@ -229,46 +225,54 @@ function repopulateFullWordArrayWithShiftedColumns({
   console.log("Updated Full Word Array:", newFullWordArray);
 }
 
-function addNewWordUpnButton(removedWordsArrayBelow, setRemovedWordsArrayBelow,newVerticalArray, newWord) {
-      // STEP 1: If word previously removed from bottom, restore it
-    if (removedWordsArrayBelow.length > 0) {
-      //capture word to be removed from array of removed if user clicked down first
-      const wordFromBelow =
-        removedWordsArrayBelow[removedWordsArrayBelow.length - 1];
-      //Restore previously removed word to array
-      newVerticalArray.push(wordFromBelow);
+function addNewWordUpnButton(
+  removedWordsArrayBelow,
+  setRemovedWordsArrayBelow,
+  newVerticalArray,
+  newWord,
+) {
+  // STEP 1: If word previously removed from bottom, restore it
+  if (removedWordsArrayBelow.length > 0) {
+    //capture word to be removed from array of removed if user clicked down first
+    const wordFromBelow =
+      removedWordsArrayBelow[removedWordsArrayBelow.length - 1];
+    //Restore previously removed word to array
+    newVerticalArray.push(wordFromBelow);
 
-      // remove LAST element from array of previously removed words immutably
-      setRemovedWordsArrayBelow((prev) => prev.slice(0, 0));
-    } else {
-      newVerticalArray.push(newWord);
-    }
+    // remove LAST element from array of previously removed words immutably
+    setRemovedWordsArrayBelow((prev) => prev.slice(0, 0));
+  } else {
+    newVerticalArray.push(newWord);
+  }
 }
-function addNewWordDownButton(removedWordsArrayAbove, newVerticalArray, setRemovedWordsArrayBelow, newWord) {
-      if (removedWordsArrayAbove.length > 0) {
-      // word to restore from above
-      const wordFromAbove =
-        removedWordsArrayAbove[removedWordsArrayAbove.length - 1];
-      console.log("wordFromAbove to be restored:", wordFromAbove);
+function addNewWordDownButton(
+  removedWordsArrayAbove,
+  newVerticalArray,
+  setRemovedWordsArrayBelow,
+  newWord,
+) {
+  if (removedWordsArrayAbove.length > 0) {
+    // word to restore from above
+    const wordFromAbove =
+      removedWordsArrayAbove[removedWordsArrayAbove.length - 1];
+    console.log("wordFromAbove to be restored:", wordFromAbove);
 
-      newVerticalArray.unshift(wordFromAbove);
-      console.log(
-        "---------newVerticalArray after word from above added",
-        newVerticalArray,
-      );
-      //Add word to array of words removed on bottom
-      setRemovedWordsArrayBelow((prev) => [...prev, wordFromAbove]);
-      console.log("removedWordsArrayBelow :", removedWordsArrayAbove);
-    } else {
-      newVerticalArray.unshift(newWord);
-      console.log(
-        "------verticalArray no words removed, new word added to bottom:",
-        newVerticalArray,
-      );
-    }
+    newVerticalArray.unshift(wordFromAbove);
+    console.log(
+      "---------newVerticalArray after word from above added",
+      newVerticalArray,
+    );
+    //Add word to array of words removed on bottom
+    setRemovedWordsArrayBelow((prev) => [...prev, wordFromAbove]);
+    console.log("removedWordsArrayBelow :", removedWordsArrayAbove);
+  } else {
+    newVerticalArray.unshift(newWord);
+    console.log(
+      "------verticalArray no words removed, new word added to bottom:",
+      newVerticalArray,
+    );
+  }
 }
-
-
 
 function resetNudgesSpins(
   nudgesSpinsLeft,
@@ -281,12 +285,5 @@ function resetNudgesSpins(
     setNudgesSpinsLeft((prev) => prev - 1);
   }
 }
-
-
-
-
-
-
-
 
 export { prepareToShiftColumns, spinColumn };
