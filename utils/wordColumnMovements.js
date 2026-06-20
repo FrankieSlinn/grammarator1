@@ -1,11 +1,12 @@
-import { getCorrectWord } from "./getCorrectWordAPI";
+import { getRightWords, randomActor } from "./createSentence";
 import {
   insertActors,
   insertFinalWord,
   insertVerbs,
   randomNumberGenerator,
 } from "./makeWordArrays";
-import { actorList, verbList, wordMix } from "./wordList";
+
+import { actorList, shortVerbList, wordMix } from "./wordList";
 
 function spinColumn(
   numberOfRows,
@@ -17,12 +18,32 @@ function spinColumn(
   setNudgesSpinsLeft,
   setShowOutOfSpinsMessage,
   roundsLeft,
+  arrayCorrectWords,
+  setArrayCorrectWords,
 ) {
-  console.log("actor list", actorList);
   console.log("spinColumn running");
   console.log("spin column index", index);
   console.log("roundsLeft in SPINCOLUMN", roundsLeft);
-  getCorrectWord(rowLength, index, actorList, verbList, wordMix);
+  console.log(
+    "actorList[0]",
+    actorList[0],
+    "shortVerbList[0]",
+    shortVerbList[0],
+    "wordMix[0]",
+    wordMix[0],
+  );
+  // getCorrectWord(
+  //   rowLength,
+  //   index,
+  //   actorList,
+  //  shortVerbList,
+  //   wordMix,
+  //   arrayCorrectWords,
+  //   setArrayCorrectWords,
+  // );
+
+  getRightWords(randomActor);
+
   if (roundsLeft > 0) {
     console.log("Rounds Left Over 1!");
     if (index === 0) {

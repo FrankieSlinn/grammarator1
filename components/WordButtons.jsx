@@ -31,6 +31,8 @@ export function WordButtons({
   setShowOutOfSpinsMessage,
   lockedWords,
   setLockedWords,
+  arrayCorrectWords,
+  setArrayCorrectWords,
 }) {
   const [wordArrayPopulated, setWordArrayPopulated] = useState(false);
 
@@ -48,6 +50,8 @@ export function WordButtons({
         setWordArrayPopulated,
         fullWordArray,
         setFullWordArray,
+        arrayCorrectWords,
+        setArrayCorrectWords,
       );
     }
   }, []);

@@ -1,11 +1,6 @@
-import dotenv from "dotenv";
-import path from "path";
+// import path from "path";
 
-dotenv.config({ path: path.resolve(process.cwd(), ".env") });
-console.log(
-  "!!!!!!!!!!!!&&&&&&&&ENV TEST In app.config:",
-  process.env.OPENAI_API_KEY1,
-);
+// dotenv.config({ path: path.resolve(process.cwd(), ".env") });
 
 export default {
   expo: {

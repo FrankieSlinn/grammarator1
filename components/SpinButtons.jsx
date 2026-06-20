@@ -1,6 +1,7 @@
 import { Text, TouchableOpacity, View } from "react-native";
 import { s } from "../App.style";
 import { spinColumn } from "../utils/wordColumnMovements";
+import { actorList, shortVerbList, wordMix } from "../utils/wordList";
 
 let verticalArrayActors = [];
 let verticalArrayVerbs = [];
@@ -8,6 +9,15 @@ let verticalArrayWordMix = [];
 let actorWordsRemoved = [];
 let verbWordsRemoved = [];
 let wordMixRemoved = [];
+
+console.log(
+  "!!!InSpinButtons actorList[0]",
+  actorList[0],
+  "shortVerbList[0]",
+  shortVerbList[0],
+  "wordMix[0]",
+  wordMix[0],
+);
 
 export function SpinButtons({
   rowLength,
@@ -21,9 +31,12 @@ export function SpinButtons({
   roundsLeft,
   lockedWords,
   setLockedW,
+  arrayCorrectWords,
+  setArrayCorrectWords,
 }) {
   console.log("rounds left in Spin Column Component!!!!!!!!!", roundsLeft);
   console.log("nudgesSpinsLeft in SPIN BUTTON!!!!!!", nudgesSpinsLeft);
+
   return (
     <>
       <View style={s.changeWordsButtonsContainerOuter}>
@@ -46,6 +59,8 @@ export function SpinButtons({
                           setNudgesSpinsLeft,
                           setShowOutOfSpinsMessage,
                           roundsLeft,
+                          arrayCorrectWords,
+                          setArrayCorrectWords,
                         )
                       : nudgesSpinsLeft === 0
                         ? setShowOutOfSpinsMessage(true)

@@ -13,6 +13,8 @@ import { OutOfSpinsMessage } from "../components/OutOfSpinsMessage";
 import { PointsMessage } from "../components/PointsMessage";
 import { SpinButtons } from "../components/SpinButtons";
 import { WordButtons } from "../components/WordButtons";
+import { getRightWords, randomActor } from "../utils//createSentence";
+import { actorList } from "../utils/wordList";
 
 export default function Index() {
   const [grammarCorrect, setGrammarCorrect] = useState(false);
@@ -44,14 +46,18 @@ export default function Index() {
   const [verticalArrayVerbs, setVerticalArrayVerbs] = useState([]);
   const [verticalArrayWordMix, setVerticalArrayWordMix] = useState([]);
   const [lockedWords, setLockedWords] = useState([]);
+  const [arrayCorrectWords, setArrayCorrectWords] = useState([]);
 
   //Lock words press up, unlock word press up then down. Nudge button doesn't do anything.
 
   console.log("fullWordArray in index", fullWordArray);
+  console.log("actorList in index", actorList[0]);
 
   useEffect(() => {
     console.log("showPointsMessage", showPointsMessage);
   }, [grammarCorrect]);
+
+    getRightWords(randomActor);
 
   return (
     <>
@@ -128,6 +134,8 @@ export default function Index() {
           setPressedRowIndex={setPressedRowIndex}
           lockedWords={lockedWords}
           setLockedWords={setLockedWords}
+          arrayCorrectWords={arrayCorrectWords}
+          setArrayCorrectWords={setArrayCorrectWords}
         />
         <NudgeButtons
           rowLength={rowLength}

@@ -42,10 +42,10 @@ export function NudgeButtons({
   // Lockedwords {"0-0": true, "0-1": true} Number on Left = rows; Number on right = columns
   //The word row will always be one (as center row)
 
-  function displayOutOfSpinsMessage(setShowOutOfSpinsMessage) {
-    console.log("setting out of spins message to show!!!");
-    setShowOutOfSpinsMessage(true);
-  }
+  // function displayOutOfSpinsMessage(setShowOutOfSpinsMessage) {
+  //   console.log("setting out of spins message to show!!!");
+  //   setShowOutOfSpinsMessage(true);
+  // }
   console.log("nudgesSpinsLeft in NUDGEBUTTON!!!", nudgesSpinsLeft);
 
   return (

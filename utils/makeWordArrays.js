@@ -1,7 +1,7 @@
 import { actorList, shortVerbList, wordMix } from "./wordList";
 
-function randomNumberGenerator(dataType) {
-  return Math.floor(Math.random() * dataType.length);
+function randomNumberGenerator(wordListType) {
+  return Math.floor(Math.random() * wordListType.length);
 }
 
 function allocateWords(
@@ -11,6 +11,8 @@ function allocateWords(
   setWordArrayPopulated,
   fullWordArray,
   setFullWordArray,
+  arrayCorrectWords,
+  setArrayCorrectWords,
 ) {
   console.log("rowLength", rowLength, "numberOfRows", numberOfRows);
   const arrayLength = rowLength * numberOfRows;
@@ -55,20 +57,6 @@ function insertHelpfulWords(
   insertActors(numberOfRows, rowLength, newWords, setFullWordArray);
   insertVerbs(numberOfRows, rowLength, newWords, setFullWordArray);
   insertFinalWord(numberOfRows, rowLength, newWords, setFullWordArray);
-
-  //Insert one adverb 2nd field of random row
-  // const randomRowIndexAdverb1 = randomNumberGenerator(new Array(numberOfRows));
-  // let randomRowIndexGerund1;
-  // do {
-  //   randomRowIndexGerund1 = randomNumberGenerator(new Array(numberOfRows));
-  // } while (randomRowIndexAdverb1 === randomRowIndexGerund1);
-
-  // const adverbWord = adverbList[randomNumberGenerator(adverbList)];
-  // const gerundWord=gerundList[[randomNumberGenerator(gerundList)]]
-
-  // console.log("adverbWord", adverbWord);
-  // newWords[randomRowIndexAdverb1 * rowLength + 2] = adverbWord;
-  // newWords[randomRowIndexGerund1 * rowLength+2] = gerundWord;
 
   console.log("Final word array:", newWords);
   setFullWordArray(newWords);
