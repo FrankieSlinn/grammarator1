@@ -1,3 +1,5 @@
+
+//Sets Word Buttons to read "WIN" after Cash button pressed - Correct Grammar. 
 function changeWordsToWin(fullWordArray, setFullWordArray) {
   console.log("change words to win running");
 

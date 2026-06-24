@@ -111,7 +111,7 @@ function getWordMixWord(randomVerb) {
   return wordMixWord;
 }
 
-function getRightWords(randomActor) {
+function getRightWords(randomActor, correctWords, setCorrectWords) {
   console.log("getRightWords running");
 
   const randomVerb = getVerb(randomActor);
@@ -119,7 +119,11 @@ function getRightWords(randomActor) {
   const randomWordMixWord = getWordMixWord(randomVerb);
   const rightWordsArray = [randomActor, 0, randomVerb, 1, randomWordMixWord, 2];
   console.log("@@@@@rightWordsArray in getRightWords", rightWordsArray);
-  return rightWordsArray;
+  
+ setCorrectWords(rightWordsArray)
+ console.log("@@@@correctWords", correctWords)
+ return rightWordsArray
+
 }
 
 export { getRightWords, randomActor };

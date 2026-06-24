@@ -1,4 +1,4 @@
-import { getRightWords, randomActor } from "./createSentence";
+
 import {
   insertActors,
   insertFinalWord,
@@ -32,17 +32,9 @@ function spinColumn(
     "wordMix[0]",
     wordMix[0],
   );
-  // getCorrectWord(
-  //   rowLength,
-  //   index,
-  //   actorList,
-  //  shortVerbList,
-  //   wordMix,
-  //   arrayCorrectWords,
-  //   setArrayCorrectWords,
-  // );
 
-  getRightWords(randomActor);
+
+
 
   if (roundsLeft > 0) {
     console.log("Rounds Left Over 1!");

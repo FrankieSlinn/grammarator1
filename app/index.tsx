@@ -13,7 +13,6 @@ import { OutOfSpinsMessage } from "../components/OutOfSpinsMessage";
 import { PointsMessage } from "../components/PointsMessage";
 import { SpinButtons } from "../components/SpinButtons";
 import { WordButtons } from "../components/WordButtons";
-import { getRightWords, randomActor } from "../utils//createSentence";
 import { actorList } from "../utils/wordList";
 
 export default function Index() {
@@ -27,6 +26,8 @@ export default function Index() {
   const [gameScore, setGameScore] = useState(0);
   const [roundsLeft, setRoundsLeft] = useState(10);
   const [nudgesSpinsLeft, setNudgesSpinsLeft] = useState(2);
+  //correct words to be displayed in hghlighted sentence (min 2 correct words)
+  const [correctWords, setCorrectWords] = useState([]);
   const [correctSentenceDisplay, setCorrectSentenceDisplay] = useState("");
   const [showCorrectSentenceDisplay, setShowCorrectSentenceDisplay] =
     useState(false);
@@ -57,7 +58,7 @@ export default function Index() {
     console.log("showPointsMessage", showPointsMessage);
   }, [grammarCorrect]);
 
-    getRightWords(randomActor);
+
 
   return (
     <>
@@ -119,7 +120,7 @@ export default function Index() {
           setShowPointsMessage={setShowPointsMessage}
           gameScore={gameScore}
           setGameScore={setGameScore}
-          correctSentenceDssplay={correctSentenceDisplay}
+          correctSentenceDisplay={correctSentenceDisplay}
           setCorrectSentenceDisplay={setCorrectSentenceDisplay}
           showCorrectSentenceDisplay={showCorrectSentenceDisplay}
           setShowCorrectSentenceDisplay={setShowCorrectSentenceDisplay}
@@ -136,6 +137,8 @@ export default function Index() {
           setLockedWords={setLockedWords}
           arrayCorrectWords={arrayCorrectWords}
           setArrayCorrectWords={setArrayCorrectWords}
+          correctWords = {correctWords}
+          setCorrectWords = {setCorrectWords}
         />
         <NudgeButtons
           rowLength={rowLength}
