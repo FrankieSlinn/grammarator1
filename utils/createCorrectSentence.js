@@ -1,5 +1,6 @@
 import { actorList, shortVerbList, wordMix } from "./wordList";
 console.log(actorList[0], shortVerbList[0], wordMix[0]);
+console.log("$$$$TEST!!!!!!!!")
 
 const actorWordsNoThirdPersonSingular = [
   "I",
@@ -46,8 +47,9 @@ const likeWords = [
 ];
 
 function randomNumber(listLength) {
-  return Math.floor(Math.random() * (listLength - 1));
+  return Math.floor(Math.random() * (listLength-1));
 }
+
 
 //generate random number for actorList
 function getActorWord() {
@@ -58,11 +60,14 @@ function getActorWord() {
   return actorChosen;
 }
 
-const randomActor = getActorWord();
+
 
 //get corresponding word from shortVerbList
 
 function getVerb(randomActor) {
+
+
+  console.log("@@@@randomActor in getVerb", randomActor)
   const shortVerbListHalved = shortVerbList.length / 2;
   const randomNumShortVerb = randomNumber(shortVerbListHalved);
   console.log("&&&&&randomNumShortVerb in getVerb", randomNumShortVerb);
@@ -111,8 +116,10 @@ function getWordMixWord(randomVerb) {
   return wordMixWord;
 }
 
-function getRightWords(randomActor, correctWords, setCorrectWords) {
+function getRightWords(correctWords, setCorrectWords) {
   console.log("getRightWords running");
+  console.log("@@@@@@@randomActor in getRightWords", randomActor)
+  const randomActor = getActorWord();
 
   const randomVerb = getVerb(randomActor);
   console.log("@@@@@randomVerb in getRightWords", randomVerb);
@@ -126,4 +133,7 @@ function getRightWords(randomActor, correctWords, setCorrectWords) {
 
 }
 
-export { getRightWords, randomActor };
+
+
+export { getRightWords };
+

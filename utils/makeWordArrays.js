@@ -1,5 +1,7 @@
-import { getRightWords, randomActor } from "./createCorrectSentence";
+import { getRightWords } from "./createCorrectSentence";
 import { actorList, shortVerbList, wordMix } from "./wordList";
+
+
 
 function randomNumberGenerator(wordListType) {
   return Math.floor(Math.random() * wordListType.length);
@@ -22,14 +24,7 @@ function allocateWords(
   console.log("arrayLength", arrayLength);
   const newWords = new Array(arrayLength).fill("X");
   console.log("new words", newWords);
-   const rightWordsArray = getRightWords(randomActor, correctWords, setCorrectWords)
-   console.log("@@@@@rightWordsArray", rightWordsArray)
-const firstHalfRightWordsArray = rightWordsArray.slice(rightWordsArray.length / 2);
-   const randomNumberForRightWords = randomNumberGenerator(firstHalfRightWordsArray)*2
-   console.log("@@@@randomNumberForRightWords", randomNumberForRightWords)
-   const rightWordsToUse = rightWordsArray.splice( randomNumberForRightWords, 2)
-   console.log("@@@@@right words to use", rightWordsToUse)
-   console.log("@@@@@revised rightWordsArray", rightWordsArray)
+
 
 
   console.log("newWords bing build", newWords);
@@ -45,6 +40,7 @@ const firstHalfRightWordsArray = rightWordsArray.slice(rightWordsArray.length / 
     correctWords,
     setCorrectWords
   );
+  removeOneCorrectWord( correctWords, setCorrectWords, getRightWords)
 }
 //Creates one correct sentence - eliminate 1 word for this for user to figure out. 
   //  const rightSentence = getRightWords(randomActor, correctWords, setCorrectWords);
@@ -109,40 +105,63 @@ function insertFinalWord(numberOfRows, rowLength, newWords, setFullWordArray) {
     setFullWordArray([...newWords]);
   }
 }
+//removes one of th correct words randomly
+function removeOneCorrectWord(correctWords, setCorrectWords, getRightWords){
+
+     const rightWordsArray = getRightWords( correctWords, setCorrectWords)
+   console.log("@@@@@rightWordsArray", rightWordsArray)
+     const rightWordsArrayPairCount = rightWordsArray.length / 2;
+console.log("@@@@@@@@@pairCount", rightWordsArrayPairCount);
+const firstHalfRightWordsArray = rightWordsArray.slice(rightWordsArray.length / 2);
+   const randomNumberForRightWords = randomNumberGenerator(firstHalfRightWordsArray)
+   console.log("@@@@randomNumberForRightWords", randomNumberForRightWords)
+   const doubleRandomNumberForRightWords = randomNumberForRightWords*2
+   console.log("@@@@@doubleRandomNumberForRightWords", doubleRandomNumberForRightWords)
+   const rightWordsToUse = rightWordsArray.splice( doubleRandomNumberForRightWords, 2)
+   console.log("@@@@@right words to use", rightWordsToUse)
+   console.log("@@@@@revised rightWordsArray", rightWordsArray)
+
+
+}
 
 
 
-function makeWordArrays(
-        rowLength,
-        numberOfRows,
-        wordArrayPopulated,
-        setWordArrayPopulated,
-        fullWordArray,
-        setFullWordArray,
-        arrayCorrectWords,
-        setArrayCorrectWords,
-        correctWords,
-        setCorrectWords
-) {
-  const newWordArray = allocateWords(
-  rowLength,
-  numberOfRows,
-  wordArrayPopulated,
-  setWordArrayPopulated,
-  fullWordArray,
-  setFullWordArray,
-  arrayCorrectWords,
-  setArrayCorrectWords,
-  correctWords, 
-  setCorrectWords
-  );
+// function makeWordArrays(
+//         rowLength,
+//         numberOfRows,
+//         wordArrayPopulated,
+//         setWordArrayPopulated,
+//         fullWordArray,
+//         setFullWordArray,
+//         arrayCorrectWords,
+//         setArrayCorrectWords,
+//         correctWords,
+//         setCorrectWords
+// ) {
+//  function allocateWords(
+//   rowLength,
+//   numberOfRows,
+//   wordArrayPopulated,
+//   setWordArrayPopulated,
+//   fullWordArray,
+//   setFullWordArray,
+//   arrayCorrectWords,
+//   setArrayCorrectWords,
+//   correctWords, 
+//   setCorrectWords
+//   );
+// }
+
+function replaceWithTwoCorrectWords(){
+
+
 }
 
 export {
-  insertActors,
+  allocateWords, insertActors,
   insertFinalWord,
   insertVerbs,
-  makeWordArrays,
+
   randomNumberGenerator
 };
 

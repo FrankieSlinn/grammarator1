@@ -48,6 +48,7 @@ export default function Index() {
   const [verticalArrayWordMix, setVerticalArrayWordMix] = useState([]);
   const [lockedWords, setLockedWords] = useState([]);
   const [arrayCorrectWords, setArrayCorrectWords] = useState([]);
+  const [rightWordsToUse, setRightWordsToUse] = useState ([]);
 
   //Lock words press up, unlock word press up then down. Nudge button doesn't do anything.
 

@@ -1,7 +1,7 @@
+import { allocateWords } from "@/utils/makeWordArrays";
 import { useEffect, useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { s } from "../App.style";
-import { makeWordArrays } from "../utils/makeWordArrays";
 
 
 export function WordButtons({
@@ -48,17 +48,17 @@ export function WordButtons({
   useEffect(() => {
     if (fullWordArray.length === 0) {
       console.log("Calling makeWordArrays...");
-      makeWordArrays(
-        rowLength,
-        numberOfRows,
-        wordArrayPopulated,
-        setWordArrayPopulated,
-        fullWordArray,
-        setFullWordArray,
-        arrayCorrectWords,
-        setArrayCorrectWords,
-        correctWords,
-        setCorrectWords
+      allocateWords(
+    rowLength,
+  numberOfRows,
+  wordArrayPopulated,
+  setWordArrayPopulated,
+  fullWordArray,
+  setFullWordArray,
+  arrayCorrectWords,
+  setArrayCorrectWords,
+  correctWords, 
+  setCorrectWords
       );
     }
   }, []);
