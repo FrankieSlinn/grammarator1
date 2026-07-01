@@ -63,9 +63,11 @@ function insertHelpfulWords(
   insertActors(numberOfRows, rowLength, newWords, setFullWordArray);
   insertVerbs(numberOfRows, rowLength, newWords, setFullWordArray);
   insertFinalWord(numberOfRows, rowLength, newWords, setFullWordArray);
-
-  console.log("Final word array:", newWords);
+    replaceWithTwoCorrectWords(correctWords, setCorrectWords, getRightWords,  setFullWordArray, newWords);
   setFullWordArray(newWords);
+  console.log("Final word array:", newWords);
+
+
   return newWords;
 }
 
@@ -120,39 +122,44 @@ const firstHalfRightWordsArray = rightWordsArray.slice(rightWordsArray.length / 
    const rightWordsToUse = rightWordsArray.splice( doubleRandomNumberForRightWords, 2)
    console.log("@@@@@right words to use", rightWordsToUse)
    console.log("@@@@@revised rightWordsArray", rightWordsArray)
+   return rightWordsArray
 
 
 }
 
 
 
-// function makeWordArrays(
-//         rowLength,
-//         numberOfRows,
-//         wordArrayPopulated,
-//         setWordArrayPopulated,
-//         fullWordArray,
-//         setFullWordArray,
-//         arrayCorrectWords,
-//         setArrayCorrectWords,
-//         correctWords,
-//         setCorrectWords
-// ) {
-//  function allocateWords(
-//   rowLength,
-//   numberOfRows,
-//   wordArrayPopulated,
-//   setWordArrayPopulated,
-//   fullWordArray,
-//   setFullWordArray,
-//   arrayCorrectWords,
-//   setArrayCorrectWords,
-//   correctWords, 
-//   setCorrectWords
-//   );
-// }
+function replaceWithTwoCorrectWords(correctWords, setCorrectWords, getRightWords,  setFullWordArray, newWords){
+  console.log("@@@@@@replaceWithTwoCorrect Words Running!!!!!!!!")
+  console.log("$$$$$new Wordsy%%%%%", newWords)
+  //array containing 2 correct words and their positions [word, position, word, position]
+  const wordsToUse = removeOneCorrectWord(correctWords, setCorrectWords, getRightWords)
 
-function replaceWithTwoCorrectWords(){
+  console.log("%%%%%%fullWordArrayToUse", newWords)
+  console.log("$£@@@@@wordsToUse", wordsToUse)
+  if(wordsToUse[1]===0){
+    console.log("£%%%%%%%wordsToUse[1]===0!!!!!")
+    newWords[3]=wordsToUse[0]
+  
+  console.log("%%%%%%%NewWordsafter 1st Word replaced", newWords)}
+  else if(wordsToUse[1] ===1){
+    newWords[4]=wordsToUse[0]
+  }
+    
+
+if(wordsToUse[3]===1){
+     newWords[4]=wordsToUse[2]}
+     else if(  wordsToUse[3] ===2){
+      newWords[5]=wordsToUse[2]
+     }
+  
+  
+{
+
+    console.log("%%%%%new Words after update", newWords)
+
+  }
+  setFullWordArray(...newWords)
 
 
 }
