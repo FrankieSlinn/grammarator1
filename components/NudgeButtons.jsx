@@ -146,7 +146,7 @@ export function NudgeButtons({
                           index === 0
                             ? actorList
                             : index === 1
-                              ? v
+                              ? 
                               shortVerbList
                               : wordMix,
                         setVerticalArray:
