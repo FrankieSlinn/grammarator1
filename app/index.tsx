@@ -49,6 +49,7 @@ export default function Index() {
   const [lockedWords, setLockedWords] = useState([]);
   const [arrayCorrectWords, setArrayCorrectWords] = useState([]);
   const [rightWordsToUse, setRightWordsToUse] = useState ([]);
+    const [wordArrayPopulated, setWordArrayPopulated] = useState(false);
 
   //Lock words press up, unlock word press up then down. Nudge button doesn't do anything.
 
@@ -102,6 +103,8 @@ export default function Index() {
           roundsLeft={roundsLeft}
           lockedWords={lockedWords}
           setLockedWords={setLockedWords}
+          setWordArrayPopulated={wordArrayPopulated}
+          setWordArrayPopulated = {setWordArrayPopulated}
         />
 
         <WordButtons
@@ -140,6 +143,8 @@ export default function Index() {
           setArrayCorrectWords={setArrayCorrectWords}
           correctWords = {correctWords}
           setCorrectWords = {setCorrectWords}
+          wordArrayPopulated={wordArrayPopulated}
+          setWordArrayPopulated={setWordArrayPopulated}
         />
         <NudgeButtons
           rowLength={rowLength}
@@ -239,6 +244,12 @@ export default function Index() {
             setShowCashButton={setShowCashButton}
             lockedWords={lockedWords}
             setLockedWords={setLockedWords}
+            correctWords={correctWords}
+            setCorrectWords = {setCorrectWords}
+            wordArrayPopulated = {wordArrayPopulated}
+            setWordArrayPopulated = {setWordArrayPopulated}
+            arrayCorrectWords={arrayCorrectWords}
+            setArrayCorrectWords = {setArrayCorrectWords}
           />
         ) : null}
 

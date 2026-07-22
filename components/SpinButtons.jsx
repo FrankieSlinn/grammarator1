@@ -3,12 +3,12 @@ import { s } from "../App.style";
 import { spinColumn } from "../utils/wordColumnMovements";
 import { actorList, shortVerbList, wordMix } from "../utils/wordList";
 
-let verticalArrayActors = [];
-let verticalArrayVerbs = [];
-let verticalArrayWordMix = [];
-let actorWordsRemoved = [];
-let verbWordsRemoved = [];
-let wordMixRemoved = [];
+// let verticalArrayActors = [];
+// let verticalArrayVerbs = [];
+// let verticalArrayWordMix = [];
+// let actorWordsRemoved = [];
+// let verbWordsRemoved = [];
+// let wordMixRemoved = [];
 
 console.log(
   "!!!InSpinButtons actorList[0]",
@@ -30,12 +30,18 @@ export function SpinButtons({
   setShowOutOfSpinsMessage,
   roundsLeft,
   lockedWords,
-  setLockedW,
+  setLockedWords,
   arrayCorrectWords,
   setArrayCorrectWords,
+  correctWords, 
+  setCorrectWords, 
+  wordArrayPopulated,
+  setWordArrayPopulated
 }) {
   console.log("rounds left in Spin Column Component!!!!!!!!!", roundsLeft);
   console.log("nudgesSpinsLeft in SPIN BUTTON!!!!!!", nudgesSpinsLeft);
+  console.log("£££££arrayCorrectWords££££", arrayCorrectWords)
+  console.log("£££££correctWords in spin button££££££££££££")
 
   return (
     <>
@@ -50,17 +56,21 @@ export function SpinButtons({
                   onPress={() => {
                     nudgesSpinsLeft > 0 && !lockedWords.includes(`1-${index}`)
                       ? spinColumn(
-                          numberOfRows,
-                          fullWordArray,
-                          setFullWordArray,
-                          rowLength,
-                          index,
-                          nudgesSpinsLeft,
-                          setNudgesSpinsLeft,
-                          setShowOutOfSpinsMessage,
-                          roundsLeft,
-                          arrayCorrectWords,
-                          setArrayCorrectWords,
+                   numberOfRows,
+  fullWordArray,
+  setFullWordArray,
+  rowLength,
+  index,
+  nudgesSpinsLeft,
+  setNudgesSpinsLeft,
+  setShowOutOfSpinsMessage,
+  roundsLeft,
+  arrayCorrectWords,
+  setArrayCorrectWords,
+    wordArrayPopulated,
+  setWordArrayPopulated,
+  correctWords,
+  setCorrectWords
                         )
                       : nudgesSpinsLeft === 0
                         ? setShowOutOfSpinsMessage(true)

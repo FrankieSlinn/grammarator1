@@ -1,9 +1,10 @@
 
 import {
+  allocateWords,
   insertActors,
   insertFinalWord,
   insertVerbs,
-  randomNumberGenerator,
+  randomNumberGenerator
 } from "./makeWordArrays";
 
 import { actorList, shortVerbList, wordMix } from "./wordList";
@@ -20,6 +21,10 @@ function spinColumn(
   roundsLeft,
   arrayCorrectWords,
   setArrayCorrectWords,
+    wordArrayPopulated,
+  setWordArrayPopulated,
+  correctWords,
+  setCorrectWords
 ) {
   console.log("spinColumn running");
   console.log("spin column index", index);
@@ -44,10 +49,21 @@ function spinColumn(
       insertVerbs(numberOfRows, rowLength, fullWordArray, setFullWordArray);
     } else if (index === 2) {
       insertFinalWord(numberOfRows, rowLength, fullWordArray, setFullWordArray);
-    } else if (index === 5) {
-      insertActors(numberOfRows, rowLength, fullWordArray, setFullWordArray);
-      insertVerbs(numberOfRows, rowLength, fullWordArray, setFullWordArray);
-      insertFinalWord(numberOfRows, rowLength, fullWordArray, setFullWordArray);
+    } 
+    //if all words need to be reset, so all columns need to spin
+    else if (index === 5) {
+      allocateWords(
+    rowLength,
+  numberOfRows,
+  wordArrayPopulated,
+  setWordArrayPopulated,
+  fullWordArray,
+  setFullWordArray,
+  arrayCorrectWords,
+  setArrayCorrectWords,
+  correctWords, 
+  setCorrectWords
+      );
     }
     if (index != 5) {
       resetNudgesSpins(

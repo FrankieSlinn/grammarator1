@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { s } from "../App.style";
 import { makeWordArrays } from "../utils/makeWordArrays";
@@ -35,9 +35,11 @@ export function WordButtons({
   arrayCorrectWords,
   setArrayCorrectWords,
   correctWords, 
-  setCorrectWords
+  setCorrectWords,
+  wordArrayPopulated,
+  setWordArrayPopulated
 }) {
-  const [wordArrayPopulated, setWordArrayPopulated] = useState(false);
+
 
  
 

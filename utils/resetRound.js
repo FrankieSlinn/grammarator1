@@ -37,8 +37,13 @@ function resetRound(
   setVerticalArrayWordMix,
   showCashButton,
   setShowCashButton,
-  lockedWords,
-  setLockedWords,
+
+  wordArrayPopulated,
+  setWordArrayPopulated,
+  correctWords,
+  setCorrectWords,
+  arrayCorrectWords,
+  setArrayCorrectWords
 ) {
   console.log("resetRound running");
   console.log("rounds left", roundsLeft);
@@ -51,34 +56,39 @@ function resetRound(
       console.log("rounds Left should be over 0");
       setRoundsLeft((prevRounds) => prevRounds - 1);
       spinAndReset(
-        setShowOutOfSpinsMessage,
-        setActorWordsRemovedAbove,
-        setVerbWordsRemovedAbove,
-        setWordMixRemovedAbove,
-        setActorWordsRemovedBelow,
-        setVerbWordsRemovedBelow,
-        setWordMixRemovedBelow,
-        setShowCorrectSentenceDisplay,
-        setShowPointsMessage,
-        setRoundsLeft,
-        roundsLeft,
-        nudgesSpinsLeft,
-        setNudgesSpinsLeft,
-        setCashButtonPressed,
-        numberOfRows,
-        fullWordArray,
-        setFullWordArray,
-        rowLength,
-        verticalArrayActors,
-        setVerticalArrayActors,
-        verticalArrayVerbs,
-        setVerticalArrayVerbs,
-        verticalArrayWordMix,
-        setVerticalArrayWordMix,
-        showCashButton,
-        setShowCashButton,
-        lockedWords,
-        setLockedWords,
+  setShowOutOfSpinsMessage,
+  setActorWordsRemovedAbove,
+  setVerbWordsRemovedAbove,
+  setWordMixRemovedAbove,
+  setActorWordsRemovedBelow,
+  setVerbWordsRemovedBelow,
+  setWordMixRemovedBelow,
+  setShowCorrectSentenceDisplay,
+  setShowPointsMessage,
+  setRoundsLeft,
+  roundsLeft,
+  nudgesSpinsLeft,
+  setNudgesSpinsLeft,
+  setCashButtonPressed,
+  numberOfRows,
+  fullWordArray,
+  setFullWordArray,
+  rowLength,
+  verticalArrayActors,
+  setVerticalArrayActors,
+  verticalArrayVerbs,
+  setVerticalArrayVerbs,
+  verticalArrayWordMix,
+  setVerticalArrayWordMix,
+  showCashButton,
+  setShowCashButton,
+
+    wordArrayPopulated,
+  setWordArrayPopulated,
+  correctWords,
+  setCorrectWords,
+  arrayCorrectWords,
+  setArrayCorrectWords
       );
     }, 2000);
   }
@@ -113,6 +123,12 @@ function spinAndReset(
   setShowCashButton,
   lockedWords,
   setLockedWords,
+    wordArrayPopulated,
+  setWordArrayPopulated,
+  correctWords,
+  setCorrectWords,
+  arrayCorrectWords,
+  setArrayCorrectWords
 ) {
   setShowOutOfSpinsMessage(false);
   setActorWordsRemovedAbove([]);
@@ -128,22 +144,28 @@ function spinAndReset(
   setVerticalArrayActors([]);
   setVerticalArrayVerbs([]);
   setVerticalArrayWordMix([]);
-  setLockedWords([{}]);
+
 
   setNudgesSpinsLeft(2);
 
   setCashButtonPressed(false);
   //logic for spin all columns when index ===5
   spinColumn(
-    numberOfRows,
-    fullWordArray,
-    setFullWordArray,
-    rowLength,
-    5,
-    nudgesSpinsLeft,
-    setNudgesSpinsLeft,
-    setShowOutOfSpinsMessage,
-    roundsLeft,
+  numberOfRows,
+  fullWordArray,
+  setFullWordArray,
+  rowLength,
+ 5,
+  nudgesSpinsLeft,
+  setNudgesSpinsLeft,
+  setShowOutOfSpinsMessage,
+  roundsLeft,
+  arrayCorrectWords,
+  setArrayCorrectWords,
+    wordArrayPopulated,
+  setWordArrayPopulated,
+  correctWords,
+  setCorrectWords
   );
 }
 

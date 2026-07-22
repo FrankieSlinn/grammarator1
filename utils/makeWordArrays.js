@@ -19,11 +19,11 @@ function allocateWords(
   correctWords, 
   setCorrectWords
 ) {
-  console.log("rowLength", rowLength, "numberOfRows", numberOfRows);
+
   const arrayLength = rowLength * numberOfRows;
-  console.log("arrayLength", arrayLength);
+
   const newWords = new Array(arrayLength).fill("X");
-  console.log("new words", newWords);
+
 
 
 
@@ -77,7 +77,7 @@ function insertActors(numberOfRows, rowLength, newWords, setFullWordArray) {
     console.log("rowlength ===3");
     for (let i = 0; i < numberOfRows; i++) {
       let newActor = actorList[randomNumberGenerator(actorList)];
-      console.log("new actor", newActor);
+
       newWords[i * rowLength] = newActor;
       console.log("newWords after actor inserted", newWords);
       setFullWordArray([...newWords]);
@@ -109,18 +109,18 @@ function insertFinalWord(numberOfRows, rowLength, newWords, setFullWordArray) {
 //removes one of th correct words randomly
 function removeOneCorrectWord(correctWords, setCorrectWords, getRightWords){
 
-     const rightWordsArray = getRightWords( correctWords, setCorrectWords)
-   console.log("@@@@@rightWordsArray", rightWordsArray)
-    //  const rightWordsArrayPairCount = rightWordsArray.length / 2;
+     const rightWordsArrayRemoveWord = getRightWords( correctWords, setCorrectWords)
+   console.log("@@@@@rightWordsArray", rightWordsArrayRemoveWord)
 
-const firstHalfRightWordsArray = rightWordsArray.slice(rightWordsArray.length / 2);
+
+const firstHalfRightWordsArray = rightWordsArrayRemoveWord.slice(rightWordsArrayRemoveWord.length / 2);
    const randomNumberForRightWords = randomNumberGenerator(firstHalfRightWordsArray)
 
    const doubleRandomNumberForRightWords = randomNumberForRightWords*2
-  
-  //  const rightWordsToUse = rightWordsArray.splice( doubleRandomNumberForRightWords, 2)
+   console.log("@@@@@rightWordsArray WORD REMOVED", rightWordsArrayRemoveWord)
 
-   return rightWordsArray
+
+   return rightWordsArrayRemoveWord
 
 
 }
@@ -130,13 +130,15 @@ const firstHalfRightWordsArray = rightWordsArray.slice(rightWordsArray.length / 
 function replaceWithTwoCorrectWords(correctWords, setCorrectWords, getRightWords,  setFullWordArray, newWords){
   console.log("@@@@@@replaceWithTwoCorrect Words Running!!!!!!!!")
   console.log("$$$$$new Wordsy%%%%%", newWords)
+
   //array containing 2 correct words and their positions [word, position, word, position]
   const wordsToUse = removeOneCorrectWord(correctWords, setCorrectWords, getRightWords)
 
+
   console.log("%%%%%%fullWordArrayToUse", newWords)
-  console.log("$£@@@@@wordsToUse", wordsToUse)
+  console.log("$£@@@@@wordsToUse in  REPLACE WITH 2 CORRECT WORDS", wordsToUse)
   if(wordsToUse[1]===0){
-    console.log("£%%%%%%%wordsToUse[1]===0!!!!!")
+    console.log("£%%%%%%%wordsToUse[1]===0!!!!!", wordsToUse)
     newWords[3]=wordsToUse[0]
   
   console.log("%%%%%%%NewWordsafter 1st Word replaced", newWords)}

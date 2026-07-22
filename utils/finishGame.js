@@ -61,8 +61,7 @@ function finishGame(
     setVerticalArrayWordMix,
     showCashButton,
     setShowCashButton,
-    lockedWords,
-    setLockedWords,
+
   );
   setShowNewGameButton(false);
   setGameScore(0);

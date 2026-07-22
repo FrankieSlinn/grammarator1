@@ -2,7 +2,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { Text, TouchableOpacity, View } from "react-native";
 import { s } from "../App.style";
 import { prepareToShiftColumns } from "../utils/wordColumnMovements";
-import { actorList, verbList, wordMix } from "../utils/wordList";
+import { actorList, shortVerbList, wordMix } from "../utils/wordList";
 
 let verticalArrayActors = [];
 let verticalArrayVerbs = [];
@@ -82,7 +82,7 @@ export function NudgeButtons({
                           index === 0
                             ? actorList
                             : index === 1
-                              ? verbList
+                              ? shortVerbList
                               : wordMix,
                         removedWordsArrayAbove:
                           index === 0
@@ -146,7 +146,8 @@ export function NudgeButtons({
                           index === 0
                             ? actorList
                             : index === 1
-                              ? verbList
+                              ? v
+                              shortVerbList
                               : wordMix,
                         setVerticalArray:
                           index === 0

@@ -39,7 +39,9 @@ async function checkGrammar(
   console.log("sentence to check before validate in api", textToBeChecked);
 
   const prompt = `You are a strict English grammar checker. If word unknown assume it is a name. Is the sentence grammatically correct in standard English? Something like "bob go away" should always be incorrect.
-  Do not interpreet anything as imperative. Ignore punctuation and capitalisation. Return only true or false.: "${textToBeChecked}"`;
+  Do not interpreet anything as imperative. Ignore punctuation and capitalisation. 
+  Examples of correct sentences: "Adults go swimming"
+  Return only true or false.: "${textToBeChecked}"`;
 
   try {
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
