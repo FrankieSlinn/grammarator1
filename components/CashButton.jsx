@@ -11,7 +11,6 @@ export function CashButton({
   setCashButtonPressed,
   fullWordArray,
   setFullWordArray,
-  // rowNumber, setRowNumber,
   numberOfRows,
   grammarToCheck,
   setGrammarToCheck,
@@ -31,7 +30,6 @@ export function CashButton({
   setShowOutOfSpinsMessage,
   showFinishGameMessage,
   setShowFinishGameMessage,
-
   actorWordsRemovedAbove,
   setActorWordsRemovedAbove,
   verbWordsRemovedAbove,
@@ -92,6 +90,7 @@ export function CashButton({
         console.log("correct answer in cash button pressed");
         setShowCorrectSentenceDisplay(true);
         setShowOutOfSpinsMessage(false);
+        // changeWordsToWin(fullWordArray, setFullWordArray);
         setCorrectSentenceDisplay(
           fullWordArray[3] + " " + fullWordArray[4] + " " + fullWordArray[5],
         );

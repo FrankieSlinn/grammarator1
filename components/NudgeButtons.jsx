@@ -36,8 +36,8 @@ export function NudgeButtons({
   verticalArrayWordMix,
   setVerticalArrayWordMix,
   roundsLeft,
-  lockedWords,
-  setLockedWords,
+wordArrayPopulated,
+setWordArrayPopulated
 }) {
   // Lockedwords {"0-0": true, "0-1": true} Number on Left = rows; Number on right = columns
   //The word row will always be one (as center row)
@@ -59,7 +59,7 @@ export function NudgeButtons({
 
               <TouchableOpacity
                 onPress={() => {
-                  nudgesSpinsLeft > 0 && !lockedWords.includes(`1-${index}`)
+                  nudgesSpinsLeft > 0 
                     ? prepareToShiftColumns({
                         numberOfRows,
                         rowLength,
@@ -128,7 +128,7 @@ export function NudgeButtons({
               {/* Right Nudge Button */}
               <TouchableOpacity
                 onPress={() => {
-                  nudgesSpinsLeft > 0 && !lockedWords.includes(`1-${index}`)
+                  nudgesSpinsLeft > 0 
                     ? prepareToShiftColumns({
                         //parameters in function (depends on index)
                         numberOfRows,

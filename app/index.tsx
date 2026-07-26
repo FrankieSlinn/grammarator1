@@ -52,6 +52,8 @@ export default function Index() {
     const [wordArrayPopulated, setWordArrayPopulated] = useState(false);
 
   //Lock words press up, unlock word press up then down. Nudge button doesn't do anything.
+  //start new game - in makeWordArrays - message setWordArrayPopulated is not a function - it is undefined. 
+
 
   console.log("fullWordArray in index", fullWordArray);
   console.log("actorList in index", actorList[0]);
@@ -267,9 +269,11 @@ export default function Index() {
         <NewGameButton
           setShowOutOfSpinsMessage={setShowOutOfSpinsMessage}
           setActorWordsRemovedAbove={setActorWordsRemovedAbove}
+          verbWordsRemovedAbove={verbWordsRemovedAbove}
           setVerbWordsRemovedAbove={setVerbWordsRemovedAbove}
           setWordMixRemovedAbove={setWordMixRemovedAbove}
           setActorWordsRemovedBelow={setActorWordsRemovedBelow}
+          verbWordsRemovedBelow={verbWordsRemovedBelow}
           setVerbWordsRemovedBelow={setVerbWordsRemovedBelow}
           setWordMixRemovedBelow={setWordMixRemovedBelow}
           roundsLeft={roundsLeft}
@@ -300,6 +304,12 @@ export default function Index() {
           setShowNewGameButton={setShowNewGameButton}
           showCashButton={showCashButton}
           setShowCashButton={setShowCashButton}
+          wordArrayPopulated={wordArrayPopulated}
+          setWordArrayPopulated={setWordArrayPopulated}
+          correctWords={correctWords}
+          setCorrectWords={setCorrectWords}
+          arrayCorrectWords={arrayCorrectWords}
+          setArrayCorrectWords={setArrayCorrectWords}
         />
       ) : null}
     </>

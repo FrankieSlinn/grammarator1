@@ -4,11 +4,17 @@ import { finishGame } from "../utils/finishGame";
 
 export function NewGameButton({
   setShowOutOfSpinsMessage,
+  actorWordsRemovedAbove,
   setActorWordsRemovedAbove,
+  verbWordsRemovedAbove,
   setVerbWordsRemovedAbove,
+  wordMixRemovedAbove,
   setWordMixRemovedAbove,
+  actorWordsRemovedBelow,
   setActorWordsRemovedBelow,
+  verbWordsRemovedBelow,
   setVerbWordsRemovedBelow,
+  wordMixRemovedBelow,
   setWordMixRemovedBelow,
   setShowCorrectSentenceDisplay,
   setShowPointsMessage,
@@ -16,6 +22,7 @@ export function NewGameButton({
   roundsLeft,
   nudgesSpinsLeft,
   setNudgesSpinsLeft,
+  cashButtonPressed,
   setCashButtonPressed,
   numberOfRows,
   fullWordArray,
@@ -35,6 +42,12 @@ export function NewGameButton({
   setShowNewGameButton,
   showCashButton,
   setShowCashButton,
+                  wordArrayPopulated,
+  setWordArrayPopulated,
+    correctWords,
+  setCorrectWords,
+  arrayCorrectWords,
+  setArrayCorrectWords
 }) {
   return (
     <>
@@ -44,11 +57,17 @@ export function NewGameButton({
           onPress={() =>
             finishGame(
               setShowOutOfSpinsMessage,
+              actorWordsRemovedAbove,
               setActorWordsRemovedAbove,
+              verbWordsRemovedAbove,
               setVerbWordsRemovedAbove,
+              wordMixRemovedAbove,
               setWordMixRemovedAbove,
+              actorWordsRemovedBelow,
               setActorWordsRemovedBelow,
+              verbWordsRemovedBelow,
               setVerbWordsRemovedBelow,
+              wordMixRemovedBelow,
               setWordMixRemovedBelow,
               setShowCorrectSentenceDisplay,
               setShowPointsMessage,
@@ -56,6 +75,7 @@ export function NewGameButton({
               roundsLeft,
               nudgesSpinsLeft,
               setNudgesSpinsLeft,
+              cashButtonPressed,
               setCashButtonPressed,
               numberOfRows,
               fullWordArray,
@@ -74,6 +94,12 @@ export function NewGameButton({
               setShowNewGameButton,
               showCashButton,
               setShowCashButton,
+                wordArrayPopulated,
+  setWordArrayPopulated,
+    correctWords,
+  setCorrectWords,
+  arrayCorrectWords,
+  setArrayCorrectWords
             )
           }
         >

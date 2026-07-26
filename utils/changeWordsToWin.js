@@ -5,17 +5,15 @@ function changeWordsToWin(fullWordArray, setFullWordArray) {
 
   changeWordsToWinFirstWord(fullWordArray, setFullWordArray);
 
-  console.log("newFullWordArray", [...newFullWordArray]);
 
-  // setFullWordArray(newFullWordArray)
-  // console.log("test")
 
-  console.log("fullWordArray in changeWordsToWin", newFullWordArray);
+
   return fullWordArray;
 }
 function changeWordsToWinFirstWord(fullWordArray, setFullWordArray) {
+  const newFullWordArray = [...fullWordArray];
   setTimeout(() => {
-    let newFullWordArray = [...fullWordArray];
+
     newFullWordArray[3] = "WIN!";
     setFullWordArray(newFullWordArray);
     console.log("newfullWordArray, 1st  Win", fullWordArray);
