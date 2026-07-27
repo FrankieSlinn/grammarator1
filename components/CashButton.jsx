@@ -1,6 +1,7 @@
 import { s } from "@/App.style.js";
 import { React, useEffect } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
+import { changeWordsToWin } from "../utils/changeWordsToWin";
 import { checkGrammar } from "../utils/grammarAPI";
 import { resetRound } from "../utils/resetRound";
 
@@ -75,36 +76,44 @@ export function CashButton({
       setGrammarCorrect,
       setCashButtonPressed,
       fullWordArray,
+      setFullWordArray,
       rowLength,
       showCashButton,
       setShowCashButton,
 
     );
-    console.log("result before check rounds", result);
+    console.log("!!!!!result before check rounds", result);
 
     // ✅ Use the actual result from the API instead of grammarCorrect state
     if (roundsLeft >= 0) {
-      console.log("rounds left, continuing to validate if true");
+      console.log("!!!!!rounds left, continuing to validate if true");
 
       if (result === true) {
         console.log("correct answer in cash button pressed");
-        setShowCorrectSentenceDisplay(true);
-        setShowOutOfSpinsMessage(false);
-        // changeWordsToWin(fullWordArray, setFullWordArray);
-        setCorrectSentenceDisplay(
-          fullWordArray[3] + " " + fullWordArray[4] + " " + fullWordArray[5],
-        );
-        if (!roundsLeft === 1) {
+          if (roundsLeft !== 1) {
           setShowPointsMessage(true);
-        } // console.log("✅ Grammar correct in cash button:", result);
-        let newGameScore = gameScore + 1;
-        setGameScore(newGameScore);
-        console.log("game score in cash button", newGameScore);
+        } 
+             let newGameScore = gameScore + 1;
+
+     await changeWordsToWin(fullWordArray, setFullWordArray);
+     setShowCorrectSentenceDisplay(true);
+       setShowOutOfSpinsMessage(false);
+
+        setCorrectSentenceDisplay(
+          fullWordArray[3] + " " + fullWordArray[4] + " " + fullWordArray[5]
+        );
+      
+        console.log("!!!!✅ Grammar correct in cash button:", result);
+   
+        setGameScore(newGameScore),
+        console.log("!!!!game score in cash button", newGameScore);
+  
       } else {
         console.log("❌ Grammar incorrect in cash button:", result);
       }
-      console.log("about to run reset round");
-      resetRound(
+      console.log("!!!!about to run reset round");
+
+     await resetRound(
   fullWordArray,
   setFullWordArray,
   rowLength,
@@ -141,7 +150,6 @@ export function CashButton({
   setVerticalArrayWordMix,
   showCashButton,
   setShowCashButton,
-
   wordArrayPopulated,
   setWordArrayPopulated,
   correctWords,
@@ -151,6 +159,8 @@ export function CashButton({
 
   
       );
+           
+      
     }
   }
 

@@ -13,6 +13,7 @@ async function checkGrammar(
   setGrammarCorrect,
   setCashButtonPressed,
   fullWordArray,
+  setFullWordArray,
   rowLength,
   showCashButton,
   setShowCashButton,

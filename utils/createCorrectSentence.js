@@ -1,6 +1,6 @@
 import { actorList, shortVerbList, wordMix } from "./wordList";
 console.log(actorList[0], shortVerbList[0], wordMix[0]);
-console.log("$$$$TEST!!!!!!!!")
+
 
 const actorWordsNoThirdPersonSingular = [
   "I",

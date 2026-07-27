@@ -1,44 +1,29 @@
-
-//Sets Word Buttons to read "WIN" after Cash button pressed - Correct Grammar. 
 function changeWordsToWin(fullWordArray, setFullWordArray) {
-  console.log("change words to win running");
+  return new Promise((resolve) => {
+    console.log("change words to win running");
 
-  changeWordsToWinFirstWord(fullWordArray, setFullWordArray);
+    setTimeout(() => {
+      const updated1 = [...fullWordArray];
+      updated1[3] = "WIN!";
+      setFullWordArray(updated1);
 
+      setTimeout(() => {
+        const updated2 = [...updated1];
+        updated2[4] = "WIN!";
+        setFullWordArray(updated2);
 
+        setTimeout(() => {
+          const updated3 = [...updated2];
+          updated3[5] = "WIN!";
+          setFullWordArray(updated3);
 
-
-  return fullWordArray;
+          resolve(updated3); // ✅ only resolves once all 3 words are done
+        }, 1000);
+      }, 1000);
+    }, 1000);
+  });
 }
-function changeWordsToWinFirstWord(fullWordArray, setFullWordArray) {
-  const newFullWordArray = [...fullWordArray];
-  setTimeout(() => {
 
-    newFullWordArray[3] = "WIN!";
-    setFullWordArray(newFullWordArray);
-    console.log("newfullWordArray, 1st  Win", fullWordArray);
-    // return fullWordArray
-  }, 1000);
-  changeWordsToWinSecondWord(newFullWordArray, setFullWordArray);
-}
 
-function changeWordsToWinSecondWord(newFullWordArray, setFullWordArray) {
-  setTimeout(() => {
-    // let newFullWordArray=[...fullWordArray]
-    newFullWordArray[4] = "WIN!";
-    setFullWordArray(newFullWordArray);
-    // return fullWordArray
-  }, 2000);
-  changeWordsToWinThirdWord(newFullWordArray, setFullWordArray);
-}
-function changeWordsToWinThirdWord(newFulllWordArray, setFullWordArray) {
-  setTimeout(() => {
-    // let newFullWordArray=[...fullWordArray]
-    newFullWordArray[5] = "WIN!";
-    setFullWordArray(newFullWordArray);
-    // return fullWordArray
-  }, 3000);
-  changeWordsToWinThirdWord(fullWordArray, setFullWordArray);
-}
 
 export { changeWordsToWin };
