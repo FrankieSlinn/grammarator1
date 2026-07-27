@@ -89,11 +89,16 @@ export function CashButton({
       console.log("!!!!!rounds left, continuing to validate if true");
 
       if (result === true) {
+
         console.log("correct answer in cash button pressed");
           if (roundsLeft !== 1) {
+                   let newGameScore = gameScore + 1;
+                     
+        setGameScore(newGameScore),
+        console.log("!!!!game score in cash button", newGameScore);
           setShowPointsMessage(true);
         } 
-             let newGameScore = gameScore + 1;
+      
 
      await changeWordsToWin(fullWordArray, setFullWordArray);
      setShowCorrectSentenceDisplay(true);
@@ -104,9 +109,7 @@ export function CashButton({
         );
       
         console.log("!!!!✅ Grammar correct in cash button:", result);
-   
-        setGameScore(newGameScore),
-        console.log("!!!!game score in cash button", newGameScore);
+ 
   
       } else {
         console.log("❌ Grammar incorrect in cash button:", result);
