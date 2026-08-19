@@ -57,9 +57,17 @@ async function checkGrammar(
       }),
     });
 
-    if (!response.ok) {
-      throw new Error(`OpenAI API error: ${response.statusText}`);
-    }
+  if (!response.ok) {
+  const errorBody = await response.text();
+
+  console.log("OpenAI API error:", {
+    status: response.status,
+    statusText: response.statusText,
+    body: errorBody
+  });
+
+  throw new Error(`OpenAI API error ${response.status}: ${errorBody}`);
+}
 
     const data = await response.json();
     console.log("response", data);

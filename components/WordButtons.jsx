@@ -89,7 +89,7 @@ export function WordButtons({
     });
   }
 
-  console.log("-----Locked Words:", lockedWords);
+  // console.log("-----Locked Words:", lockedWords);
   return (
     <>
       <View style={s.wordsContainer}>
@@ -111,10 +111,16 @@ export function WordButtons({
                     style={[
                       s.wordButton,
                       s.wordButton,
-                      { backgroundColor: isLocked ? "gold" : "aquamarine" },
+
+                      { backgroundColor: word==="WIN!"? "lightyellow" : "aquamarine" },
                     ]}
                   >
-                    <Text style={s.word}>{word}</Text>
+                    <Text style={[s.word, word==="WIN!"?{fontSize: 25, color: "black", 
+                      //  borderWidth: 5, 
+                      //  borderColor: "lightpink"
+                       } : null]} >
+                      {word}
+                    </Text>
                   </TouchableOpacity>
                 </View>
               );

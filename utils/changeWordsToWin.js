@@ -6,6 +6,7 @@ function changeWordsToWin(fullWordArray, setFullWordArray) {
       const updated1 = [...fullWordArray];
       updated1[3] = "WIN!";
       setFullWordArray(updated1);
+      
 
       setTimeout(() => {
         const updated2 = [...updated1];

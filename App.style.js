@@ -69,11 +69,16 @@ export const s = StyleSheet.create({
   },
   wordsContainer: {
     // flex: 1,
-    marginTop: 110,
-    // marginBottom: -300,
+    marginTop: 90,
+    marginBottom: -10,
+
     alignItems: "center",
-    height: "20%",
+    height: "110",
     // backgroundColor: "pink",
+  },
+  wordButtonContainer:{
+// height: 250,
+
   },
 
   wordRow: {
@@ -118,7 +123,8 @@ export const s = StyleSheet.create({
     flex: 0.05,
     // backgroundColor: "gray",
     flexDirection: "row",
-    marginTop: Platform.OS === "android" ? 85 : 50,
+    marginTop: Platform.OS === "android" ? 110 : 50,
+
     marginRight: 0,
     justifyContent: "center",
     // width: "88%",
@@ -186,7 +192,7 @@ export const s = StyleSheet.create({
   },
   newRoundContainer: {
     alignItems: "center",
-    marginBottom: 70,
+    marginBottom: 50,
   },
   newRoundButton: {
     padding: 15,
@@ -194,21 +200,26 @@ export const s = StyleSheet.create({
     borderRadius: 15,
   },
   pointsMessageContainer: {
-    // flex: 0.5,
+
     marginTop: -30,
     marginHorizontal: 30,
-    // marginHorizontal: 20,
-    // marginBottom: 200,
-    // backgroundColor: "lightgreen",
+
     alignItems: "center",
     justifyContent: "center",
     textAlign: "center",
+  },
+  pointsMessageText:{
+lineHeight: 32,
+    textAlign: "center",
+    marginTop: 20
+
   },
   finishGameContainerOuter: {
     alignItems: "center",
   },
   finishGameContainer: {
-    marginTop: Platform.OS === "android" ? -100 : -150,
+    marginTop: Platform.OS === "android" ? 100 : -150,
+    marginBottom: 10,
     marginHorizontal: 30,
     alignItems: "center",
 

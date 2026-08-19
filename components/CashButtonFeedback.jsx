@@ -1,26 +1,11 @@
 import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import { s } from "../App.style";
-
+//Shows whether result is correct or not. 
 export function CashButtonFeedback({ cashButtonPressed, grammarCorrect }) {
   console.log("grammarCorrect in CashButtonFeedback", grammarCorrect);
   const [giveCorrectAnswer, setGiveCorrectAnswer] = useState(null);
-  // const [result, setResult] = useState(null);
 
-  // async function getResult() {
-  //   const res = await checkGrammar(
-  //     grammarToCheck,
-  //     setGrammarToCheck,
-  //     grammarCorrect,
-  //     setGrammarCorrect,
-  //     setCashButtonPressed,
-  //     fullWordArray,
-  //     rowLength,
-  //     showCashButton,
-  //     setShowCashButton
-  //   );
-  //   setResult(res);
-  // }
 
   useEffect(() => {
     console.log("grammarCorrect in CashBUTTONFEEDBACK1!!!!");
