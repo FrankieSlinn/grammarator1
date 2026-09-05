@@ -51,6 +51,7 @@ export default {
         },
       ],
       "expo-web-browser",
+      "expo-audio"
     ],
     experiments: {
       typedRoutes: true,

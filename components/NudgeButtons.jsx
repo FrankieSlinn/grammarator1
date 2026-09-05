@@ -1,4 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
+
 import { Text, TouchableOpacity, View } from "react-native";
 import { s } from "../App.style";
 import { prepareToShiftColumns } from "../utils/wordColumnMovements";
@@ -39,13 +40,7 @@ export function NudgeButtons({
 wordArrayPopulated,
 setWordArrayPopulated
 }) {
-  // Lockedwords {"0-0": true, "0-1": true} Number on Left = rows; Number on right = columns
-  //The word row will always be one (as center row)
 
-  // function displayOutOfSpinsMessage(setShowOutOfSpinsMessage) {
-  //   console.log("setting out of spins message to show!!!");
-  //   setShowOutOfSpinsMessage(true);
-  // }
   console.log("nudgesSpinsLeft in NUDGEBUTTON!!!", nudgesSpinsLeft);
 
   return (
@@ -59,6 +54,7 @@ setWordArrayPopulated
 
               <TouchableOpacity
                 onPress={() => {
+               
                   nudgesSpinsLeft > 0 
                     ? prepareToShiftColumns({
                         numberOfRows,
@@ -128,8 +124,10 @@ setWordArrayPopulated
               {/* Right Nudge Button */}
               <TouchableOpacity
                 onPress={() => {
+            
                   nudgesSpinsLeft > 0 
-                    ? prepareToShiftColumns({
+                    ?      
+                    prepareToShiftColumns({
                         //parameters in function (depends on index)
                         numberOfRows,
                         rowLength,

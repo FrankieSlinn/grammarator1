@@ -1,9 +1,12 @@
 import { s } from "@/App.style.js";
+import { createAudioPlayer } from 'expo-audio';
 import { React, useEffect } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { changeWordsToWin } from "../utils/changeWordsToWin";
 import { checkGrammar } from "../utils/grammarAPI";
 import { resetRound } from "../utils/resetRound";
+
+
 
 export function CashButton({
   grammarCorrect,
@@ -61,6 +64,22 @@ export function CashButton({
         arrayCorrectWords,
         setArrayCorrectWords
 }) {
+
+const cashPlayer = createAudioPlayer(
+  require('../assets/sounds/CashRegister.mp3')
+);
+
+function cashButtonSound() {
+  console.log('CASH PRESSED');
+  cashPlayer.seekTo(0);
+  cashPlayer.play();
+}
+//Load sound so first sound effect is played 
+// useEffect(() => {
+//   preloadWinSound();
+// }, []);
+
+
   useEffect(() => {
     console.log(
       "✅ fullWordArray updated in Cash Button UseEffect:",
@@ -68,7 +87,12 @@ export function CashButton({
     );
   }, [fullWordArray]);
 
+
+
+  
+
   async function handleCashButtonPress() {
+     cashButtonSound();
     const result = await checkGrammar(
       grammarToCheck,
       setGrammarToCheck,
@@ -83,6 +107,7 @@ export function CashButton({
 
     );
     console.log("!!!!!result before check rounds", result);
+   
 
     // ✅ Use the actual result from the API instead of grammarCorrect state
     if (roundsLeft >= 0) {
@@ -98,7 +123,7 @@ export function CashButton({
         console.log("!!!!game score in cash button", newGameScore);
           setShowPointsMessage(true);
         } 
-      
+    
 
      await changeWordsToWin(fullWordArray, setFullWordArray);
      setShowCorrectSentenceDisplay(true);

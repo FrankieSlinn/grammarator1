@@ -1,4 +1,3 @@
-
 import {
   allocateWords,
   insertActors,
@@ -7,7 +6,17 @@ import {
   randomNumberGenerator
 } from "./makeWordArrays";
 
+import { createAudioPlayer } from 'expo-audio';
+
 import { actorList, shortVerbList, wordMix } from "./wordList";
+
+const nudgeButtonPlayer = createAudioPlayer(
+  require('../assets/sounds/mixkit-light-button-2580.wav')
+);
+function cashButtonSound() {
+  // nudgeButtonPlayer.seekTo(0);
+  nudgeButtonPlayer.play();
+}
 
 function spinColumn(
   numberOfRows,
@@ -88,7 +97,6 @@ function prepareToShiftColumns({
   setRemovedWordsArrayAbove,
   removedWordsArrayBelow,
   setRemovedWordsArrayBelow,
-  //columnOffeset = index
   columnOffset,
   direction,
   nudgesSpinsLeft,
@@ -97,8 +105,11 @@ function prepareToShiftColumns({
   setShowOutOfSpinsMessage,
   roundsLeft,
 }) {
+      cashButtonSound();
   console.log("Shifting column at index:", index);
+  console.log("-------roundsLeft in prepareToShiftColumns", roundsLeft);
   if (roundsLeft > 0) {
+
     let newFullWordArray = [...fullWordArray];
     //set amount of nudge back to original amount.
     resetNudgesSpins(
@@ -167,7 +178,7 @@ function shiftColumn({
     );
 
     // Always start from a fresh copy
-    addNewWordUpnButton(
+    addNewWordUpButton(
       removedWordsArrayBelow,
       setRemovedWordsArrayBelow,
       newVerticalArray,
@@ -253,8 +264,8 @@ function repopulateFullWordArrayWithShiftedColumns({
   setFullWordArray([...newFullWordArray]);
   console.log("Updated Full Word Array:", newFullWordArray);
 }
-
-function addNewWordUpnButton(
+//After shift, ensure that word button displayed is populated,
+function addNewWordUpButton(
   removedWordsArrayBelow,
   setRemovedWordsArrayBelow,
   newVerticalArray,
